@@ -6,6 +6,8 @@ module ExercismWizard.Execute
   ( findCli
   , ExercismCli (..)
   , execute
+  , exerciseProjectHome
+  , exerciseMetaDirExists
   )
 where
 
@@ -41,8 +43,16 @@ findCli = do
   workspaceReal <- realpath workspace
   pure ExercismCli {binPath, workspace, workspaceReal}
 
+exerciseProjectHome :: ExercismCli -> Exercise -> FilePath
+exerciseProjectHome ExercismCli {workspace} Exercise {langTrack, name} =
+  workspace </> fromText (langName langTrack) </> fromText name
+
+exerciseMetaDirExists :: ExercismCli -> Exercise -> IO Bool
+exerciseMetaDirExists cli e =
+  testdir $ exerciseProjectHome cli e </> ".exercism"
+
 guessExercise :: ExercismCli -> IO (Maybe Exercise)
-guessExercise ExercismCli {workspaceReal, workspace} = do
+guessExercise cli@ExercismCli {workspaceReal} = do
   cwd <- pwd >>= realpath
   let lePair = do
         {-
@@ -65,18 +75,16 @@ guessExercise ExercismCli {workspaceReal, workspace} = do
         guard $ eSep == pathSeparator
         pure (l, e)
   case lePair of
-    Just (langTrackRaw, name) -> do
+    Just (langTrackRaw, name) | Just langTrack <- parseLangTrack langTrackRaw -> do
       let checkMeta = True
+          exer = Exercise {langTrack, name}
       e <-
         if checkMeta
-          then
-            let projectHome = workspace </> fromText langTrackRaw </> fromText name
-             in testdir $ projectHome </> ".exercism"
+          then exerciseMetaDirExists cli exer
           else pure True
-      pure $ do
-        langTrack <- parseLangTrack langTrackRaw
-        guard e >> Just Exercise {langTrack, name}
-    Nothing -> pure Nothing
+      pure $
+        guard e >> Just exer
+    _ -> pure Nothing
 
 fillExercise :: ExercismCli -> RawExercise -> IO Exercise
 fillExercise ec (RawExercise (l, e)) = case (l, e) of
@@ -95,15 +103,14 @@ pprExercise Exercise {langTrack, name} =
   T.putStrLn $ T.pack (show langTrack) <> " track, exercise: " <> name
 
 execute :: ExercismCli -> Command -> IO ()
-execute cli@ExercismCli {binPath, workspace} cmd = case cmd of
+execute cli@ExercismCli {binPath} cmd = case cmd of
   CmdProxy args -> proc (toText binPath) args "" >>= exitWith
   CmdLangAction actionTy rawExer -> do
-    e@Exercise {langTrack, name} <- fillExercise cli rawExer
+    e@Exercise {langTrack} <- fillExercise cli rawExer
     pprExercise e
-    let prjHome = workspace </> fromText (langName langTrack) </> fromText name
     case actions (getLanguage langTrack) M.!? actionTy of
       Just action -> do
-        cd prjHome
+        cd (exerciseProjectHome cli e)
         case action of
           RunProgram pg as ->
             proc pg as "" >>= exitWith
