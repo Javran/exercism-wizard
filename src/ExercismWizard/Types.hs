@@ -3,12 +3,12 @@ module ExercismWizard.Types
   , LangTrack (..)
   , ActionType (..)
   , Action (..)
-  , ExercismCli(..)
+  , ExercismCli (..)
   )
 where
 
-import ExercismWizard.FSPath
 import qualified Data.Text as T
+import ExercismWizard.FSPath
 import Prelude hiding (FilePath)
 
 data ExercismCli = ExercismCli

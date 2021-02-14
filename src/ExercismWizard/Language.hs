@@ -17,6 +17,7 @@ where
 
 import qualified Data.Map.Strict as M
 import qualified Data.Text as T
+import ExercismWizard.Language.Haskell (runOrmolu)
 import ExercismWizard.Types
   ( Action (..)
   , ActionType (..)
@@ -97,7 +98,8 @@ haskell =
     , altNames = ["hs"]
     , actions =
         M.fromList
-          [ (Test, rp "stack test")
+          [ (Format, RunIO runOrmolu)
+          , (Test, rp "stack test")
           , (Lint, rp "hlint .")
           ]
     }
