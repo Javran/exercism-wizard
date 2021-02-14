@@ -1,6 +1,6 @@
-# Exercism wizard (WIP)
+# Exercism wizard
 
-A wrapper around [exercism cli](https://github.com/exercism/cli) to provide unified interface to common operations.
+A wrapper around [Exercism CLI](https://github.com/exercism/cli) to provide unified interface to common operations.
 
 Note that most of the stuff are just customized for myself, open to suggestions though.
 
@@ -8,12 +8,12 @@ Note that most of the stuff are just customized for myself, open to suggestions 
 
 Put built binary (which should be called `ew`) somewhere in `$PATH`, then:
 
-- `ew proxy <args...>`: proxy mode, same as executing `exercism <args...>`.
+- `ew proxy <args...>`: Proxy mode, same as executing `exercism <args...>`.
 - `ew test`: Run language-specific test suite.
-- `ew lint`: run language specific linter
-- `ew fmt`: format source code
-- `ew get`: fetch problem template, avoid overwriting.
-- `ew on`: spawn a sub-shell and switch to problem's project directory (might download problem template if missing)
+- `ew lint`: Run language specific linter
+- `ew fmt`: Format source code
+- `ew get`: Fetch problem template, avoid overwriting.
+- `ew on`: Spawn a sub-shell and switch to problem's project directory (might download problem template if missing)
 
 ## Planned features
 
