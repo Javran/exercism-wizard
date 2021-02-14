@@ -34,8 +34,15 @@ data Language = Language
 langName :: LangTrack -> T.Text
 langName = T.toLower . T.pack . show
 
--- TODO: peekRepo seems common: "https://github.com/exercism/<lang>/tree/main/exercises/practice"
 
+{-
+
+  TODO: some URL patterns:
+
+  - peekRepo: "https://github.com/exercism/<lang>/tree/main/exercises/practice"
+  - peekSol: "https://exercism.io/tracks/<lang>/exercises/<exercise>/solutions/"
+
+ -}
 languages :: [Language]
 languages = [haskell, kotlin, rust, go]
 
