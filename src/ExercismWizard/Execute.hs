@@ -17,26 +17,16 @@ import qualified Data.Text.IO as T
 import ExercismWizard.CommandParse
 import ExercismWizard.FSPath
 import ExercismWizard.Language
-  ( LangTrack
-  , Language (..)
+  ( Language (..)
   , getLanguage
   , langName
   , parseLangTrack
   )
+import ExercismWizard.Types
 import System.Exit
 import System.FilePath.Posix (pathSeparator)
 import Turtle.Prelude
 import Prelude hiding (FilePath)
-
-data ExercismCli = ExercismCli
-  { -- | Binary path to exercism CLI
-    binPath :: FilePath
-  , -- | Path to exercism workspace
-    workspace :: FilePath
-  , -- | Canonicalized path to exercism workspace
-    workspaceReal :: FilePath
-  }
-  deriving (Show)
 
 {-
   Find infomation on existing exercism cli setup.
@@ -50,12 +40,6 @@ findCli = do
   True <- testdir workspace
   workspaceReal <- realpath workspace
   pure ExercismCli {binPath, workspace, workspaceReal}
-
-data Exercise = Exercise
-  { langTrack :: LangTrack
-  , name :: T.Text
-  }
-  deriving (Show)
 
 guessExercise :: ExercismCli -> IO (Maybe Exercise)
 guessExercise ExercismCli {workspaceReal, workspace} = do

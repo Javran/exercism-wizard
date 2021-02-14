@@ -5,7 +5,6 @@
 module ExercismWizard.Language
   ( LangTrack (..)
   , Language (..)
-  , ActionType (..)
   , go
   , kotlin
   , rust
@@ -18,19 +17,8 @@ where
 
 import qualified Data.Map.Strict as M
 import qualified Data.Text as T
+import ExercismWizard.Types (ActionType(..), LangTrack(..))
 
-data LangTrack
-  = Haskell
-  | Kotlin
-  | Rust
-  | Go
-  deriving (Show, Eq, Ord)
-
-data ActionType
-  = Format
-  | Test
-  | Lint
-  deriving (Eq, Ord, Show)
 
 data Language = Language
   { track :: LangTrack

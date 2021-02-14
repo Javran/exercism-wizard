@@ -9,7 +9,8 @@ where
 
 import Data.List.Split (splitOn)
 import qualified Data.Text as T
-import ExercismWizard.Language (ActionType (..), LangTrack, parseLangTrack)
+import ExercismWizard.Language (parseLangTrack)
+import ExercismWizard.Types
 import Options.Applicative
 import Options.Applicative.Types
 import qualified System.Environment as Env
