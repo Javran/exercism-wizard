@@ -17,13 +17,16 @@ where
 
 import qualified Data.Map.Strict as M
 import qualified Data.Text as T
-import ExercismWizard.Types (ActionType(..), LangTrack(..))
-
+import ExercismWizard.Types
+  ( Action (..)
+  , ActionType (..)
+  , LangTrack (..)
+  )
 
 data Language = Language
   { track :: LangTrack
   , altNames :: [T.Text]
-  , actions :: M.Map ActionType T.Text -- TODO: Text can be further refined to proc / shell and whether fork() is necessary.
+  , actions :: M.Map ActionType Action
   }
 
 langName :: LangTrack -> T.Text
@@ -47,6 +50,11 @@ parseLangTrack = (langTracks M.!?)
 getLanguage :: LangTrack -> Language
 getLanguage lt = head $ filter ((== lt) . track) languages
 
+rp :: T.Text -> Action
+rp xs = RunProgram y ys
+  where
+    y:ys = T.words xs
+
 go :: Language
 go =
   Language
@@ -54,9 +62,9 @@ go =
     , altNames = []
     , actions =
         M.fromList $
-          [ (Format, "go fmt")
-          , (Test, "go test -v --bench . --benchmem")
-          , (Lint, "golint") -- TODO: this linter might need a list of files.
+          [ (Format, rp "go fmt")
+          , (Test, rp "go test -v --bench . --benchmem")
+          , (Lint, rp "golint") -- TODO: this linter might need a list of files.
           ]
     }
 
@@ -75,9 +83,9 @@ rust =
     , altNames = ["rs"]
     , actions =
         M.fromList
-          [ (Format, "cargo fmt")
-          , (Test, "cargo test")
-          , (Lint, "cargo clippy --all-targets")
+          [ (Format, rp "cargo fmt")
+          , (Test, rp "cargo test")
+          , (Lint, rp "cargo clippy --all-targets")
           ]
     }
 
@@ -88,6 +96,6 @@ haskell =
     , altNames = ["hs"]
     , actions =
         M.fromList
-          [ (Test, "stack test")
+          [ (Test, rp "stack test")
           ]
     }

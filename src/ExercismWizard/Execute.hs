@@ -97,16 +97,19 @@ pprExercise Exercise {langTrack, name} =
 execute :: ExercismCli -> Command -> IO ()
 execute cli@ExercismCli {binPath, workspace} cmd = case cmd of
   CmdProxy args -> proc (toText binPath) args "" >>= exitWith
-  CmdLangAction action rawExer -> do
+  CmdLangAction actionTy rawExer -> do
     e@Exercise {langTrack, name} <- fillExercise cli rawExer
     pprExercise e
     let prjHome = workspace </> fromText (langName langTrack) </> fromText name
-    case actions (getLanguage langTrack) M.!? action of
-      Just shCmd -> do
+    case actions (getLanguage langTrack) M.!? actionTy of
+      Just action -> do
         cd prjHome
-        shells shCmd ""
+        case action of
+          RunProgram pg as ->
+            procs pg as ""
+          RunIO act -> act cli e
       Nothing -> do
-        putStrLn $ show action <> " action not supported for this language."
+        putStrLn $ show actionTy <> " action not supported for this language."
         exitFailure
 
 {-
