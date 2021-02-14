@@ -1,0 +1,6 @@
+resolver: lts-16.3
+packages:
+- .
+
+extra-deps:
+- daemons-0.3.0

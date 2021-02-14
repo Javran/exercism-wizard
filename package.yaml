@@ -1,0 +1,58 @@
+name: exercism-wizard
+version: 0.1.0.0
+github: Javran/exercism-wizard
+license: BSD3
+author: Javran Cheng
+maintainer: javran.c@gmail.com
+copyright: "Copyright: (c) 2019 Javran Cheng"
+
+description: description
+
+dependencies:
+- base
+- turtle
+- system-filepath
+- text
+- optparse-applicative
+- daemons
+- process
+- safe-exceptions
+- split
+- filepath
+- containers
+
+library:
+  source-dirs: src
+  ghc-options:
+    - -Wall
+    - -O2
+
+executables:
+  ew:
+    main: Main.hs
+    source-dirs: exe
+    dependencies:
+      - exercism-wizard
+    ghc-options:
+      - -Wall
+      - -O2
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
+
+tests:
+  hspec:
+    main: Spec.hs
+    source-dirs:
+      - test
+    dependencies:
+      - exercism-wizard
+      - QuickCheck
+      - hspec
+    ghc-options:
+      - -Wall
+      - -O2
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
+      - -main-is Spec
