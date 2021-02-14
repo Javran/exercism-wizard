@@ -18,6 +18,7 @@ import qualified System.Environment as Env
 data Command
   = CmdProxy [T.Text]
   | CmdLangAction ActionType RawExercise
+  | CmdGet RawExercise
   deriving (Show)
 
 newtype RawExercise
@@ -58,7 +59,7 @@ opts =
           <> langActionCommand Format "fmt" "Format source code."
           <> langActionCommand Test "test" "Run test suite."
           <> langActionCommand Lint "lint" "Run Linter."
-       )
+          <> getCommand)
        <**> helper)
     (fullDesc
        <> header "Exercism Wizard - exercism workflow automation")
@@ -69,21 +70,27 @@ opts =
         (info
            (error "CmdProxy should not be reachable from within optparse-applicative framework.")
            (progDesc "Proxy all following arguments to exercism cli."))
+    exerciseArg =
+      argument
+        rawExercise
+        (help
+           "Specifies language track and exercise name. \
+           \Format: `[lang]:[exercise-name]`, left any part blank \
+           \to guess from current directory."
+           <> value (RawExercise (Nothing, Nothing))
+           <> metavar "EXERCISE")
     langActionCommand act cmdStr cmdDesc =
       command
         cmdStr
         (info
            (CmdLangAction act
-              <$> argument
-                rawExercise
-                (help
-                   "Specifies language track and exercise name. \
-                   \Format: `[lang]:[exercise-name]`, left any part blank \
-                   \to guess from current directory."
-                   <> value (RawExercise (Nothing, Nothing))
-                   <> metavar "EXERCISE")
+              <$> exerciseArg
               <**> helper)
            (fullDesc <> progDesc cmdDesc))
+    getCommand =
+      command
+        "get"
+        (info (CmdGet <$> exerciseArg <**> helper) (progDesc "`exercism download`, but avoid overwriting and less typing."))
 
 parseArgs :: [String] -> ParserResult Command
 parseArgs xs = case xs of

@@ -12,12 +12,12 @@ Put built binary (which should be called `ew`) somewhere in `$PATH`, then:
 - `ew test`: Run language-specific test suite.
 - `ew lint`: run language specific linter
 - `ew fmt`: format source code
+- `ew get`: fetch problem template, avoid overwriting.
 
 ## Planned features
 
 Planned features by priority:
 
-- `ew get`: fetch problem template
 - `ew on`: spawn a sub-shell and switch to problem's project directory (might download problem template if missing
 - `ew edit`: spawn editor.
 - `ew rmignore`: remove "ignore" annotation from tests

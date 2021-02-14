@@ -51,8 +51,8 @@ exerciseMetaDirExists :: ExercismCli -> Exercise -> IO Bool
 exerciseMetaDirExists cli e =
   testdir $ exerciseProjectHome cli e </> ".exercism"
 
-guessExercise :: ExercismCli -> IO (Maybe Exercise)
-guessExercise cli@ExercismCli {workspaceReal} = do
+guessExercise :: Bool -> ExercismCli -> IO (Maybe Exercise)
+guessExercise checkMeta cli@ExercismCli {workspaceReal} = do
   cwd <- pwd >>= realpath
   let lePair = do
         {-
@@ -76,8 +76,7 @@ guessExercise cli@ExercismCli {workspaceReal} = do
         pure (l, e)
   case lePair of
     Just (langTrackRaw, name) | Just langTrack <- parseLangTrack langTrackRaw -> do
-      let checkMeta = True
-          exer = Exercise {langTrack, name}
+      let exer = Exercise {langTrack, name}
       e <-
         if checkMeta
           then exerciseMetaDirExists cli exer
@@ -86,11 +85,11 @@ guessExercise cli@ExercismCli {workspaceReal} = do
         guard e >> Just exer
     _ -> pure Nothing
 
-fillExercise :: ExercismCli -> RawExercise -> IO Exercise
-fillExercise ec (RawExercise (l, e)) = case (l, e) of
+fillExercise :: Bool -> ExercismCli -> RawExercise -> IO Exercise
+fillExercise checkMeta ec (RawExercise (l, e)) = case (l, e) of
   (Just l', Just e') -> pure (Exercise l' e')
   _ -> do
-    guessed <- guessExercise ec
+    guessed <- guessExercise checkMeta ec
     case guessed of
       Nothing -> do
         putStrLn "Cannot determine track or exericse."
@@ -104,9 +103,9 @@ pprExercise Exercise {langTrack, name} =
 
 execute :: ExercismCli -> Command -> IO ()
 execute cli@ExercismCli {binPath} cmd = case cmd of
-  CmdProxy args -> proc (toText binPath) args "" >>= exitWith
+  CmdProxy args -> proc binPathT args "" >>= exitWith
   CmdLangAction actionTy rawExer -> do
-    e@Exercise {langTrack} <- fillExercise cli rawExer
+    e@Exercise {langTrack} <- fillExercise True cli rawExer
     pprExercise e
     case actions (getLanguage langTrack) M.!? actionTy of
       Just action -> do
@@ -118,6 +117,23 @@ execute cli@ExercismCli {binPath} cmd = case cmd of
       Nothing -> do
         putStrLn $ show actionTy <> " action not supported for this language."
         exitFailure
+  CmdGet raw -> do
+    e@Exercise {langTrack, name} <- fillExercise False cli raw
+    pprExercise e
+    alreadyExist <- exerciseMetaDirExists cli e
+    if alreadyExist
+      then putStrLn "Metadata already exist, skipping."
+      else
+        proc
+          binPathT
+          [ "download"
+          , "--exercise=" <> name
+          , "--track=" <> langName langTrack
+          ]
+          ""
+          >>= exitWith
+  where
+    binPathT = toText binPath
 
 {-
   _ ->
