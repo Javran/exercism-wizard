@@ -20,6 +20,7 @@ dependencies:
 - split
 - filepath
 - containers
+- foldl
 
 library:
   source-dirs: src
