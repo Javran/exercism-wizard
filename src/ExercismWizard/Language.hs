@@ -5,7 +5,7 @@
 module ExercismWizard.Language
   ( LangTrack (..)
   , Language (..)
-  , Action (..)
+  , ActionType (..)
   , go
   , kotlin
   , rust
@@ -26,7 +26,7 @@ data LangTrack
   | Go
   deriving (Show, Eq, Ord)
 
-data Action
+data ActionType
   = Format
   | Test
   | Lint
@@ -35,7 +35,7 @@ data Action
 data Language = Language
   { track :: LangTrack
   , altNames :: [T.Text]
-  , actions :: M.Map Action T.Text -- TODO: Text can be further refined to proc / shell and whether fork() is necessary.
+  , actions :: M.Map ActionType T.Text -- TODO: Text can be further refined to proc / shell and whether fork() is necessary.
   }
 
 langName :: LangTrack -> T.Text

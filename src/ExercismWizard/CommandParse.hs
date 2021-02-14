@@ -9,14 +9,14 @@ where
 
 import Data.List.Split (splitOn)
 import qualified Data.Text as T
-import ExercismWizard.Language (Action (..), LangTrack, parseLangTrack)
+import ExercismWizard.Language (ActionType (..), LangTrack, parseLangTrack)
 import Options.Applicative
 import Options.Applicative.Types
 import qualified System.Environment as Env
 
 data Command
   = CmdProxy [T.Text]
-  | CmdLangAction Action RawExercise
+  | CmdLangAction ActionType RawExercise
   deriving (Show)
 
 newtype RawExercise
