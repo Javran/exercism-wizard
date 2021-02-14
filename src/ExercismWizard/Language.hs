@@ -26,7 +26,8 @@ import ExercismWizard.Types
 data Language = Language
   { track :: LangTrack
   , altNames :: [T.Text]
-  , actions :: M.Map ActionType Action
+  , -- | Note that actions can assume current directory is the project root of that exercise.
+    actions :: M.Map ActionType Action
   }
 
 langName :: LangTrack -> T.Text
@@ -53,7 +54,7 @@ getLanguage lt = head $ filter ((== lt) . track) languages
 rp :: T.Text -> Action
 rp xs = RunProgram y ys
   where
-    y:ys = T.words xs
+    y : ys = T.words xs
 
 go :: Language
 go =
@@ -64,7 +65,7 @@ go =
         M.fromList $
           [ (Format, rp "go fmt")
           , (Test, rp "go test -v --bench . --benchmem")
-          , (Lint, rp "golint") -- TODO: this linter might need a list of files.
+          , (Lint, rp "golint")
           ]
     }
 
@@ -97,5 +98,6 @@ haskell =
     , actions =
         M.fromList
           [ (Test, rp "stack test")
+          , (Lint, rp "hlint .")
           ]
     }
