@@ -19,6 +19,7 @@ data Command
   = CmdProxy [T.Text]
   | CmdLangAction ActionType RawExercise
   | CmdGet RawExercise
+  | CmdOn RawExercise
   deriving (Show)
 
 newtype RawExercise
@@ -59,7 +60,8 @@ opts =
           <> langActionCommand Format "fmt" "Format source code."
           <> langActionCommand Test "test" "Run test suite."
           <> langActionCommand Lint "lint" "Run Linter."
-          <> getCommand)
+          <> getCommand
+          <> onCommand)
        <**> helper)
     (fullDesc
        <> header "Exercism Wizard - exercism workflow automation")
@@ -90,7 +92,15 @@ opts =
     getCommand =
       command
         "get"
-        (info (CmdGet <$> exerciseArg <**> helper) (progDesc "`exercism download`, but avoid overwriting and less typing."))
+        (info
+           (CmdGet <$> exerciseArg <**> helper)
+           (progDesc "`exercism download`, but avoid overwriting and less typing."))
+    onCommand =
+      command
+        "on"
+        (info
+           (CmdOn <$> exerciseArg <**> helper)
+           (progDesc "Spawn a sub-shell with exercise's project home."))
 
 parseArgs :: [String] -> ParserResult Command
 parseArgs xs = case xs of

@@ -27,6 +27,7 @@ import ExercismWizard.Language
 import ExercismWizard.Types
 import System.Exit
 import System.FilePath.Posix (pathSeparator)
+import qualified System.Process as SP
 import Turtle.Prelude
 import Prelude hiding (FilePath)
 
@@ -117,23 +118,41 @@ execute cli@ExercismCli {binPath} cmd = case cmd of
       Nothing -> do
         putStrLn $ show actionTy <> " action not supported for this language."
         exitFailure
-  CmdGet raw -> do
-    e@Exercise {langTrack, name} <- fillExercise False cli raw
-    pprExercise e
-    alreadyExist <- exerciseMetaDirExists cli e
-    if alreadyExist
-      then putStrLn "Metadata already exist, skipping."
-      else
-        proc
-          binPathT
-          [ "download"
-          , "--exercise=" <> name
-          , "--track=" <> langName langTrack
-          ]
-          ""
-          >>= exitWith
+  CmdGet raw -> handleGetThen False raw (const (pure ()))
+  CmdOn raw -> handleGetThen True raw $ \e -> do
+    Just shBin <- need "SHELL"
+    let cproc =
+          (SP.proc (T.unpack shBin) [])
+            { SP.std_in = SP.Inherit
+            , SP.std_out = SP.Inherit
+            , SP.std_err = SP.Inherit
+            , SP.delegate_ctlc = True
+            , SP.cwd = Just (encodeString (exerciseProjectHome cli e))
+            }
+    system cproc "" >>= exitWith
   where
     binPathT = toText binPath
+    handleGetThen quiet raw action = do
+      e@Exercise {langTrack, name} <- fillExercise False cli raw
+      pprExercise e
+      alreadyExist <- exerciseMetaDirExists cli e
+      if alreadyExist
+        then do
+          unless quiet $
+            putStrLn "Metadata already exist, skipping."
+          action e
+        else do
+          ec <-
+            proc
+              binPathT
+              [ "download"
+              , "--exercise=" <> name
+              , "--track=" <> langName langTrack
+              ]
+              ""
+          if ec == ExitSuccess
+            then action e
+            else exitWith ec
 
 {-
   _ ->
