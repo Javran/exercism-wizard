@@ -106,7 +106,7 @@ execute cli@ExercismCli {binPath, workspace} cmd = case cmd of
         cd prjHome
         case action of
           RunProgram pg as ->
-            procs pg as ""
+            proc pg as "" >>= exitWith
           RunIO act -> act cli e
       Nothing -> do
         putStrLn $ show actionTy <> " action not supported for this language."
