@@ -15,25 +15,35 @@ module ExercismWizard.Language
   )
 where
 
+import qualified Control.Foldl as Fold
 import qualified Data.Map.Strict as M
 import qualified Data.Text as T
+import ExercismWizard.FSPath
 import ExercismWizard.Language.Haskell (runOrmolu)
 import ExercismWizard.Types
   ( Action (..)
   , ActionType (..)
+  , Exercise (..)
   , LangTrack (..)
   )
+import Turtle.Pattern
+import Turtle.Prelude hiding (err)
+import Turtle.Shell
+import Prelude hiding (FilePath)
 
 data Language = Language
   { track :: LangTrack
   , altNames :: [T.Text]
   , -- | Note that actions can assume current directory is the project root of that exercise.
     actions :: M.Map ActionType Action
+  , -- | Return a list of files considered part of a solution to be submitted.
+    --   note that this is kept as a list rather than a set as the first file is
+    --   usually also the file to be opened by edit subcommand.
+    solutionFiles :: Exercise -> IO [FilePath]
   }
 
 langName :: LangTrack -> T.Text
 langName = T.toLower . T.pack . show
-
 
 {-
 
@@ -75,6 +85,14 @@ go =
           , (Test, rp "go test -v --bench . --benchmem")
           , (Lint, rp "golint")
           ]
+    , solutionFiles = \_e -> do
+        reduce
+          Fold.list
+          (do
+             fp <- find (suffix ".go") "."
+             let fp' = toText fp
+             [] <- pure $ match (suffix "_test.go") fp'
+             pure fp)
     }
 
 kotlin :: Language
@@ -83,6 +101,8 @@ kotlin =
     { track = Kotlin
     , altNames = ["kt"]
     , actions = M.empty
+    , solutionFiles = \_e ->
+        reduce Fold.list (find (suffix ".kt") "src/main")
     }
 
 rust :: Language
@@ -96,6 +116,10 @@ rust =
           , (Test, rp "cargo test")
           , (Lint, rp "cargo clippy --all-targets")
           ]
+    , solutionFiles = \_e -> do
+        let src = "src/lib.rs"
+        b <- testfile src
+        pure [src | b]
     }
 
 haskell :: Language
@@ -109,4 +133,6 @@ haskell =
           , (Test, rp "stack test")
           , (Lint, rp "hlint .")
           ]
+    , solutionFiles = \_e ->
+        reduce Fold.list (find (suffix ".hs") "src/")
     }

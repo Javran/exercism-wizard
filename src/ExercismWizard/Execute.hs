@@ -29,6 +29,7 @@ import System.Exit
 import System.FilePath.Posix (pathSeparator)
 import qualified System.Process as SP
 import Turtle.Prelude
+import Turtle.Shell
 import Prelude hiding (FilePath)
 
 {-
@@ -130,6 +131,13 @@ execute cli@ExercismCli {binPath} cmd = case cmd of
             , SP.cwd = Just (encodeString (exerciseProjectHome cli e))
             }
     system cproc "" >>= exitWith
+  CmdEdit raw -> handleGetThen True raw $ \e@Exercise{langTrack} -> do
+    let prjHome = exerciseProjectHome cli e
+        l = getLanguage langTrack
+    sh $ do
+      pushd prjHome
+      liftIO $ do
+        solutionFiles l e >>= print
   where
     binPathT = toText binPath
     handleGetThen quiet raw action = do

@@ -23,6 +23,7 @@ data Command
   | CmdLangAction ActionType RawExercise [T.Text]
   | CmdGet RawExercise
   | CmdOn RawExercise
+  | CmdEdit RawExercise
   deriving (Show, Eq)
 
 newtype RawExercise
@@ -64,7 +65,8 @@ opts =
           <> langActionCommand Test "test" "Run test suite."
           <> langActionCommand Lint "lint" "Run Linter."
           <> getCommand
-          <> onCommand)
+          <> onCommand
+          <> editCommand)
        <**> helper)
     (fullDesc
        <> header "Exercism Wizard - exercism workflow automation")
@@ -115,6 +117,12 @@ opts =
         (info
            (CmdOn <$> exerciseArg <**> helper)
            (progDesc "Spawn a sub-shell with exercise's project home."))
+    editCommand =
+      command
+        "edit"
+        (info
+           (CmdEdit <$> exerciseArg <**> helper)
+           (progDesc "Spawn an editor on specified exercise."))
 
 {-
   Argument parsing results:
