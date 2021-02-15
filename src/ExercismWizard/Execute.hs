@@ -27,6 +27,7 @@ import ExercismWizard.Language
 import ExercismWizard.Types
 import System.Exit
 import System.FilePath.Posix (pathSeparator)
+import System.Posix.Daemon (Redirection (..), runDetached)
 import qualified System.Process as SP
 import Turtle.Prelude
 import Turtle.Shell
@@ -113,8 +114,11 @@ execute cli@ExercismCli {binPath} cmd = case cmd of
       Just action -> do
         cd (exerciseProjectHome cli e)
         case action of
-          RunProgram pg as ->
-            proc pg (as <> extraArgs) "" >>= exitWith
+          RunProgram pg as detach ->
+            let runProg = proc pg (as <> extraArgs) ""
+             in if detach
+                  then runDetached Nothing DevNull (void runProg)
+                  else runProg >>= exitWith
           RunIO act -> act cli e extraArgs
       Nothing -> do
         putStrLn $ show actionTy <> " action not supported for this language."
@@ -133,11 +137,26 @@ execute cli@ExercismCli {binPath} cmd = case cmd of
     system cproc "" >>= exitWith
   CmdEdit raw -> handleGetThen True raw $ \e@Exercise {langTrack} -> do
     let prjHome = exerciseProjectHome cli e
-        l = getLanguage langTrack
+        Language {solutionFiles, editMethod} = getLanguage langTrack
     sh $ do
       pushd prjHome
-      liftIO $ do
-        solutionFiles l e >>= print
+      case editMethod of
+        Nothing -> liftIO $ do
+          putStrLn "Edit is not supported for this language"
+          exitFailure
+        Just OpenWithEditor -> do
+          files <- liftIO $ solutionFiles e
+          case files of
+            [] -> liftIO $ do
+              putStrLn "No files to edit."
+              exitFailure
+            hd : _tl ->
+              liftIO $ do
+                Just editorCmd <- need "EDITOR"
+                runDetached Nothing DevNull $ void (proc editorCmd [toText hd] "")
+        Just (OpenProjectWithProgram prog) ->
+          liftIO $
+            runDetached Nothing DevNull $ void (proc prog ["."] "")
   CmdDebug _args ->
     sh $ do
       let ExercismCli {workspace} = cli

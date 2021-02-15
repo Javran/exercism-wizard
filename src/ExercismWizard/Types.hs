@@ -4,6 +4,7 @@ module ExercismWizard.Types
   , ActionType (..)
   , Action (..)
   , ExercismCli (..)
+  , EditMethod(..)
   )
 where
 
@@ -44,5 +45,11 @@ data Action
   = RunProgram
       { progName :: T.Text
       , progArgs :: [T.Text]
+      , -- | whether to detach the process from current one
+        detach :: Bool
       }
   | RunIO (ExercismCli -> Exercise -> [T.Text] -> IO ())
+
+data EditMethod
+  = OpenWithEditor
+  | OpenProjectWithProgram T.Text

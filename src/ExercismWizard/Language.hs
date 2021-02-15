@@ -23,6 +23,7 @@ import ExercismWizard.Language.Haskell (runOrmolu)
 import ExercismWizard.Types
   ( Action (..)
   , ActionType (..)
+  , EditMethod (..)
   , Exercise (..)
   , LangTrack (..)
   )
@@ -40,6 +41,7 @@ data Language = Language
     --   note that this is kept as a list rather than a set as the first file is
     --   usually also the file to be opened by edit subcommand.
     solutionFiles :: Exercise -> IO [FilePath]
+  , editMethod :: Maybe EditMethod
   }
 
 langName :: LangTrack -> T.Text
@@ -70,7 +72,7 @@ getLanguage :: LangTrack -> Language
 getLanguage lt = head $ filter ((== lt) . track) languages
 
 rp :: T.Text -> Action
-rp xs = RunProgram y ys
+rp xs = RunProgram y ys False
   where
     y : ys = T.words xs
 
@@ -93,6 +95,7 @@ go =
              let fp' = toText fp
              [] <- pure $ match (suffix "_test.go") fp'
              pure fp)
+    , editMethod = Just OpenWithEditor
     }
 
 kotlin :: Language
@@ -103,6 +106,7 @@ kotlin =
     , actions = M.empty
     , solutionFiles = \_e ->
         reduce Fold.list (find (suffix ".kt") "src/main")
+    , editMethod = Just $ OpenProjectWithProgram "idea"
     }
 
 rust :: Language
@@ -120,6 +124,7 @@ rust =
         let src = "src/lib.rs"
         b <- testfile src
         pure [src | b]
+    , editMethod = Just OpenWithEditor
     }
 
 haskell :: Language
@@ -135,4 +140,5 @@ haskell =
           ]
     , solutionFiles = \_e ->
         reduce Fold.list (find (suffix ".hs") "src/")
+    , editMethod = Just OpenWithEditor
     }
