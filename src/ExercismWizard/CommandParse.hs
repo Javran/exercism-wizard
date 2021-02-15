@@ -23,14 +23,14 @@ data Command
   | CmdLangAction ActionType RawExercise [T.Text]
   | CmdGet RawExercise
   | CmdOn RawExercise
-  deriving (Show)
+  deriving (Show, Eq)
 
 newtype RawExercise
   = RawExercise
       ( Maybe LangTrack -- language name
       , Maybe T.Text -- exercise name
       )
-  deriving (Show)
+  deriving (Show, Eq)
 
 {-
   Parses a raw description of an exercise, allowed formats:
@@ -73,7 +73,9 @@ opts =
       command
         "proxy"
         (info
-           (error "CmdProxy should not be reachable from within optparse-applicative framework.")
+           (error
+              "CmdProxy should not be reachable \
+              \from within optparse-applicative framework.")
            (progDesc "Proxy all following arguments to exercism cli."))
     exerciseArg =
       argument
