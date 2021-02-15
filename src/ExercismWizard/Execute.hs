@@ -11,6 +11,7 @@ module ExercismWizard.Execute
   )
 where
 
+import Data.List (partition)
 import Control.Monad
 import qualified Data.Map.Strict as M
 import Data.Maybe
@@ -157,6 +158,24 @@ execute cli@ExercismCli {binPath} cmd = case cmd of
         Just (OpenProjectWithProgram prog) ->
           liftIO $
             runDetached Nothing DevNull $ void (proc prog ["."] "")
+  CmdRemoveIgnore raw -> do
+    e@Exercise {langTrack} <- fillExercise True cli raw
+    let Language {removeIgnore} = getLanguage langTrack
+    pprExercise e
+    case removeIgnore of
+      Nothing -> do
+        putStrLn "rmignore not supported by this language."
+      Just (searchPath, pat, ignoreLineMarker) -> sh $ do
+        pushd (exerciseProjectHome cli e)
+        fp <- find pat searchPath
+        liftIO $  do
+          let sFp = encodeString fp
+          origContent <- T.readFile sFp
+          let xs = T.lines origContent
+              (remove, newXs) = partition ((== ignoreLineMarker) . T.strip) xs
+          T.writeFile sFp (T.unlines newXs)
+          T.putStrLn $
+            "Removed " <> T.pack (show (length remove)) <> " lines from " <> T.pack sFp
   CmdDebug _args ->
     sh $ do
       let ExercismCli {workspace} = cli

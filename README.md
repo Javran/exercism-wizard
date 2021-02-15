@@ -17,12 +17,12 @@ Put built binary (which should be called `ew`) somewhere in `$PATH`, then:
 - `ew get`: Fetch problem template, avoid overwriting.
 - `ew on`: Spawn a sub-shell and switch to problem's project directory (might download problem template if missing)
 - `ew edit`: Spawn a detached editor with solution file or project open.
+- `ew rmignore`: Remove "ignore" annotation from tests.
 
 ## Planned features
 
 Planned features by priority:
 
-- `ew rmignore`: remove "ignore" annotation from tests
 - `ew submit`: submit default stuff, or alternatively an explicit list can be given.
 - `ew peekrepo`: open a URL to language repo - for taking a look at problems locked away
 - `ew peeksol`: open a URL to community solutions

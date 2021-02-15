@@ -24,6 +24,7 @@ data Command
   | CmdGet RawExercise
   | CmdOn RawExercise
   | CmdEdit RawExercise
+  | CmdRemoveIgnore RawExercise
   | CmdDebug [String]
   deriving (Show, Eq)
 
@@ -67,7 +68,8 @@ opts =
           <> langActionCommand Lint "lint" "Run Linter."
           <> getCommand
           <> onCommand
-          <> editCommand)
+          <> editCommand
+          <> rmIgnoreCommand)
        <**> helper)
     (fullDesc
        <> header "Exercism Wizard - exercism workflow automation")
@@ -124,6 +126,13 @@ opts =
         (info
            (CmdEdit <$> exerciseArg <**> helper)
            (progDesc "Spawn an editor on specified exercise."))
+
+    rmIgnoreCommand =
+      command
+        "rmignore"
+        (info
+           (CmdRemoveIgnore <$> exerciseArg <**> helper)
+           (progDesc "Remove 'ignored' test annotations."))
 
 {-
   Argument parsing results:

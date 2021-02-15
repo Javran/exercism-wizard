@@ -31,6 +31,7 @@ import Turtle.Pattern
 import Turtle.Prelude hiding (err)
 import Turtle.Shell
 import Prelude hiding (FilePath)
+import Data.Functor
 
 data Language = Language
   { track :: LangTrack
@@ -42,6 +43,10 @@ data Language = Language
     --   usually also the file to be opened by edit subcommand.
     solutionFiles :: Exercise -> IO [FilePath]
   , editMethod :: Maybe EditMethod
+  , -- | When set: (testpath, pattern, <line>), meaning scan all files under testpath
+    --   and remove lines that contains only <line> and surrounding whitespaces.
+    --   TODO: to be implemented.
+    removeIgnore :: Maybe (FilePath, Pattern (),  T.Text)
   }
 
 langName :: LangTrack -> T.Text
@@ -96,6 +101,7 @@ go =
              [] <- pure $ match (suffix "_test.go") fp'
              pure fp)
     , editMethod = Just OpenWithEditor
+    , removeIgnore = Nothing
     }
 
 kotlin :: Language
@@ -107,6 +113,7 @@ kotlin =
     , solutionFiles = \_e ->
         reduce Fold.list (find (suffix ".kt") "src/main")
     , editMethod = Just $ OpenProjectWithProgram "idea"
+    , removeIgnore = Just ("src/test", void (suffix ".kt"), "@Ignore")
     }
 
 rust :: Language
@@ -125,6 +132,7 @@ rust =
         b <- testfile src
         pure [src | b]
     , editMethod = Just OpenWithEditor
+    , removeIgnore = Just ("tests", void (suffix ".rs"), "#[ignore]")
     }
 
 haskell :: Language
@@ -141,4 +149,5 @@ haskell =
     , solutionFiles = \_e ->
         reduce Fold.list (find (suffix ".hs") "src/")
     , editMethod = Just OpenWithEditor
+    , removeIgnore = Nothing
     }
