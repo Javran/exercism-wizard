@@ -138,6 +138,8 @@ execute cli@ExercismCli {binPath} cmd = case cmd of
       pushd prjHome
       liftIO $ do
         solutionFiles l e >>= print
+  CmdDebug _args ->
+    pure ()
   where
     binPathT = toText binPath
     handleGetThen quiet raw action = do

@@ -24,6 +24,7 @@ data Command
   | CmdGet RawExercise
   | CmdOn RawExercise
   | CmdEdit RawExercise
+  | CmdDebug [String]
   deriving (Show, Eq)
 
 newtype RawExercise
@@ -131,6 +132,8 @@ opts =
  -}
 parseArgs :: [String] -> Either [T.Text] (ParserResult Command)
 parseArgs allArgs = case allArgs of
+  "@debug": xs ->
+    Right $ Success $ CmdDebug xs
   "proxy" : passArgs ->
     {-
       proxy subcommand is a special mode that passes everything after it as-is

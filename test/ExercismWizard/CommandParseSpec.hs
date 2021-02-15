@@ -54,3 +54,5 @@ spec = describe "parseArgs" $ do
     testcase "on :wow" (Nothing, Just "wow")
     testcase "on :" (Nothing, Nothing)
     testcase "on rs:zzz" (Just Rust, Just "zzz")
+  specify "@debug" $ do
+    parseArgsW "@debug 1 -- x y" `shouldBe` (Right $ Just $ CmdDebug ["1", "--", "x", "y"])
