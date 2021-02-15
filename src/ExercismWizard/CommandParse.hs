@@ -25,6 +25,7 @@ data Command
   | CmdOn RawExercise
   | CmdEdit RawExercise
   | CmdRemoveIgnore RawExercise
+  | CmdSubmit RawExercise
   | CmdDebug [String]
   deriving (Show, Eq)
 
@@ -69,7 +70,8 @@ opts =
           <> getCommand
           <> onCommand
           <> editCommand
-          <> rmIgnoreCommand)
+          <> rmIgnoreCommand
+          <> submitCommand)
        <**> helper)
     (fullDesc
        <> header "Exercism Wizard - exercism workflow automation")
@@ -133,6 +135,12 @@ opts =
         (info
            (CmdRemoveIgnore <$> exerciseArg <**> helper)
            (progDesc "Remove 'ignored' test annotations."))
+    submitCommand =
+      command
+        "submit"
+        (info
+           (CmdSubmit <$> exerciseArg <**> helper)
+           (progDesc "Submit the default set of solution files."))
 
 {-
   Argument parsing results:
@@ -141,7 +149,7 @@ opts =
  -}
 parseArgs :: [String] -> Either [T.Text] (ParserResult Command)
 parseArgs allArgs = case allArgs of
-  "@debug": xs ->
+  "@debug" : xs ->
     Right $ Success $ CmdDebug xs
   "proxy" : passArgs ->
     {-

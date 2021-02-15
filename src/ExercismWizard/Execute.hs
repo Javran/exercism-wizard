@@ -11,14 +11,14 @@ module ExercismWizard.Execute
   )
 where
 
-import Data.List (partition)
 import Control.Monad
+import Data.List (partition)
 import qualified Data.Map.Strict as M
 import Data.Maybe
 import qualified Data.Text as T
 import qualified Data.Text.IO as T
 import ExercismWizard.CommandParse
-import ExercismWizard.FSPath
+import ExercismWizard.FSPath hiding (null)
 import ExercismWizard.Language
   ( Language (..)
   , getLanguage
@@ -26,8 +26,9 @@ import ExercismWizard.Language
   , parseLangTrack
   )
 import ExercismWizard.Types
-import System.Exit
+import System.Exit (ExitCode (..), exitFailure, exitWith)
 import System.FilePath.Posix (pathSeparator)
+import qualified System.IO
 import System.Posix.Daemon (Redirection (..), runDetached)
 import qualified System.Process as SP
 import Turtle.Prelude
@@ -168,7 +169,7 @@ execute cli@ExercismCli {binPath} cmd = case cmd of
       Just (searchPath, pat, ignoreLineMarker) -> sh $ do
         pushd (exerciseProjectHome cli e)
         fp <- find pat searchPath
-        liftIO $  do
+        liftIO $ do
           let sFp = encodeString fp
           origContent <- T.readFile sFp
           let xs = T.lines origContent
@@ -176,6 +177,41 @@ execute cli@ExercismCli {binPath} cmd = case cmd of
           T.writeFile sFp (T.unlines newXs)
           T.putStrLn $
             "Removed " <> T.pack (show (length remove)) <> " lines from " <> T.pack sFp
+  CmdSubmit raw -> do
+    e@Exercise {langTrack} <- fillExercise True cli raw
+    let Language {solutionFiles} = getLanguage langTrack
+    pprExercise e
+    {-
+      Special care is required as this is the only command that
+      indirectly uploads files to Internet.
+
+      checks:
+      - file set is non-empty.
+      - all file paths are relative.
+      - all files must exist.
+      - require user confirmation.
+     -}
+    sh $ do
+      pushd (exerciseProjectHome cli e)
+      submitFps <- liftIO $ solutionFiles e
+      when (null submitFps) $ die "No file to submit."
+      forM_ submitFps $ \fp -> do
+        unless (relative fp) $
+          die $ "File " <> toText fp <> " is not relative."
+        exist <- testfile fp
+        unless exist $
+          die $ "File " <> toText fp <> " does not exist."
+      cwd <- pwd
+      let submitFpTs = fmap toText submitFps
+      liftIO $ do
+        T.putStrLn $ "Current working directory: " <> toText cwd
+        T.putStrLn $ "Files to be submitted: " <> T.intercalate ", " submitFpTs
+        T.putStr "y to confirm: "
+        System.IO.hFlush System.IO.stdout
+        s <- getLine
+        unless (s `elem` ["Y", "y"]) $
+          die "Submission aborted"
+        proc binPathT ("submit" : submitFpTs) "" >>= exitWith
   CmdDebug _args ->
     sh $ do
       let ExercismCli {workspace} = cli
