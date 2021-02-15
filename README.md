@@ -11,9 +11,9 @@ Note that most of the stuff are just customized for myself, open to suggestions 
 Put built binary (which should be called `ew`) somewhere in `$PATH`, then:
 
 - `ew proxy <args...>`: Proxy mode, same as executing `exercism <args...>`.
-- `ew test`: Run language-specific test suite.
-- `ew lint`: Run language specific linter
-- `ew fmt`: Format source code
+- `ew test`: Run language-specific test suite. (extra arguments supported)
+- `ew lint`: Run language specific linter. (extra arguments supported)
+- `ew fmt`: Format source code. (extra arguments supported)
 - `ew get`: Fetch problem template, avoid overwriting.
 - `ew on`: Spawn a sub-shell and switch to problem's project directory (might download problem template if missing)
 
