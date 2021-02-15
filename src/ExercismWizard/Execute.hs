@@ -131,7 +131,7 @@ execute cli@ExercismCli {binPath} cmd = case cmd of
             , SP.cwd = Just (encodeString (exerciseProjectHome cli e))
             }
     system cproc "" >>= exitWith
-  CmdEdit raw -> handleGetThen True raw $ \e@Exercise{langTrack} -> do
+  CmdEdit raw -> handleGetThen True raw $ \e@Exercise {langTrack} -> do
     let prjHome = exerciseProjectHome cli e
         l = getLanguage langTrack
     sh $ do
@@ -139,7 +139,27 @@ execute cli@ExercismCli {binPath} cmd = case cmd of
       liftIO $ do
         solutionFiles l e >>= print
   CmdDebug _args ->
-    pure ()
+    sh $ do
+      let ExercismCli {workspace} = cli
+      langPath <- ls workspace
+      let lang = toText $ filename langPath
+      guard $ not $ T.isPrefixOf "." lang
+      case parseLangTrack lang of
+        Nothing ->
+          liftIO $ do
+            T.putStrLn $ "Cannot parse language: " <> lang
+            exitFailure
+        Just langTrack -> do
+          let l = getLanguage langTrack
+          liftIO $ putStrLn $ "Track: " <> show langTrack
+          prjHome <- ls langPath
+          let eName = toText (filename prjHome)
+          guard $ not $ T.isPrefixOf "." eName
+          liftIO $ T.putStrLn $ "  Exercise: " <> eName
+          pushd prjHome
+          liftIO $ do
+            xs <- solutionFiles l (Exercise langTrack eName)
+            T.putStrLn $ "    Files: " <> T.intercalate ", " (fmap toText xs)
   where
     binPathT = toText binPath
     handleGetThen quiet raw action = do
