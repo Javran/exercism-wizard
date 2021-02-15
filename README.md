@@ -23,6 +23,12 @@ Put built binary (which should be called `ew`) somewhere in `$PATH`, then:
 
 Planned features by priority:
 
-- `ew submit`: submit default stuff, or alternatively an explicit list can be given.
+- `ew submit`: submit default stuff
 - `ew peekrepo`: open a URL to language repo - for taking a look at problems locked away
 - `ew peeksol`: open a URL to community solutions
+- `ew submit`: support an explicit list, with ability to disable the default submit set
+  note that this feature is non-trivial as we do want to avoid submitting random files.
+  So if an explicit list is provided, all path must be:
+
+  + relative to solution project home
+  + exist
