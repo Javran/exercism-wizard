@@ -105,7 +105,7 @@ pprExercise Exercise {langTrack, name} =
 execute :: ExercismCli -> Command -> IO ()
 execute cli@ExercismCli {binPath} cmd = case cmd of
   CmdProxy args -> proc binPathT args "" >>= exitWith
-  CmdLangAction actionTy rawExer -> do
+  CmdLangAction actionTy rawExer extraArgs -> do
     e@Exercise {langTrack} <- fillExercise True cli rawExer
     pprExercise e
     case actions (getLanguage langTrack) M.!? actionTy of
@@ -113,8 +113,8 @@ execute cli@ExercismCli {binPath} cmd = case cmd of
         cd (exerciseProjectHome cli e)
         case action of
           RunProgram pg as ->
-            proc pg as "" >>= exitWith
-          RunIO act -> act cli e
+            proc pg (as <> extraArgs) "" >>= exitWith
+          RunIO act -> act cli e extraArgs
       Nothing -> do
         putStrLn $ show actionTy <> " action not supported for this language."
         exitFailure

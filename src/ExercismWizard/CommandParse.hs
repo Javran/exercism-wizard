@@ -1,9 +1,11 @@
+{-# LANGUAGE LambdaCase #-}
 {-# LANGUAGE OverloadedStrings #-}
 
 module ExercismWizard.CommandParse
   ( getArgs
   , Command (..)
   , RawExercise (..)
+  , parseArgs
   )
 where
 
@@ -14,10 +16,11 @@ import ExercismWizard.Types
 import Options.Applicative
 import Options.Applicative.Types
 import qualified System.Environment as Env
+import System.Exit
 
 data Command
   = CmdProxy [T.Text]
-  | CmdLangAction ActionType RawExercise
+  | CmdLangAction ActionType RawExercise [T.Text]
   | CmdGet RawExercise
   | CmdOn RawExercise
   deriving (Show)
@@ -81,14 +84,23 @@ opts =
            \to guess from current directory."
            <> value (RawExercise (Nothing, Nothing))
            <> metavar "EXERCISE")
+    extraArg =
+      many
+        (argument
+           auto
+           (help
+              "Extra args passed to the custom command. \
+              \e.g. ew <test|lint|fmt> -- --args0 --args1"
+              <> metavar "ARGS..."))
     langActionCommand act cmdStr cmdDesc =
       command
         cmdStr
         (info
            (CmdLangAction act
               <$> exerciseArg
+              <*> extraArg
               <**> helper)
-           (fullDesc <> progDesc cmdDesc))
+           (fullDesc <> progDesc cmdDesc <> noIntersperse))
     getCommand =
       command
         "get"
@@ -102,14 +114,44 @@ opts =
            (CmdOn <$> exerciseArg <**> helper)
            (progDesc "Spawn a sub-shell with exercise's project home."))
 
-parseArgs :: [String] -> ParserResult Command
-parseArgs xs = case xs of
-  "proxy" : args ->
+{-
+  Argument parsing results:
+  - Right ParserResult: regular optparse-applicative result
+  - Left [Text]: some extra arguments that cannot be attached to the current command.
+ -}
+parseArgs :: [String] -> Either [T.Text] (ParserResult Command)
+parseArgs allArgs = case allArgs of
+  "proxy" : passArgs ->
     {-
       proxy subcommand is a special mode that passes everything after it as-is
      -}
-    Success $ CmdProxy $ fmap T.pack args
-  _ -> execParserPure defaultPrefs opts xs
+    pure $ Success $ CmdProxy $ fmap T.pack passArgs
+  _ ->
+    let (args, mayExtraArgs) = span (/= "--") allArgs
+        extraArgs = case mayExtraArgs of
+          "--" : es -> Just es
+          [] -> Nothing
+          _ -> error "unreachable"
+        parsed = execParserPure defaultPrefs opts args
+        attachExtras :: [T.Text] -> Command -> Maybe Command
+        attachExtras es = \case
+          CmdLangAction aTy re _e -> Just $ CmdLangAction aTy re es
+          _ -> Nothing
+     in case extraArgs of
+          Nothing -> Right parsed
+          Just es | es' <- fmap T.pack es ->
+            case parsed of
+              Success cmd ->
+                case attachExtras es' cmd of
+                  Just cmd' -> Right (Success cmd')
+                  Nothing -> Left es'
+              _ -> Right parsed
 
 getArgs :: IO Command
-getArgs = parseArgs <$> Env.getArgs >>= handleParseResult
+getArgs = do
+  args <- Env.getArgs
+  case parseArgs args of
+    Right z -> handleParseResult z
+    Left es -> do
+      putStrLn $ "Extra arguments not supported by this subcommand: " <> show es
+      exitFailure

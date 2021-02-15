@@ -16,8 +16,8 @@ import Turtle.Pattern
 import Turtle.Prelude
 import Turtle.Shell
 
-runOrmolu :: ExercismCli -> Exercise -> IO ()
-runOrmolu _ _ = do
+runOrmolu :: ExercismCli -> Exercise -> [T.Text] -> IO ()
+runOrmolu _ _ _ = do
   t <-
     getSum
       <$> (reduce (Foldl.mconcat) $ do

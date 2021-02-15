@@ -45,4 +45,4 @@ data Action
       { progName :: T.Text
       , progArgs :: [T.Text]
       }
-  | RunIO (ExercismCli -> Exercise -> IO ())
+  | RunIO (ExercismCli -> Exercise -> [T.Text] -> IO ())
