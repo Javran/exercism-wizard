@@ -26,6 +26,8 @@ data Command
   | CmdEdit RawExercise
   | CmdRemoveIgnore RawExercise
   | CmdSubmit RawExercise
+  | CmdPeekLangRepo LangTrack
+  | CmdPeekSolution RawExercise
   | CmdDebug [String]
   deriving (Show, Eq)
 
@@ -35,6 +37,12 @@ newtype RawExercise
       , Maybe T.Text -- exercise name
       )
   deriving (Show, Eq)
+
+langTrackM :: ReadM LangTrack
+langTrackM = do
+  xs <- readerAsk
+  Just lt <- pure $ parseLangTrack (T.pack xs)
+  pure lt
 
 {-
   Parses a raw description of an exercise, allowed formats:
@@ -71,7 +79,9 @@ opts =
           <> onCommand
           <> editCommand
           <> rmIgnoreCommand
-          <> submitCommand)
+          <> submitCommand
+          <> peekRepoCommand
+          <> peekSolCommand)
        <**> helper)
     (fullDesc
        <> header "Exercism Wizard - exercism workflow automation")
@@ -141,6 +151,19 @@ opts =
         (info
            (CmdSubmit <$> exerciseArg <**> helper)
            (progDesc "Submit the default set of solution files."))
+    peekRepoCommand =
+      command
+        "peekrepo"
+        (info
+           (CmdPeekLangRepo <$> argument langTrackM (metavar "LANG") <**> helper)
+           (progDesc "Open link to lanugage's exercism repo."))
+    peekSolCommand =
+      command
+        "peeksol"
+        (info
+           (CmdPeekSolution <$> exerciseArg <**> helper)
+           (progDesc "Open link to community solutions."))
+
 
 {-
   Argument parsing results:

@@ -24,6 +24,8 @@ import ExercismWizard.Language
   , getLanguage
   , langName
   , parseLangTrack
+  , peekRepoUrl
+  , peekSolutionUrl
   )
 import ExercismWizard.Types
 import System.Exit (ExitCode (..), exitFailure, exitWith)
@@ -105,6 +107,12 @@ fillExercise checkMeta ec (RawExercise (l, e)) = case (l, e) of
 pprExercise :: Exercise -> IO ()
 pprExercise Exercise {langTrack, name} =
   T.putStrLn $ T.pack (show langTrack) <> " track, exercise: " <> name
+
+openUrlDetached :: T.Text -> IO ()
+openUrlDetached url =
+  runDetached Nothing DevNull (void runProg)
+  where
+    runProg = proc "xdg-open" [url] ""
 
 execute :: ExercismCli -> Command -> IO ()
 execute cli@ExercismCli {binPath} cmd = case cmd of
@@ -212,6 +220,10 @@ execute cli@ExercismCli {binPath} cmd = case cmd of
         unless (s `elem` ["Y", "y"]) $
           die "Submission aborted"
         proc binPathT ("submit" : submitFpTs) "" >>= exitWith
+  CmdPeekLangRepo lt -> openUrlDetached (peekRepoUrl lt)
+  CmdPeekSolution raw -> do
+    e <- fillExercise True cli raw
+    openUrlDetached (peekSolutionUrl e)
   CmdDebug _args ->
     sh $ do
       let ExercismCli {workspace} = cli

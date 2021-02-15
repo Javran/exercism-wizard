@@ -20,11 +20,14 @@ Put built binary (which should be called `ew`) somewhere in `$PATH`, then:
 - `ew edit`: Spawn a detached editor with solution file or project open.
 - `ew rmignore`: Remove "ignore" annotation from tests.
 - `ew submit`: Submit default set of solution files.
+- `ew peekrepo`: Open a URL to Exercism's language repo
+   (for taking a look at problems locked away)
+- `ew peeksol`: Open a URL to community solutions
 
 ## Planned features
 
 Planned features by priority:
 
-- `ew peekrepo`: open a URL to language repo - for taking a look at problems locked away
-- `ew peeksol`: open a URL to community solutions
+- Support dry run / print out external command executing.
 - `ew submit`: support an explicit list, with ability to disable the default submit set
+

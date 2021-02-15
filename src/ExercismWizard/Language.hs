@@ -12,10 +12,13 @@ module ExercismWizard.Language
   , parseLangTrack
   , langName
   , getLanguage
+  , peekRepoUrl
+  , peekSolutionUrl
   )
 where
 
 import qualified Control.Foldl as Fold
+import Data.Functor
 import qualified Data.Map.Strict as M
 import qualified Data.Text as T
 import ExercismWizard.FSPath
@@ -31,7 +34,6 @@ import Turtle.Pattern
 import Turtle.Prelude hiding (err)
 import Turtle.Shell
 import Prelude hiding (FilePath)
-import Data.Functor
 
 data Language = Language
   { track :: LangTrack
@@ -46,20 +48,25 @@ data Language = Language
   , -- | When set: (testpath, pattern, <line>), meaning scan all files under testpath
     --   and remove lines that contains only <line> and surrounding whitespaces.
     --   TODO: to be implemented.
-    removeIgnore :: Maybe (FilePath, Pattern (),  T.Text)
+    removeIgnore :: Maybe (FilePath, Pattern (), T.Text)
   }
 
 langName :: LangTrack -> T.Text
 langName = T.toLower . T.pack . show
 
-{-
+peekRepoUrl :: LangTrack -> T.Text
+peekRepoUrl lt =
+  "https://github.com/exercism/"
+    <> langName lt
+    <> "/tree/main/exercises/practice"
 
-  TODO: some URL patterns:
+peekSolutionUrl :: Exercise -> T.Text
+peekSolutionUrl Exercise {langTrack, name} =
+  "https://exercism.io/tracks/" <> langName langTrack
+    <> "/exercises/"
+    <> name
+    <> "/solutions/"
 
-  - peekRepo: "https://github.com/exercism/<lang>/tree/main/exercises/practice"
-  - peekSol: "https://exercism.io/tracks/<lang>/exercises/<exercise>/solutions/"
-
- -}
 languages :: [Language]
 languages = [haskell, kotlin, rust, go]
 
