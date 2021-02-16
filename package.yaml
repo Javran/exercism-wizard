@@ -21,6 +21,8 @@ dependencies:
 - filepath
 - containers
 - foldl
+- yaml
+- unordered-containers
 
 library:
   source-dirs: src

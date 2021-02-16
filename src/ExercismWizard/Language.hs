@@ -22,7 +22,10 @@ import Data.Functor
 import qualified Data.Map.Strict as M
 import qualified Data.Text as T
 import ExercismWizard.FSPath
-import ExercismWizard.Language.Haskell (runOrmolu)
+import ExercismWizard.Language.Haskell as LangHaskell
+  ( findSolutionFiles
+  , runOrmolu
+  )
 import ExercismWizard.Types
   ( Action (..)
   , ActionType (..)
@@ -149,12 +152,11 @@ haskell =
     , altNames = ["hs"]
     , actions =
         M.fromList
-          [ (Format, RunIO runOrmolu)
+          [ (Format, RunIO LangHaskell.runOrmolu)
           , (Test, rp "stack test")
           , (Lint, rp "hlint .")
           ]
-    , solutionFiles = \_e ->
-        reduce Fold.list (find (suffix ".hs") "src/")
+    , solutionFiles = LangHaskell.findSolutionFiles
     , editMethod = Just OpenWithEditor
     , removeIgnore = Nothing
     }

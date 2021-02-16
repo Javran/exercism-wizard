@@ -37,6 +37,7 @@ import Turtle.Prelude
 import Turtle.Shell
 import Prelude hiding (FilePath)
 
+
 {-
   Find infomation on existing exercism cli setup.
   This is also to confirm that the binary is installed and configured.
@@ -234,7 +235,7 @@ execute cli@ExercismCli {binPath} cmd = case cmd of
         Nothing ->
           liftIO $ do
             T.putStrLn $ "Cannot parse language: " <> lang
-            exitFailure
+        Just langTrack | langTrack /= Haskell -> pure ()
         Just langTrack -> do
           let l = getLanguage langTrack
           liftIO $ putStrLn $ "Track: " <> show langTrack
