@@ -1,6 +1,6 @@
 # Exercism wizard
 
-[![Build Status](https://travis-ci.org/Javran/exercism-wizard.svg?branch=master)](https://travis-ci.org/Javran/exercism-wizard)
+[![Build Status](https://travis-ci.org/Javran/exercism-wizard.svg?branch=master)](https://travis-ci.com/Javran/exercism-wizard)
 
 A wrapper around [Exercism CLI](https://github.com/exercism/cli) to provide unified interface to common operations.
 
