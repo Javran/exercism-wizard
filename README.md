@@ -28,6 +28,8 @@ Put built binary (which should be called `ew`) somewhere in `$PATH`, then:
 
 Planned features by priority:
 
+- Deal with soft link being resolved, which may result in a long cwd.
+    + `$SHELL -i -c "cd <dir>; $SHELL"` will do the job for sh / bash / dash / fish / ksh / mksh / zsh.
 - Support dry run / print out external command executing.
 - `ew submit`: support an explicit list, with ability to disable the default submit set
 
