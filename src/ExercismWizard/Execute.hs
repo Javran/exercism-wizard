@@ -12,6 +12,7 @@ module ExercismWizard.Execute
 where
 
 import Control.Monad
+import Data.Char
 import Data.List (partition)
 import qualified Data.Map.Strict as M
 import Data.Maybe
@@ -149,11 +150,14 @@ execute cli@ExercismCli {binPath} cmd = case cmd of
 
       By letting shell to chdir for itself, it can keep PWD clean while
       switching to the actual path.
-
-      TODO: passing down dir name could be super sketchy, we'll need proper escapes
      -}
-
     let exerProjectHomeAsStr = encodeString (exerciseProjectHome cli e)
+        isSafeDirPath =
+          -- this check is a bit over conservative, but it's better to be safe.
+          all isSafeChar exerProjectHomeAsStr
+          where
+            isSafeChar c =
+              isAlphaNum c || (c `elem` ("/-_." :: String))
         shName = toText (filename (fromText shBin))
         isScriptableShell = shName `elem` T.words "sh bash dash fish ksh mksh zsh"
         spawnThenChdirWithScript = do
@@ -184,7 +188,7 @@ execute cli@ExercismCli {binPath} cmd = case cmd of
                   , SP.cwd = Just exerProjectHomeAsStr
                   }
           system cproc "" >>= exitWith
-    if isScriptableShell
+    if isScriptableShell && isSafeDirPath
       then spawnThenChdirWithScript
       else generalShellSpawn
   CmdEdit raw -> handleGetThen True raw $ \e@Exercise {langTrack} -> do
