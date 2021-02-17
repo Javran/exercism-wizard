@@ -160,34 +160,30 @@ execute cli@ExercismCli {binPath} cmd = case cmd of
               isAlphaNum c || (c `elem` ("/-_." :: String))
         shName = toText (filename (fromText shBin))
         isScriptableShell = shName `elem` T.words "sh bash dash fish ksh mksh zsh"
-        spawnThenChdirWithScript = do
+        runCP cprocPre =
           let cproc =
-                (SP.proc
-                   (T.unpack shBin)
-                   [ "-i"
-                   , "-c"
-                   , "cd "
-                       <> exerProjectHomeAsStr
-                       <> "; "
-                       <> T.unpack shBin
-                   ])
+                cprocPre
                   { SP.std_in = SP.Inherit
                   , SP.std_out = SP.Inherit
                   , SP.std_err = SP.Inherit
                   , SP.delegate_ctlc = True
                   }
-          system cproc "" >>= exitWith
+           in system cproc "" >>= exitWith
+        spawnThenChdirWithScript =
+          runCP
+            (SP.proc
+               (T.unpack shBin)
+               [ "-i"
+               , "-c"
+               , "cd "
+                   <> exerProjectHomeAsStr
+                   <> "; "
+                   <> T.unpack shBin
+               ])
         -- a general approach for spawning shells
-        generalShellSpawn = do
-          let cproc =
-                (SP.proc (T.unpack shBin) [])
-                  { SP.std_in = SP.Inherit
-                  , SP.std_out = SP.Inherit
-                  , SP.std_err = SP.Inherit
-                  , SP.delegate_ctlc = True
-                  , SP.cwd = Just exerProjectHomeAsStr
-                  }
-          system cproc "" >>= exitWith
+        generalShellSpawn =
+          runCP
+            (SP.proc (T.unpack shBin) []) {SP.cwd = Just exerProjectHomeAsStr}
     if isScriptableShell && isSafeDirPath
       then spawnThenChdirWithScript
       else generalShellSpawn
