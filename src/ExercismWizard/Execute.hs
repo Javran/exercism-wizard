@@ -37,7 +37,6 @@ import Turtle.Prelude
 import Turtle.Shell
 import Prelude hiding (FilePath)
 
-
 {-
   Find infomation on existing exercism cli setup.
   This is also to confirm that the binary is installed and configured.
@@ -137,15 +136,57 @@ execute cli@ExercismCli {binPath} cmd = case cmd of
   CmdGet raw -> handleGetThen False raw (const (pure ()))
   CmdOn raw -> handleGetThen True raw $ \e -> do
     Just shBin <- need "SHELL"
-    let cproc =
-          (SP.proc (T.unpack shBin) [])
-            { SP.std_in = SP.Inherit
-            , SP.std_out = SP.Inherit
-            , SP.std_err = SP.Inherit
-            , SP.delegate_ctlc = True
-            , SP.cwd = Just (encodeString (exerciseProjectHome cli e))
-            }
-    system cproc "" >>= exitWith
+    {-
+      If the working directory of exercism is a soft link, simply
+      chdir to it programatically will actual result in resolving the path
+      to its realpath, which might be very long. This is usually fine,
+      but since users usually have their current working directory printed
+      somewhere in their PS1, this quickly becomes unpleasant to see.
+
+      For shells that support "-i" and "-c", following approach is available:
+
+      $SHELL -i -c "cd <dir>; $SHELL"
+
+      By letting shell to chdir for itself, it can keep PWD clean while
+      switching to the actual path.
+
+      TODO: passing down dir name could be super sketchy, we'll need proper escapes
+     -}
+
+    let exerProjectHomeAsStr = encodeString (exerciseProjectHome cli e)
+        shName = toText (filename (fromText shBin))
+        isScriptableShell = shName `elem` T.words "sh bash dash fish ksh mksh zsh"
+        spawnThenChdirWithScript = do
+          let cproc =
+                (SP.proc
+                   (T.unpack shBin)
+                   [ "-i"
+                   , "-c"
+                   , "cd "
+                       <> exerProjectHomeAsStr
+                       <> "; "
+                       <> T.unpack shBin
+                   ])
+                  { SP.std_in = SP.Inherit
+                  , SP.std_out = SP.Inherit
+                  , SP.std_err = SP.Inherit
+                  , SP.delegate_ctlc = True
+                  }
+          system cproc "" >>= exitWith
+        -- a general approach for spawning shells
+        generalShellSpawn = do
+          let cproc =
+                (SP.proc (T.unpack shBin) [])
+                  { SP.std_in = SP.Inherit
+                  , SP.std_out = SP.Inherit
+                  , SP.std_err = SP.Inherit
+                  , SP.delegate_ctlc = True
+                  , SP.cwd = Just exerProjectHomeAsStr
+                  }
+          system cproc "" >>= exitWith
+    if isScriptableShell
+      then spawnThenChdirWithScript
+      else generalShellSpawn
   CmdEdit raw -> handleGetThen True raw $ \e@Exercise {langTrack} -> do
     let prjHome = exerciseProjectHome cli e
         Language {solutionFiles, editMethod} = getLanguage langTrack
