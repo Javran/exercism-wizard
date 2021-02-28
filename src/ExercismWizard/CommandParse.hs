@@ -58,7 +58,7 @@ langTrackM = do
 rawExercise :: ReadM RawExercise
 rawExercise = do
   xs <- readerAsk
-  RawExercise <$> case fmap T.pack $ splitOn ":" xs of
+  RawExercise <$> case T.pack <$> splitOn ":" xs of
     ["", ""] -> pure (Nothing, Nothing)
     ["", e] -> pure (Nothing, Just e)
     [l, ""] | Just l' <- parseLangTrack l -> do

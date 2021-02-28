@@ -76,7 +76,7 @@ guessExercise checkMeta cli@ExercismCli {workspaceReal} = do
            The fix is to append an "" after the prefix path.
         -}
         xs <- stripPrefix (workspaceReal </> "") (cwd </> "")
-        lPre : ePre : _ <- pure $ fmap toText $ splitDirectories xs
+        lPre : ePre : _ <- pure $ toText <$> splitDirectories xs
         (l, lSep) <- T.unsnoc lPre
         guard $ lSep == pathSeparator
         (e, eSep) <- T.unsnoc ePre

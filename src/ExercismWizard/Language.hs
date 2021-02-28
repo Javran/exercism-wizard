@@ -97,7 +97,7 @@ go =
     { track = Go
     , altNames = []
     , actions =
-        M.fromList $
+        M.fromList
           [ (Format, rp "go fmt")
           , (Test, rp "go test -v --bench . --benchmem")
           , (Lint, rp "golint")

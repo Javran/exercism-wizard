@@ -26,10 +26,10 @@ runOrmolu :: ExercismCli -> Exercise -> [T.Text] -> IO ()
 runOrmolu _ _ _ = do
   t <-
     getSum
-      <$> (reduce (Foldl.mconcat) $ do
+      <$> reduce Foldl.mconcat (do
              cwd <- pwd
              mconcat
-               <$> (forM ["src", "test"] $ \s -> do
+               <$> forM ["src", "test"] (\s -> do
                       fn <- find (suffix ".hs") (cwd </> s)
                       ec <- proc "ormolu" ["--mode=inplace", toText fn] ""
                       if ec == ExitSuccess
@@ -48,7 +48,7 @@ findSolutionFiles _e = do
   packageYaml <- Yaml.decodeFileThrow @_ @Yaml.Value "package.yaml"
   let depList :: Maybe Yaml.Array
       depList = do
-        Yaml.Object infoRoot <- pure $ packageYaml
+        Yaml.Object infoRoot <- pure packageYaml
         Yaml.Object lib <- HM.lookup "library" infoRoot
         Yaml.Array libDep <- HM.lookup "dependencies" lib
         pure libDep
