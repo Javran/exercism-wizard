@@ -5,11 +5,6 @@
 module ExercismWizard.Language
   ( LangTrack (..)
   , Language (..)
-  , go
-  , kotlin
-  , rust
-  , haskell
-  , scheme
   , parseLangTrack
   , langName
   , getLanguage
@@ -71,6 +66,7 @@ peekSolutionUrl Exercise {langTrack, name} =
     <> name
     <> "/solutions/"
 
+-- TODO: do we have a better way of collecting all defined languages?
 languages :: [Language]
 languages = [haskell, kotlin, rust, go, scheme]
 
@@ -92,6 +88,16 @@ rp xs = RunProgram y ys False
   where
     y : ys = T.words xs
 
+findThenIgnoreTests :: Pattern a -> Pattern b -> IO [FilePath]
+findThenIgnoreTests srcExt testSuffix =
+  reduce
+    Fold.list
+    (do
+       fp <- find (suffix srcExt) "."
+       let fp' = toText fp
+       [] <- pure $ match (suffix testSuffix) fp'
+       pure fp)
+
 go :: Language
 go =
   Language
@@ -103,14 +109,7 @@ go =
           , (Test, rp "go test -v --bench . --benchmem")
           , (Lint, rp "golint")
           ]
-    , solutionFiles = \_e -> do
-        reduce
-          Fold.list
-          (do
-             fp <- find (suffix ".go") "."
-             let fp' = toText fp
-             [] <- pure $ match (suffix "_test.go") fp'
-             pure fp)
+    , solutionFiles = const $ findThenIgnoreTests ".go" "_test.go"
     , editMethod = Just OpenWithEditor
     , removeIgnore = Nothing
     }
@@ -168,15 +167,7 @@ scheme =
     { track = Scheme
     , altNames = ["scm"]
     , actions = M.singleton Test (rp "make guile")
-    , solutionFiles = \_e -> do
-        -- TODO: we'd better have a "match all but ignore tests" function.
-        reduce
-          Fold.list
-          (do
-             fp <- find (suffix ".scm") "."
-             let fp' = toText fp
-             [] <- pure $ match (suffix "test.scm") fp'
-             pure fp)
+    , solutionFiles =const $ findThenIgnoreTests ".scm" "test.scm"
     , editMethod = Just OpenWithEditor
     , removeIgnore = Nothing
     }
