@@ -9,6 +9,7 @@ module ExercismWizard.Language
   , kotlin
   , rust
   , haskell
+  , scheme
   , parseLangTrack
   , langName
   , getLanguage
@@ -71,7 +72,7 @@ peekSolutionUrl Exercise {langTrack, name} =
     <> "/solutions/"
 
 languages :: [Language]
-languages = [haskell, kotlin, rust, go]
+languages = [haskell, kotlin, rust, go, scheme]
 
 langTracks :: M.Map T.Text LangTrack
 langTracks = M.fromListWith err $ do
@@ -157,6 +158,25 @@ haskell =
           , (Lint, rp "hlint .")
           ]
     , solutionFiles = LangHaskell.findSolutionFiles
+    , editMethod = Just OpenWithEditor
+    , removeIgnore = Nothing
+    }
+
+scheme :: Language
+scheme =
+  Language
+    { track = Scheme
+    , altNames = ["scm"]
+    , actions = M.singleton Test (rp "make guile")
+    , solutionFiles = \_e -> do
+        -- TODO: we'd better have a "match all but ignore tests" function.
+        reduce
+          Fold.list
+          (do
+             fp <- find (suffix ".scm") "."
+             let fp' = toText fp
+             [] <- pure $ match (suffix "test.scm") fp'
+             pure fp)
     , editMethod = Just OpenWithEditor
     , removeIgnore = Nothing
     }

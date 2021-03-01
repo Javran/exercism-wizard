@@ -33,6 +33,7 @@ data LangTrack
   | Kotlin
   | Rust
   | Go
+  | Scheme
   deriving (Show, Eq, Ord)
 
 data ActionType
