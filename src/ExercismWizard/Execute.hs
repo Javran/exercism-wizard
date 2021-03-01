@@ -273,9 +273,7 @@ execute cli@ExercismCli {binPath} cmd = case cmd of
       let lang = toText $ filename langPath
       guard $ not $ T.isPrefixOf "." lang
       case parseLangTrack lang of
-        Nothing ->
-          liftIO $ do
-            T.putStrLn $ "Cannot parse language: " <> lang
+        Nothing -> pure ()
         Just langTrack | langTrack /= Haskell -> pure ()
         Just langTrack -> do
           let l = getLanguage langTrack
