@@ -4,7 +4,7 @@ module ExercismWizard.Types
   , ActionType (..)
   , Action (..)
   , ExercismCli (..)
-  , EditMethod(..)
+  , EditMethod (..)
   )
 where
 
@@ -49,7 +49,12 @@ data Action
       , -- | whether to detach the process from current one
         detach :: Bool
       }
-  | RunIO (ExercismCli -> Exercise -> [T.Text] -> IO ())
+  | RunIO
+      ( ExercismCli
+        -> Exercise
+        -> {- this one is the extra args passed from command line -} [T.Text]
+        -> IO ()
+      )
 
 data EditMethod
   = OpenWithEditor
