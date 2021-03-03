@@ -161,6 +161,16 @@ haskell =
     , removeIgnore = Nothing
     }
 
+{-
+  TODO: going to call guile directly instead of make,
+  since I'll have less logic to deal with
+  (as only some exercises are rnrs-compliant)
+
+  note that there is a naming inconsitency for tests:
+  - list-ops -> list-ops-test.scm
+  - robot-name -> robot-name-test.scm
+  - other than those above, test.scm
+ -}
 scheme :: Language
 scheme =
   Language
