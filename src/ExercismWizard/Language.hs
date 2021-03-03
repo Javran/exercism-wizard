@@ -22,6 +22,9 @@ import ExercismWizard.Language.Haskell as LangHaskell
   ( findSolutionFiles
   , runOrmolu
   )
+import ExercismWizard.Language.Scheme as LangScheme
+  ( runTests
+  )
 import ExercismWizard.Types
   ( Action (..)
   , ActionType (..)
@@ -161,23 +164,13 @@ haskell =
     , removeIgnore = Nothing
     }
 
-{-
-  TODO: going to call guile directly instead of make,
-  since I'll have less logic to deal with
-  (as only some exercises are rnrs-compliant)
-
-  note that there is a naming inconsitency for tests:
-  - list-ops -> list-ops-test.scm
-  - robot-name -> robot-name-test.scm
-  - other than those above, test.scm
- -}
 scheme :: Language
 scheme =
   Language
     { track = Scheme
     , altNames = ["scm"]
-    , actions = M.singleton Test (rp "make guile")
-    , solutionFiles =const $ findThenIgnoreTests ".scm" "test.scm"
+    , actions = M.singleton Test $ RunIO LangScheme.runTests
+    , solutionFiles = const $ findThenIgnoreTests ".scm" "test.scm"
     , editMethod = Just OpenWithEditor
     , removeIgnore = Nothing
     }
