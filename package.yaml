@@ -28,6 +28,7 @@ dependencies:
 - bytestring
 - time
 - scientific
+- directory
 
 library:
   source-dirs: src

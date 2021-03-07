@@ -1,6 +1,6 @@
-{-# LANGUAGE TypeApplications #-}
 {-# LANGUAGE NamedFieldPuns #-}
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE TypeApplications #-}
 {-# LANGUAGE ViewPatterns #-}
 
 module ExercismWizard.Execute
@@ -13,6 +13,7 @@ module ExercismWizard.Execute
 where
 
 import Control.Monad
+import qualified Data.ByteString as BS
 import Data.Char
 import Data.List (partition)
 import qualified Data.Map.Strict as M
@@ -20,8 +21,9 @@ import Data.Maybe
 import qualified Data.Text as T
 import qualified Data.Text.IO as T
 import ExercismWizard.CommandParse
+import qualified ExercismWizard.Config as EWConf
+import qualified ExercismWizard.Config.EditThisCookie as ETC
 import ExercismWizard.FSPath hiding (null)
-import qualified Data.ByteString as BS
 import ExercismWizard.Language
   ( Language (..)
   , getLanguage
@@ -39,7 +41,6 @@ import qualified System.Process as SP
 import Turtle.Prelude
 import Turtle.Shell
 import Prelude hiding (FilePath)
-import qualified ExercismWizard.Config.EditThisCookie as ETC
 
 {-
   Find infomation on existing exercism cli setup.
@@ -292,7 +293,8 @@ execute cli@ExercismCli {binPath} cmd = case cmd of
   CmdSaveCookie -> do
     putStrLn "Reading for stdin for EditThisCookie JSON export ..."
     raw <- BS.getContents
-    print (ETC.decodeCookies @T.Text raw >>= ETC.toUserCookies)
+    let Right cs = ETC.decodeCookies @T.Text raw >>= ETC.toUserCookies
+    EWConf.writeConfig (EWConf.Config cs)
   where
     binPathT = toText binPath
     handleGetThen quiet raw action = do
