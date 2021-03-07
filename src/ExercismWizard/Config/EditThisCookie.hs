@@ -22,19 +22,18 @@ import Data.Aeson
 import qualified Data.ByteString as BS
 import qualified Data.Map.Strict as M
 import Data.Maybe
-import Data.Scientific
 import qualified Data.Text as T
-import Data.Time.Calendar
 import Data.Time.Clock
+import Data.Time.Clock.POSIX
 import GHC.Generics
 
-newtype TimeConv = TimeConv UTCTime deriving (Show) via UTCTime
+newtype SecondSinceEpoch = SecondSinceEpoch UTCTime
+  deriving (Show) via UTCTime
 
-instance FromJSON TimeConv where
-  parseJSON = withScientific "time" $ \t -> do
-    let dt = realToFrac $ toRealFloat @Double t
-        epoch = UTCTime {utctDay = fromGregorian 1970 1 1, utctDayTime = 0}
-    pure $ TimeConv $ addUTCTime dt epoch
+instance FromJSON SecondSinceEpoch where
+  parseJSON =
+    fmap (SecondSinceEpoch . posixSecondsToUTCTime)
+      . parseJSON @POSIXTime
 
 {- ref: http://www.editthiscookie.com/blog/2014/03/cookie-properties/ -}
 data Cookie text = Cookie
@@ -46,7 +45,7 @@ data Cookie text = Cookie
   , secure :: Bool
   , httpOnly :: Bool
   , session :: Bool
-  , expirationDate :: Maybe TimeConv
+  , expirationDate :: Maybe SecondSinceEpoch
   , storeId :: text
   }
   deriving (Generic, FromJSON, Functor, Show)
