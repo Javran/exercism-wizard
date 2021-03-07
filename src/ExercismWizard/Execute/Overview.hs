@@ -1,5 +1,6 @@
 {-# LANGUAGE Arrows #-}
 {-# LANGUAGE NamedFieldPuns #-}
+{-# LANGUAGE TupleSections #-}
 {-# LANGUAGE NoMonomorphismRestriction #-}
 
 module ExercismWizard.Execute.Overview
@@ -8,6 +9,7 @@ module ExercismWizard.Execute.Overview
 where
 
 import Control.Arrow
+import Control.Concurrent.Async
 import Control.Monad
 import qualified Data.ByteString.Lazy as BSL
 import Data.Char
@@ -141,10 +143,17 @@ getOverview = do
   EWConf.Config {EWConf.userCookies} <- EWConf.readConfig
   mgr <- newManager tlsManagerSettings
   ls <- processMyTracks mgr userCookies
-  forM_ ls $ \p@(lName, _) -> do
+  tasks <- mapM (\p -> async ((p,) <$> processMyTracksLang mgr userCookies p)) ls
+  results <- mapM wait tasks
+  forM_ results $ \((lName, _), es) -> do
     putStrLn $ "Overview on " <> lName <> " track: "
-    es <- processMyTracksLang mgr userCookies p
     let groupped = M.fromListWith (<>) $ fmap (\e@RawExercise {reStatus} -> (reStatus, [e])) es
     forM_ (M.toList groupped) $ \(k, vs) -> do
       putStrLn $ "  " <> k <> ":"
-      putStrLn $ "    " <> intercalate ", " (fmap reId vs)
+      putStrLn $
+        "    "
+          <> case splitAt 5 (fmap reId vs) of
+            (xs, []) ->
+              intercalate ", " xs
+            (xs, ys) ->
+              intercalate ", " xs <> ", and " <> show (length ys) <> " more"
