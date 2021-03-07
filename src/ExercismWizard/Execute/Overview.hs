@@ -38,23 +38,19 @@ getOverview = do
           , setCookieValue = encodeUtf8 v
           }
       req = initReq {cookieJar = Just cj}
-  -- TODO: impl
   resp <- httpLbs req mgr
   let raw = T.unpack $ decodeUtf8 $ BSL.toStrict $ responseBody resp
       langName =
         getChildren
           >>> (hasName "div" >>> hasAttrValue "class" (== "title"))
-          >>> getChildren
-          >>> getChildren
-          >>> getText
+          /> hasName "h2" /> getText
       langPath = getAttrValue "href"
 
   result <-
     runX $
       readString [withParseHTML yes, withWarnings no] raw
         >>> deep (hasName "div" >>> hasAttrValue "class" (== "joined-tracks"))
-        >>> getChildren
-        >>> hasName "div"
+          /> hasName "div"
         >>> hasAttrValue "class" (("tracks" `elem`) . words)
         >>> deep (hasName "a" >>> hasAttrValue "class" (== "track joined"))
         >>> (langName &&& langPath)
