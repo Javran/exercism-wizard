@@ -13,7 +13,7 @@ import System.FilePath.Posix
 data Config = Config
   { userCookies :: M.Map Text Text
   }
-  deriving (Generic, FromDhall, ToDhall)
+  deriving (Generic, FromDhall, ToDhall, Show)
 
 configPath :: IO FilePath
 configPath = do
@@ -26,3 +26,7 @@ writeConfig :: Config -> IO ()
 writeConfig c = do
   fp <- configPath
   T.writeFile fp (pretty $ embed inject c)
+
+readConfig :: IO Config
+readConfig =
+  configPath >>= T.readFile >>= input auto

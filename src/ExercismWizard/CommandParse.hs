@@ -30,6 +30,7 @@ data Command
   | CmdPeekSolution RawExercise
   | CmdDebug [String]
   | CmdSaveCookie
+  | CmdOverview
   deriving (Show, Eq)
 
 newtype RawExercise
@@ -84,10 +85,15 @@ opts =
           <> peekRepoCommand
           <> peekSolCommand
           <> command
-                "savecookie"
-                (info
-                   (pure CmdSaveCookie)
-                   (progDesc "Save website cookie to exercism-wizard's config.")))
+            "savecookie"
+            (info
+               (pure CmdSaveCookie)
+               (progDesc "Save website cookie to exercism-wizard's config."))
+          <> command
+            "overview"
+            (info
+               (pure CmdOverview)
+               (progDesc "Print an overview from website.")))
        <**> helper)
     (fullDesc
        <> header "Exercism Wizard - exercism workflow automation")
