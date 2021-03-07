@@ -80,8 +80,12 @@ data RawExercise = RawExercise
 trim :: String -> String
 trim = dropWhile isSpace . dropWhileEnd isSpace
 
-processMyTracksLang mgr userCookies (langName, langPath) = do
-  putStrLn $ "Overview on " <> langName <> " track:"
+processMyTracksLang
+  :: Manager
+  -> M.Map T.Text T.Text
+  -> (String, String)
+  -> IO [RawExercise]
+processMyTracksLang mgr userCookies (_langName, langPath) = do
   let coreExercises =
         deep (hasName "div" >>> hasAttrValue "class" (== "core-exercises"))
           /> hasName "div"
@@ -106,9 +110,33 @@ processMyTracksLang mgr userCookies (langName, langPath) = do
             where
               clsExercise = hasAttrValue "class" (== "exercise")
               getId = getAttrValue "id" >>> arr (drop (length "exercise-"))
-
-  rs <- processWebPage mgr userCookies langPath coreExercises
-  mapM_ print rs
+      sideExercises =
+        deep (hasName "div" >>> hasAttrValue "class" (== "side-exercises"))
+          /> deep
+            ((hasName "a" <+> hasName "div")
+               >>> hasAttrValue "class" ("widget-side-exercise " `isPrefixOf`))
+          >>> mkExercise
+        where
+          mkExercise = proc node -> do
+            reId <- getId -< node
+            reName <- getTitle -< node
+            reStatus <- getStatus -< node
+            reUri <- mayGetUri -< node
+            returnA -< RawExercise {reStatus, reName, reId, reUri}
+          mayGetUri =
+            (hasName "a" >>> getAttrValue "href" >>> arr Just) <+> (hasName "div" >>> constA Nothing)
+          getStatus =
+            getAttrValue "class" >>> arr (drop (length "widget-side-exercise "))
+          getTitle =
+            deep
+              (hasName "div" >>> hasAttrValue "class" (== "title")
+                 /> getText >>> arr trim >>> isA (not . null))
+          getId =
+            getChildren
+              >>> hasAttrValue "id" ("exercise-" `isPrefixOf`)
+              >>> getAttrValue "id"
+              >>> arr (drop (length "exercise-"))
+  processWebPage mgr userCookies langPath (coreExercises <+> sideExercises)
 
 getOverview :: IO ()
 getOverview = do
