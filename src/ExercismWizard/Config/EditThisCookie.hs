@@ -1,6 +1,8 @@
 {-# LANGUAGE DeriveAnyClass #-}
 {-# LANGUAGE DeriveFunctor #-}
 {-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE DerivingVia #-}
+{-# LANGUAGE TypeApplications #-}
 
 {-
   This module supports JSON format exported from
@@ -12,11 +14,20 @@ module ExercismWizard.Config.EditThisCookie
   )
 where
 
-import Data.Scientific
 import Data.Aeson
 import qualified Data.ByteString as BS
+import Data.Scientific
+import Data.Time.Calendar
 import Data.Time.Clock
 import GHC.Generics
+
+newtype TimeConv = TimeConv UTCTime deriving (Show) via UTCTime
+
+instance FromJSON TimeConv where
+  parseJSON = withScientific "time" $ \t -> do
+    let dt = realToFrac $ toRealFloat @Double t
+        epoch = UTCTime {utctDay = fromGregorian 1970 1 1, utctDayTime = 0}
+    pure $ TimeConv $ addUTCTime dt epoch
 
 {- ref: http://www.editthiscookie.com/blog/2014/03/cookie-properties/ -}
 data Cookie text = Cookie
@@ -28,7 +39,7 @@ data Cookie text = Cookie
   , secure :: Bool
   , httpOnly :: Bool
   , session :: Bool
-  , expirationDate :: Maybe Scientific
+  , expirationDate :: Maybe TimeConv
   , storeId :: text
   }
   deriving (Generic, FromJSON, Functor, Show)
