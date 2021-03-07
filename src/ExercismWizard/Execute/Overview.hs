@@ -1,3 +1,4 @@
+{-# LANGUAGE Arrows #-}
 {-# LANGUAGE NamedFieldPuns #-}
 {-# LANGUAGE NoMonomorphismRestriction #-}
 
@@ -8,6 +9,8 @@ where
 
 import Control.Arrow
 import qualified Data.ByteString.Lazy as BSL
+import Data.Char
+import Data.List
 import qualified Data.Map.Strict as M
 import Data.Maybe
 import qualified Data.Text as T
@@ -66,9 +69,48 @@ processMyTracks mgr userCookies = do
           >>> (langName &&& langPath)
   processWebPage mgr userCookies "/my/tracks" xmlProc
 
+data RawExercise = RawExercise
+  { reStatus :: String
+  , reUri :: String
+  , reName :: String
+  , reId :: String
+  }
+  deriving (Show)
+
+trim :: String -> String
+trim = dropWhile isSpace . dropWhileEnd isSpace
+
+processMyTracksLang mgr userCookies (langName, langPath) = do
+  putStrLn $ "Overview on " <> langName <> " track:"
+  let coreExercises =
+        deep (hasName "div" >>> hasAttrValue "class" (== "core-exercises"))
+          /> hasName "div"
+          >>> hasAttrValue "class" ("exercise-wrapper " `isPrefixOf`)
+          >>> mkExercise
+        where
+          mkExercise = proc node -> do
+            reStatus <- getStatus -< node
+            reName <- getTitle -< node
+            (reId, reUri) <- idAndHref -< node
+            returnA -< RawExercise {reStatus, reName, reId, reUri}
+          getStatus =
+            getAttrValue "class" >>> arr (drop (length "exercise-wrapper "))
+          getTitle =
+            deep
+              (hasName "div" >>> hasAttrValue "class" (== "title")
+                 /> getText >>> arr trim >>> isA (not . null))
+          idAndHref =
+            getChildren
+              >>> hasName "a"
+              >>> hasAttrValue "class" (== "exercise")
+              >>> (getAttrValue "href"
+                     &&& (getAttrValue "id" >>> arr (drop (length "exercise-"))))
+  rs <- processWebPage mgr userCookies langPath coreExercises
+  mapM_ print rs
+
 getOverview :: IO ()
 getOverview = do
   EWConf.Config {EWConf.userCookies} <- EWConf.readConfig
   mgr <- newManager tlsManagerSettings
   result <- processMyTracks mgr userCookies
-  mapM_ print result
+  mapM_ (processMyTracksLang mgr userCookies) result
