@@ -294,7 +294,9 @@ execute cli@ExercismCli {binPath} cmd = case cmd of
   CmdSaveCookie -> do
     putStrLn "Reading for stdin for EditThisCookie JSON export ..."
     raw <- BS.getContents
-    let Right cs = ETC.decodeCookies @T.Text raw >>= ETC.toUserCookies
+    let Right pre =  ETC.decodeCookies @T.Text raw
+        Right cs = ETC.toUserCookies pre
+    print pre
     EWConf.writeConfig (EWConf.Config cs)
   CmdOverview -> getOverview
   where

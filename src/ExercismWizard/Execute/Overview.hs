@@ -5,13 +5,15 @@
 
 module ExercismWizard.Execute.Overview
   ( getOverview
-  , extractTestDataTo
+  , languagePairs
+  , allExercises
   )
 where
 
 import Control.Arrow
 import Control.Concurrent.Async
 import Control.Monad
+import qualified Data.Aeson as Aeson
 import qualified Data.ByteString.Lazy as BSL
 import Data.Char
 import Data.List
@@ -21,6 +23,7 @@ import qualified Data.Text as T
 import Data.Text.Encoding (decodeUtf8, encodeUtf8)
 import Data.Time.Clock
 import qualified ExercismWizard.Config as EWConf
+import qualified ExercismWizard.Execute.Overview.RawExercise as RE
 import Network.HTTP.Client
 import Network.HTTP.Client.TLS
 import System.FilePath.Posix
@@ -58,8 +61,8 @@ processWebPage mgr userCookies rscPath xmlProc = do
     readString [withParseHTML yes, withWarnings no] raw
       >>> xmlProc
 
-langPairs :: ArrowXml cat => cat XmlTree (String, String)
-langPairs =
+languagePairs :: ArrowXml cat => cat XmlTree (String, String)
+languagePairs =
   deep (divClassIs "joined-tracks")
     /> hasName "div"
     >>> hasAttrValue "class" (("tracks" `elem`) . words)
@@ -75,16 +78,7 @@ langPairs =
 
 processMyTracks :: Manager -> M.Map T.Text T.Text -> IO [(String, String)]
 processMyTracks mgr userCookies =
-  processWebPage mgr userCookies "/my/tracks" langPairs
-
-data RawExercise = RawExercise
-  { reStatus :: String
-  , reUri :: Maybe String
-  , reName :: String
-  , reId :: String
-  , reIsCore :: Bool
-  }
-  deriving (Show)
+  processWebPage mgr userCookies "/my/tracks" languagePairs
 
 trim :: String -> String
 trim = dropWhile isSpace . dropWhileEnd isSpace
@@ -97,16 +91,16 @@ consumePrefix prefix input = ys <$ guard (prefix == xs)
 mayProduce :: ArrowList cat => (a -> Maybe c) -> cat a c
 mayProduce m = arrL (maybeToList . m)
 
-coreExercises, sideExercises :: ArrowXml cat => cat XmlTree RawExercise
+coreExercises, sideExercises, allExercises :: ArrowXml cat => cat XmlTree RE.RawExercise
 coreExercises =
   deep (divClassIs "core-exercises")
     /> divTag >>> mkExercise
   where
     mkExercise = proc node -> do
-      reStatus <- getStatus -< node
-      reName <- getTitle -< node
-      (reId, reUri) <- idAndHref -< node
-      returnA -< RawExercise {reStatus, reName, reId, reUri, reIsCore = True}
+      status <- getStatus -< node
+      name <- getTitle -< node
+      (eId, uri) <- idAndHref -< node
+      returnA -< RE.RawExercise {RE.status, RE.name, RE.eId, RE.uri, RE.core = True}
     getStatus =
       getAttrValue "class" >>> mayProduce (consumePrefix "exercise-wrapper ")
     idAndHref =
@@ -120,17 +114,18 @@ sideExercises =
     /> deep ((hasName "a" <+> divTag) >>> mkExercise)
   where
     mkExercise = proc node -> do
-      reId <- getId -< node
-      reName <- getTitle -< node
-      reStatus <- getStatus -< node
-      reUri <- mayGetUri -< node
-      returnA -< RawExercise {reStatus, reName, reId, reUri, reIsCore = False}
+      eId <- getId -< node
+      name <- getTitle -< node
+      status <- getStatus -< node
+      uri <- mayGetUri -< node
+      returnA -< RE.RawExercise {RE.status, RE.name, RE.eId, RE.uri, RE.core = False}
     getStatus =
       getAttrValue "class" >>> mayProduce (consumePrefix "widget-side-exercise ")
     getId =
       getChildren
         >>> getAttrValue "id"
         >>> mayProduce (consumePrefix "exercise-")
+allExercises = coreExercises <+> sideExercises
 
 divTag :: ArrowXml a => a XmlTree XmlTree
 divTag = hasName "div"
@@ -148,12 +143,12 @@ processMyTracksLang
   :: Manager
   -> M.Map T.Text T.Text
   -> (String, String)
-  -> IO [RawExercise]
+  -> IO [RE.RawExercise]
 processMyTracksLang mgr userCookies (_langName, langPath) =
-  processWebPage mgr userCookies langPath (coreExercises <+> sideExercises)
+  processWebPage mgr userCookies langPath allExercises
 
-getOverview1 :: IO ()
-getOverview1 = do
+getOverview :: IO ()
+getOverview = do
   EWConf.Config {EWConf.userCookies} <- EWConf.readConfig
   mgr <- newManager tlsManagerSettings
   ls <- processMyTracks mgr userCookies
@@ -161,39 +156,61 @@ getOverview1 = do
   results <- mapM wait tasks
   forM_ results $ \((lName, _), es) -> do
     putStrLn $ "Overview on " <> lName <> " track: "
-    let groupped = M.fromListWith (<>) $ fmap (\e@RawExercise {reStatus} -> (reStatus, [e])) es
+    let groupped = M.fromListWith (<>) $ fmap (\e@RE.RawExercise {RE.status} -> (status, [e])) es
     forM_ (M.toList groupped) $ \(k, vs) -> do
       putStrLn $ "  " <> k <> ":"
       putStrLn $
         "    "
-          <> case splitAt 5 (fmap reId vs) of
+          <> case splitAt 5 (fmap RE.eId vs) of
             (xs, []) ->
               intercalate ", " xs
             (xs, ys) ->
               intercalate ", " xs <> ", and " <> show (length ys) <> " more"
 
--- getOverview = extractTestDataTo "/tmp/sample"
+-- getOverview = _extractTestDataTo "testdata/overview-extract"
 
 {-
   This function extract parts of interest of Exercism webpage and write them to files.
   Used for generating testdata.
  -}
-extractTestDataTo :: FilePath -> IO ()
-extractTestDataTo fpBase = do
+_extractTestDataTo :: FilePath -> IO ()
+_extractTestDataTo fpBase = do
   EWConf.Config {EWConf.userCookies} <- EWConf.readConfig
   mgr <- newManager tlsManagerSettings
   let writeDoc = writeDocument [withIndent yes]
+      processBody p =
+        processChildren
+          (deep (hasName "body") >>> processChildren p)
+
   lPairs <- do
     let xmlProc =
-          processChildren (deep (divClassIs "joined-tracks"))
+          processBody (deep (divClassIs "joined-tracks"))
             >>> writeDoc (fpBase </> "my-tracks.raw")
-    processWebPage mgr userCookies "/my/tracks" (xmlProc >>> langPairs)
+    processWebPage mgr userCookies "/my/tracks" (xmlProc >>> languagePairs)
   forM_ lPairs $ \(_, path) -> do
     let tr '/' = '-'
         tr c = c
         fp = fpBase </> fmap tr (tail path) <.> "raw"
         xmlProc =
-          processChildren
-            (deep (divClassIs "core-exercises" <+> divClassIs "side-exercises"))
+          processBody (deep (divClassIs "core-exercises" <+> divClassIs "side-exercises"))
             >>> writeDoc fp
     processWebPage mgr userCookies path xmlProc
+
+-- getOverview = _generateExpectedJsonFiles "testdata/overview-extract"
+
+_generateExpectedJsonFiles :: FilePath -> IO ()
+_generateExpectedJsonFiles fpBase = do
+  let processAndWrite srcName arrow dstName = do
+        xs <-
+          runX $
+            readDocument
+              [withParseHTML yes, withWarnings no]
+              (fpBase </> srcName)
+              >>> arrow
+        Aeson.encodeFile (fpBase </> dstName) xs
+
+  processAndWrite "my-tracks.raw" languagePairs "my-tracks.expected.json"
+  forM_ (words "go kotlin rust haskell scheme") $ \lang -> do
+    let srcName = "my-tracks-" <> lang <> ".raw"
+        dstName = "my-tracks-" <> lang <> ".expected.json"
+    processAndWrite srcName allExercises dstName
