@@ -292,7 +292,7 @@ execute cli@ExercismCli {binPath} cmd = case cmd of
   CmdSaveCookie -> do
     putStrLn "Reading for stdin for EditThisCookie JSON export ..."
     raw <- BS.getContents
-    print (ETC.decodeCookies @T.Text raw)
+    print (ETC.decodeCookies @T.Text raw >>= ETC.toUserCookies)
   where
     binPathT = toText binPath
     handleGetThen quiet raw action = do
