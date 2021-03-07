@@ -41,17 +41,22 @@ getOverview = do
   -- TODO: impl
   resp <- httpLbs req mgr
   let raw = T.unpack $ decodeUtf8 $ BSL.toStrict $ responseBody resp
+      langName =
+        getChildren
+          >>> (hasName "div" >>> hasAttrValue "class" (== "title"))
+          >>> getChildren
+          >>> getChildren
+          >>> getText
+      langPath = getAttrValue "href"
+
   result <-
     runX $
       readString [withParseHTML yes, withWarnings no] raw
         >>> deep (hasName "div" >>> hasAttrValue "class" (== "joined-tracks"))
-        /> hasName "div"
+        >>> getChildren
+        >>> hasName "div"
         >>> hasAttrValue "class" (("tracks" `elem`) . words)
         >>> deep (hasName "a" >>> hasAttrValue "class" (== "track joined"))
-        >>> getChildren
-        >>> (hasName "div" >>> hasAttrValue "class" (== "title"))
-        >>> getChildren
-        >>> getChildren
-        >>> getText
+        >>> (langName &&& langPath)
 
   mapM_ print result
