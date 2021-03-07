@@ -71,7 +71,7 @@ processMyTracks mgr userCookies = do
 
 data RawExercise = RawExercise
   { reStatus :: String
-  , reUri :: String
+  , reUri :: Maybe String
   , reName :: String
   , reId :: String
   }
@@ -101,10 +101,12 @@ processMyTracksLang mgr userCookies (langName, langPath) = do
                  /> getText >>> arr trim >>> isA (not . null))
           idAndHref =
             getChildren
-              >>> hasName "a"
-              >>> hasAttrValue "class" (== "exercise")
-              >>> (getAttrValue "href"
-                     &&& (getAttrValue "id" >>> arr (drop (length "exercise-"))))
+              >>> ((hasName "a" >>> clsExercise >>> (getId &&& (getAttrValue "href" >>> arr Just)))
+                     <+> (hasName "div" >>> clsExercise >>> (getId &&& constA Nothing)))
+            where
+              clsExercise = hasAttrValue "class" (== "exercise")
+              getId = getAttrValue "id" >>> arr (drop (length "exercise-"))
+
   rs <- processWebPage mgr userCookies langPath coreExercises
   mapM_ print rs
 
