@@ -83,21 +83,29 @@ data RawExercise = RawExercise
 trim :: String -> String
 trim = dropWhile isSpace . dropWhileEnd isSpace
 
+consumePrefix :: String -> String -> Maybe String
+consumePrefix prefix input = ys <$ guard (prefix == xs)
+  where
+    (xs, ys) = splitAt (length prefix) input
+
+mayProduce :: ArrowList cat => (a -> Maybe c) -> cat a c
+mayProduce m = arrL (maybeToList . m)
+
 processMyTracksLang
   :: Manager
   -> M.Map T.Text T.Text
   -> (String, String)
   -> IO [RawExercise]
 processMyTracksLang mgr userCookies (_langName, langPath) = do
-  let getTitle =
+  let divTag = hasName "div"
+      divClassIs xs = divTag >>> hasAttrValue "class" (== xs)
+      getTitle =
         deep
-          (hasName "div" >>> hasAttrValue "class" (== "title")
+          (divClassIs "title"
              /> getText >>> arr trim >>> isA (not . null))
       coreExercises =
-        deep (hasName "div" >>> hasAttrValue "class" (== "core-exercises"))
-          /> hasName "div"
-          >>> hasAttrValue "class" ("exercise-wrapper " `isPrefixOf`)
-          >>> mkExercise
+        deep (divClassIs "core-exercises")
+          /> divTag >>> mkExercise
         where
           mkExercise = proc node -> do
             reStatus <- getStatus -< node
@@ -105,20 +113,19 @@ processMyTracksLang mgr userCookies (_langName, langPath) = do
             (reId, reUri) <- idAndHref -< node
             returnA -< RawExercise {reStatus, reName, reId, reUri, reIsCore = True}
           getStatus =
-            getAttrValue "class" >>> arr (drop (length "exercise-wrapper "))
+            getAttrValue "class" >>> mayProduce (consumePrefix "exercise-wrapper ")
           idAndHref =
             getChildren
-              >>> ((hasName "a" >>> clsExercise >>> (getId &&& (getAttrValue "href" >>> arr Just)))
-                     <+> (hasName "div" >>> clsExercise >>> (getId &&& constA Nothing)))
+              >>> hasAttrValue "class" (== "exercise")
+              >>> (getId &&& getLink)
             where
-              clsExercise = hasAttrValue "class" (== "exercise")
-              getId = getAttrValue "id" >>> arr (drop (length "exercise-"))
+              getId = getAttrValue "id" >>> mayProduce (consumePrefix "exercise-")
+              getLink =
+                (hasName "a" >>> (getAttrValue "href" >>> arr Just))
+                  <+> (divTag >>> constA Nothing)
       sideExercises =
-        deep (hasName "div" >>> hasAttrValue "class" (== "side-exercises"))
-          /> deep
-            ((hasName "a" <+> hasName "div")
-               >>> hasAttrValue "class" ("widget-side-exercise " `isPrefixOf`))
-          >>> mkExercise
+        deep (divClassIs "side-exercises")
+          /> deep ((hasName "a" <+> divTag) >>> mkExercise)
         where
           mkExercise = proc node -> do
             reId <- getId -< node
@@ -127,14 +134,13 @@ processMyTracksLang mgr userCookies (_langName, langPath) = do
             reUri <- mayGetUri -< node
             returnA -< RawExercise {reStatus, reName, reId, reUri, reIsCore = False}
           mayGetUri =
-            (hasName "a" >>> getAttrValue "href" >>> arr Just) <+> (hasName "div" >>> constA Nothing)
+            (hasName "a" >>> getAttrValue "href" >>> arr Just) <+> (divTag >>> constA Nothing)
           getStatus =
-            getAttrValue "class" >>> arr (drop (length "widget-side-exercise "))
+            getAttrValue "class" >>> mayProduce (consumePrefix "widget-side-exercise ")
           getId =
             getChildren
-              >>> hasAttrValue "id" ("exercise-" `isPrefixOf`)
               >>> getAttrValue "id"
-              >>> arr (drop (length "exercise-"))
+              >>> mayProduce (consumePrefix "exercise-")
   processWebPage mgr userCookies langPath (coreExercises <+> sideExercises)
 
 getOverview :: IO ()
