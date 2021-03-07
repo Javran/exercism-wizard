@@ -1,3 +1,4 @@
+{-# LANGUAGE TypeApplications #-}
 {-# LANGUAGE NamedFieldPuns #-}
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE ViewPatterns #-}
@@ -20,6 +21,7 @@ import qualified Data.Text as T
 import qualified Data.Text.IO as T
 import ExercismWizard.CommandParse
 import ExercismWizard.FSPath hiding (null)
+import qualified Data.ByteString as BS
 import ExercismWizard.Language
   ( Language (..)
   , getLanguage
@@ -37,6 +39,7 @@ import qualified System.Process as SP
 import Turtle.Prelude
 import Turtle.Shell
 import Prelude hiding (FilePath)
+import qualified ExercismWizard.Config.EditThisCookie as ETC
 
 {-
   Find infomation on existing exercism cli setup.
@@ -286,6 +289,10 @@ execute cli@ExercismCli {binPath} cmd = case cmd of
           liftIO $ do
             xs <- solutionFiles l (Exercise langTrack eName)
             T.putStrLn $ "    Files: " <> T.intercalate ", " (fmap toText xs)
+  CmdSaveCookie -> do
+    putStrLn "Reading for stdin for EditThisCookie JSON export ..."
+    raw <- BS.getContents
+    print (ETC.decodeCookies @T.Text raw)
   where
     binPathT = toText binPath
     handleGetThen quiet raw action = do

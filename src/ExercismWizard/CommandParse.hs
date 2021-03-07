@@ -29,6 +29,7 @@ data Command
   | CmdPeekLangRepo LangTrack
   | CmdPeekSolution RawExercise
   | CmdDebug [String]
+  | CmdSaveCookie
   deriving (Show, Eq)
 
 newtype RawExercise
@@ -81,7 +82,12 @@ opts =
           <> rmIgnoreCommand
           <> submitCommand
           <> peekRepoCommand
-          <> peekSolCommand)
+          <> peekSolCommand
+          <> command
+                "savecookie"
+                (info
+                   (pure CmdSaveCookie)
+                   (progDesc "Save website cookie to exercism-wizard's config.")))
        <**> helper)
     (fullDesc
        <> header "Exercism Wizard - exercism workflow automation")
@@ -163,7 +169,6 @@ opts =
         (info
            (CmdPeekSolution <$> exerciseArg <**> helper)
            (progDesc "Open link to community solutions."))
-
 
 {-
   Argument parsing results:

@@ -23,6 +23,11 @@ dependencies:
 - foldl
 - yaml
 - unordered-containers
+- aeson
+- dhall
+- bytestring
+- time
+- scientific
 
 library:
   source-dirs: src
