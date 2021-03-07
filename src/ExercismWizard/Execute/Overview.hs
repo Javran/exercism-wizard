@@ -1,6 +1,7 @@
 {-# LANGUAGE Arrows #-}
 {-# LANGUAGE NamedFieldPuns #-}
 {-# LANGUAGE TupleSections #-}
+{-# LANGUAGE NoMonomorphismRestriction #-}
 
 module ExercismWizard.Execute.Overview
   ( getOverview
@@ -31,7 +32,7 @@ processWebPage
   :: Manager
   -> M.Map T.Text T.Text
   -> String
-  -> IOSLA (XIOState ()) XmlTree c
+  -> IOStateArrow () XmlTree c
   -> IO [c]
 processWebPage mgr userCookies rscPath xmlProc = do
   now <- getCurrentTime
@@ -63,6 +64,7 @@ processMyTracks mgr userCookies = do
           /> hasName "h2"
           /> getText
       langPath = getAttrValue "href"
+      xmlProc :: ArrowXml cat => cat XmlTree (String, String)
       xmlProc =
         deep (hasName "div" >>> hasAttrValue "class" (== "joined-tracks"))
           /> hasName "div"
@@ -91,56 +93,59 @@ consumePrefix prefix input = ys <$ guard (prefix == xs)
 mayProduce :: ArrowList cat => (a -> Maybe c) -> cat a c
 mayProduce m = arrL (maybeToList . m)
 
+coreExercises, sideExercises :: ArrowXml cat => cat XmlTree RawExercise
+coreExercises =
+  deep (divClassIs "core-exercises")
+    /> divTag >>> mkExercise
+  where
+    mkExercise = proc node -> do
+      reStatus <- getStatus -< node
+      reName <- getTitle -< node
+      (reId, reUri) <- idAndHref -< node
+      returnA -< RawExercise {reStatus, reName, reId, reUri, reIsCore = True}
+    getStatus =
+      getAttrValue "class" >>> mayProduce (consumePrefix "exercise-wrapper ")
+    idAndHref =
+      getChildren
+        >>> hasAttrValue "class" (== "exercise")
+        >>> (getId &&& mayGetUri)
+      where
+        getId = getAttrValue "id" >>> mayProduce (consumePrefix "exercise-")
+sideExercises =
+  deep (divClassIs "side-exercises")
+    /> deep ((hasName "a" <+> divTag) >>> mkExercise)
+  where
+    mkExercise = proc node -> do
+      reId <- getId -< node
+      reName <- getTitle -< node
+      reStatus <- getStatus -< node
+      reUri <- mayGetUri -< node
+      returnA -< RawExercise {reStatus, reName, reId, reUri, reIsCore = False}
+    getStatus =
+      getAttrValue "class" >>> mayProduce (consumePrefix "widget-side-exercise ")
+    getId =
+      getChildren
+        >>> getAttrValue "id"
+        >>> mayProduce (consumePrefix "exercise-")
+
+divTag :: ArrowXml a => a XmlTree XmlTree
+divTag = hasName "div"
+
+divClassIs :: ArrowXml cat => String -> cat XmlTree XmlTree
+divClassIs xs = divTag >>> hasAttrValue "class" (== xs)
+
+mayGetUri :: ArrowXml a => a XmlTree (Maybe String)
+mayGetUri = (hasName "a" >>> getAttrValue "href" >>> arr Just) <+> (divTag >>> constA Nothing)
+
+getTitle :: ArrowXml a => a XmlTree String
+getTitle = deep (divClassIs "title" /> getText >>> arr trim >>> isA (not . null))
+
 processMyTracksLang
   :: Manager
   -> M.Map T.Text T.Text
   -> (String, String)
   -> IO [RawExercise]
-processMyTracksLang mgr userCookies (_langName, langPath) = do
-  let divTag = hasName "div"
-      divClassIs xs = divTag >>> hasAttrValue "class" (== xs)
-      getTitle =
-        deep
-          (divClassIs "title"
-             /> getText >>> arr trim >>> isA (not . null))
-      coreExercises =
-        deep (divClassIs "core-exercises")
-          /> divTag >>> mkExercise
-        where
-          mkExercise = proc node -> do
-            reStatus <- getStatus -< node
-            reName <- getTitle -< node
-            (reId, reUri) <- idAndHref -< node
-            returnA -< RawExercise {reStatus, reName, reId, reUri, reIsCore = True}
-          getStatus =
-            getAttrValue "class" >>> mayProduce (consumePrefix "exercise-wrapper ")
-          idAndHref =
-            getChildren
-              >>> hasAttrValue "class" (== "exercise")
-              >>> (getId &&& getLink)
-            where
-              getId = getAttrValue "id" >>> mayProduce (consumePrefix "exercise-")
-              getLink =
-                (hasName "a" >>> (getAttrValue "href" >>> arr Just))
-                  <+> (divTag >>> constA Nothing)
-      sideExercises =
-        deep (divClassIs "side-exercises")
-          /> deep ((hasName "a" <+> divTag) >>> mkExercise)
-        where
-          mkExercise = proc node -> do
-            reId <- getId -< node
-            reName <- getTitle -< node
-            reStatus <- getStatus -< node
-            reUri <- mayGetUri -< node
-            returnA -< RawExercise {reStatus, reName, reId, reUri, reIsCore = False}
-          mayGetUri =
-            (hasName "a" >>> getAttrValue "href" >>> arr Just) <+> (divTag >>> constA Nothing)
-          getStatus =
-            getAttrValue "class" >>> mayProduce (consumePrefix "widget-side-exercise ")
-          getId =
-            getChildren
-              >>> getAttrValue "id"
-              >>> mayProduce (consumePrefix "exercise-")
+processMyTracksLang mgr userCookies (_langName, langPath) =
   processWebPage mgr userCookies langPath (coreExercises <+> sideExercises)
 
 getOverview :: IO ()
