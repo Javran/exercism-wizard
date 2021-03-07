@@ -5,6 +5,7 @@
 
 module ExercismWizard.Execute.Overview
   ( getOverview
+  , extractTestDataTo
   )
 where
 
@@ -22,6 +23,7 @@ import Data.Time.Clock
 import qualified ExercismWizard.Config as EWConf
 import Network.HTTP.Client
 import Network.HTTP.Client.TLS
+import System.FilePath.Posix
 import Text.XML.HXT.Core
 import Web.Cookie
 
@@ -56,22 +58,24 @@ processWebPage mgr userCookies rscPath xmlProc = do
     readString [withParseHTML yes, withWarnings no] raw
       >>> xmlProc
 
+langPairs :: ArrowXml cat => cat XmlTree (String, String)
+langPairs =
+  deep (divClassIs "joined-tracks")
+    /> hasName "div"
+    >>> hasAttrValue "class" (("tracks" `elem`) . words)
+    >>> deep (hasName "a" >>> hasAttrValue "class" (== "track joined"))
+    >>> (langName &&& langPath)
+  where
+    langName =
+      getChildren
+        >>> (hasName "div" >>> hasAttrValue "class" (== "title"))
+        /> hasName "h2"
+        /> getText
+    langPath = getAttrValue "href"
+
 processMyTracks :: Manager -> M.Map T.Text T.Text -> IO [(String, String)]
-processMyTracks mgr userCookies = do
-  let langName =
-        getChildren
-          >>> (hasName "div" >>> hasAttrValue "class" (== "title"))
-          /> hasName "h2"
-          /> getText
-      langPath = getAttrValue "href"
-      xmlProc :: ArrowXml cat => cat XmlTree (String, String)
-      xmlProc =
-        deep (hasName "div" >>> hasAttrValue "class" (== "joined-tracks"))
-          /> hasName "div"
-          >>> hasAttrValue "class" (("tracks" `elem`) . words)
-          >>> deep (hasName "a" >>> hasAttrValue "class" (== "track joined"))
-          >>> (langName &&& langPath)
-  processWebPage mgr userCookies "/my/tracks" xmlProc
+processMyTracks mgr userCookies =
+  processWebPage mgr userCookies "/my/tracks" langPairs
 
 data RawExercise = RawExercise
   { reStatus :: String
@@ -148,8 +152,8 @@ processMyTracksLang
 processMyTracksLang mgr userCookies (_langName, langPath) =
   processWebPage mgr userCookies langPath (coreExercises <+> sideExercises)
 
-getOverview :: IO ()
-getOverview = do
+getOverview1 :: IO ()
+getOverview1 = do
   EWConf.Config {EWConf.userCookies} <- EWConf.readConfig
   mgr <- newManager tlsManagerSettings
   ls <- processMyTracks mgr userCookies
@@ -167,3 +171,29 @@ getOverview = do
               intercalate ", " xs
             (xs, ys) ->
               intercalate ", " xs <> ", and " <> show (length ys) <> " more"
+
+-- getOverview = extractTestDataTo "/tmp/sample"
+
+{-
+  This function extract parts of interest of Exercism webpage and write them to files.
+  Used for generating testdata.
+ -}
+extractTestDataTo :: FilePath -> IO ()
+extractTestDataTo fpBase = do
+  EWConf.Config {EWConf.userCookies} <- EWConf.readConfig
+  mgr <- newManager tlsManagerSettings
+  let writeDoc = writeDocument [withIndent yes]
+  lPairs <- do
+    let xmlProc =
+          processChildren (deep (divClassIs "joined-tracks"))
+            >>> writeDoc (fpBase </> "my-tracks.raw")
+    processWebPage mgr userCookies "/my/tracks" (xmlProc >>> langPairs)
+  forM_ lPairs $ \(_, path) -> do
+    let tr '/' = '-'
+        tr c = c
+        fp = fpBase </> fmap tr (tail path) <.> "raw"
+        xmlProc =
+          processChildren
+            (deep (divClassIs "core-exercises" <+> divClassIs "side-exercises"))
+            >>> writeDoc fp
+    processWebPage mgr userCookies path xmlProc
