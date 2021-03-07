@@ -8,6 +8,7 @@ module ExercismWizard.Execute.Overview
 where
 
 import Control.Arrow
+import Control.Monad
 import qualified Data.ByteString.Lazy as BSL
 import Data.Char
 import Data.List
@@ -74,6 +75,7 @@ data RawExercise = RawExercise
   , reUri :: Maybe String
   , reName :: String
   , reId :: String
+  , reIsCore :: Bool
   }
   deriving (Show)
 
@@ -86,7 +88,11 @@ processMyTracksLang
   -> (String, String)
   -> IO [RawExercise]
 processMyTracksLang mgr userCookies (_langName, langPath) = do
-  let coreExercises =
+  let getTitle =
+        deep
+          (hasName "div" >>> hasAttrValue "class" (== "title")
+             /> getText >>> arr trim >>> isA (not . null))
+      coreExercises =
         deep (hasName "div" >>> hasAttrValue "class" (== "core-exercises"))
           /> hasName "div"
           >>> hasAttrValue "class" ("exercise-wrapper " `isPrefixOf`)
@@ -96,13 +102,9 @@ processMyTracksLang mgr userCookies (_langName, langPath) = do
             reStatus <- getStatus -< node
             reName <- getTitle -< node
             (reId, reUri) <- idAndHref -< node
-            returnA -< RawExercise {reStatus, reName, reId, reUri}
+            returnA -< RawExercise {reStatus, reName, reId, reUri, reIsCore = True}
           getStatus =
             getAttrValue "class" >>> arr (drop (length "exercise-wrapper "))
-          getTitle =
-            deep
-              (hasName "div" >>> hasAttrValue "class" (== "title")
-                 /> getText >>> arr trim >>> isA (not . null))
           idAndHref =
             getChildren
               >>> ((hasName "a" >>> clsExercise >>> (getId &&& (getAttrValue "href" >>> arr Just)))
@@ -122,15 +124,11 @@ processMyTracksLang mgr userCookies (_langName, langPath) = do
             reName <- getTitle -< node
             reStatus <- getStatus -< node
             reUri <- mayGetUri -< node
-            returnA -< RawExercise {reStatus, reName, reId, reUri}
+            returnA -< RawExercise {reStatus, reName, reId, reUri, reIsCore = False}
           mayGetUri =
             (hasName "a" >>> getAttrValue "href" >>> arr Just) <+> (hasName "div" >>> constA Nothing)
           getStatus =
             getAttrValue "class" >>> arr (drop (length "widget-side-exercise "))
-          getTitle =
-            deep
-              (hasName "div" >>> hasAttrValue "class" (== "title")
-                 /> getText >>> arr trim >>> isA (not . null))
           getId =
             getChildren
               >>> hasAttrValue "id" ("exercise-" `isPrefixOf`)
@@ -142,5 +140,11 @@ getOverview :: IO ()
 getOverview = do
   EWConf.Config {EWConf.userCookies} <- EWConf.readConfig
   mgr <- newManager tlsManagerSettings
-  result <- processMyTracks mgr userCookies
-  mapM_ (processMyTracksLang mgr userCookies) result
+  ls <- processMyTracks mgr userCookies
+  forM_ ls $ \p@(lName, _) -> do
+    putStrLn $ "Overview on " <> lName <> " track: "
+    es <- processMyTracksLang mgr userCookies p
+    let groupped = M.fromListWith (<>) $ fmap (\e@RawExercise {reStatus} -> (reStatus, [e])) es
+    forM_ (M.toList groupped) $ \(k, vs) -> do
+      putStrLn $ "  " <> k <> ":"
+      putStrLn $ "    " <> intercalate ", " (fmap reId vs)
