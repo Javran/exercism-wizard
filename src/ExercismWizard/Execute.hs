@@ -41,6 +41,7 @@ import qualified System.Process as SP
 import Turtle.Prelude
 import Turtle.Shell
 import Prelude hiding (FilePath)
+import ExercismWizard.Execute.Overview
 
 {-
   Find infomation on existing exercism cli setup.
@@ -295,9 +296,7 @@ execute cli@ExercismCli {binPath} cmd = case cmd of
     raw <- BS.getContents
     let Right cs = ETC.decodeCookies @T.Text raw >>= ETC.toUserCookies
     EWConf.writeConfig (EWConf.Config cs)
-  CmdOverview -> do
-    -- TODO: impl
-    print =<< EWConf.readConfig
+  CmdOverview -> getOverview
   where
     binPathT = toText binPath
     handleGetThen quiet raw action = do

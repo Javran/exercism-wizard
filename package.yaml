@@ -29,6 +29,11 @@ dependencies:
 - time
 - scientific
 - directory
+- hxt
+- http-client
+- http-client-tls
+- cookie
+- time
 
 library:
   source-dirs: src
