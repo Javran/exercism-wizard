@@ -1,7 +1,6 @@
 {-# LANGUAGE Arrows #-}
 {-# LANGUAGE NamedFieldPuns #-}
 {-# LANGUAGE TupleSections #-}
-{-# LANGUAGE NoMonomorphismRestriction #-}
 
 module ExercismWizard.Execute.Overview
   ( getOverview
