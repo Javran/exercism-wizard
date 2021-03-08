@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<body class="namespace-my controller-tracks action-index prism-dark user-signed_in">
+  <div class="joined-tracks">
+    <div class="num-tracks">
+Showing
+<strong class="num">5</strong>
+tracks
+</div>
+    <h2>Tracks you've joined</h2>
+    <div class="tracks pure-g">
+      <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+        <a class="track joined" href="/my/tracks/go">
+          <img alt="Track Go" onerror="redacted=2583634445030781527" src="/redacted/assets/5442266723308546803"/>
+          <div class="status locked">Locked</div>
+          <div class="status unlocked">Unlocked</div>
+          <div class="status in-progress">In progress</div>
+          <div class="status completed">Completed</div>
+          <div class="title">
+            <h2>Go</h2>
+          </div>
+          <div class="progress">
+            <div class="filled" style="width:14.678899082568808%"/>
+            <div class="num">16 / 109 exercises</div>
+          </div>
+        </a>
+      </div>
+      <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+        <a class="track joined" href="/my/tracks/haskell">
+          <img alt="Track Haskell" onerror="redacted=2583634445030781527" src="/redacted/assets/-8629433824585056636"/>
+          <div class="status locked">Locked</div>
+          <div class="status unlocked">Unlocked</div>
+          <div class="status in-progress">In progress</div>
+          <div class="status completed">Completed</div>
+          <div class="title">
+            <h2>Haskell</h2>
+          </div>
+          <div class="progress">
+            <div class="filled" style="width:67.70833333333334%"/>
+            <div class="num">65 / 96 exercises</div>
+          </div>
+        </a>
+      </div>
+      <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+        <a class="track joined" href="/my/tracks/kotlin">
+          <img alt="Track Kotlin" onerror="redacted=2583634445030781527" src="/redacted/assets/-6353327897865634756"/>
+          <div class="status locked">Locked</div>
+          <div class="status unlocked">Unlocked</div>
+          <div class="status in-progress">In progress</div>
+          <div class="status completed">Completed</div>
+          <div class="title">
+            <h2>Kotlin</h2>
+          </div>
+          <div class="progress">
+            <div class="filled" style="width:20.238095238095237%"/>
+            <div class="num">17 / 84 exercises</div>
+          </div>
+        </a>
+      </div>
+      <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+        <a class="track joined" href="/my/tracks/rust">
+          <img alt="Track Rust" onerror="redacted=2583634445030781527" src="/redacted/assets/7325615978838669309"/>
+          <div class="status locked">Locked</div>
+          <div class="status unlocked">Unlocked</div>
+          <div class="status in-progress">In progress</div>
+          <div class="status completed">Completed</div>
+          <div class="title">
+            <h2>Rust</h2>
+          </div>
+          <div class="progress">
+            <div class="filled" style="width:18.27956989247312%"/>
+            <div class="num">17 / 93 exercises</div>
+          </div>
+        </a>
+      </div>
+      <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+        <a class="track joined" href="/my/tracks/scheme">
+          <img alt="Track Scheme" onerror="redacted=2583634445030781527" src="/redacted/assets/3969319118716876606"/>
+          <div class="status locked">Locked</div>
+          <div class="status unlocked">Unlocked</div>
+          <div class="status in-progress">In progress</div>
+          <div class="status completed">Completed</div>
+          <div class="title">
+            <h2>Scheme</h2>
+          </div>
+          <div class="progress">
+            <div class="filled" style="width:43.58974358974359%"/>
+            <div class="num">17 / 39 exercises</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</body>
+

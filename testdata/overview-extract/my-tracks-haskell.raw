@@ -1,0 +1,2834 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<body class="namespace-my controller-tracks action-show prism-dark user-signed_in">
+  <div class="core-exercises">
+    <div class="exercise-wrapper completed">
+      <div class="circle">
+        <img alt="Green checkmark" src="/redacted/assets/-4057277579389119113"/>
+      </div>
+      <a class="exercise" id="exercise-hello-world" href="/redacted/sol/-951749880161385735">
+        <div class="status">Completed</div>
+        <div class="position">Exercise 1 of 10 in Haskell Track</div>
+        <div class="title">
+Hello World
+<div class="topics">
+            <div class="topic">strings</div>
+          </div>
+        </div>
+        <div class="blurb">The classical introductory exercise. Just say "Hello, World!"</div>
+      </a>
+      <div class="unlocked-exercises-section">
+        <h3>You've unlocked extra exercises!</h3>
+        <div class="unlocked-exercises">
+          <a class="unlocked-exercise" data-status="Completed" data-title="Grade School" href="/redacted/sol/-1310660358822944614">
+            <img alt="" class="normal" src="/redacted/assets/-182756831056652671"/>
+            <img alt="" class="hover" src="/redacted/assets/8336260094817421977"/>
+          </a>
+          <a class="unlocked-exercise" data-status="In progress" data-title="Isogram" href="/redacted/sol/1568686814978288820">
+            <img alt="" class="normal" src="/redacted/assets/4905005339164656002"/>
+            <img alt="" class="hover" src="/redacted/assets/-6998199529437804838"/>
+          </a>
+          <a class="unlocked-exercise" data-status="In progress" data-title="Diamond" href="/redacted/sol/-2980008867537417967">
+            <img alt="" class="normal" src="/redacted/assets/-7994152598708321636"/>
+            <img alt="" class="hover" src="/redacted/assets/7298785771761860188"/>
+          </a>
+          <a class="unlocked-exercise" data-status="Completed" data-title="Binary" href="/redacted/sol/-7330441923509681483">
+            <img alt="" class="normal" src="/redacted/assets/2132355642207151588"/>
+            <img alt="" class="hover" src="/redacted/assets/3896604089849661836"/>
+          </a>
+          <a class="unlocked-exercise" data-status="Completed" data-title="Gigasecond" href="/redacted/sol/3526579570186140471">
+            <img alt="" class="normal" src="/redacted/assets/-5664655209247991039"/>
+            <img alt="" class="hover" src="/redacted/assets/488280264939595609"/>
+          </a>
+          <a class="unlocked-exercise" data-status="Completed" data-title="Hexadecimal" href="/redacted/sol/-1369344352057268354">
+            <img alt="" class="normal" src="/redacted/assets/-576411211790889609"/>
+            <img alt="" class="hover" src="/redacted/assets/-3962233003193496817"/>
+          </a>
+          <a class="unlocked-exercise" data-status="Completed" data-title="Octal" href="/redacted/sol/6175158083735001914">
+            <img alt="" class="normal" src="/redacted/assets/170975744805156325"/>
+            <img alt="" class="hover" src="/redacted/assets/-7776557254693299827"/>
+          </a>
+          <a class="unlocked-exercise" data-status="Completed" data-title="Trinary" href="/redacted/sol/6918180808188669200">
+            <img alt="" class="normal" src="/redacted/assets/2082187954479110733"/>
+            <img alt="" class="hover" src="/redacted/assets/-1629158535063643235"/>
+          </a>
+          <a class="unlocked-exercise" data-status="In progress" data-title="Acronym" href="/redacted/sol/7718761653409993256">
+            <img alt="" class="normal" src="/redacted/assets/4088868250134007105"/>
+            <img alt="" class="hover" src="/redacted/assets/-2619827382770526871"/>
+          </a>
+          <a class="unlocked-exercise" data-status="Completed" data-title="Strain" href="/redacted/sol/-3178977481031174225">
+            <img alt="" class="normal" src="/redacted/assets/-2779364424951102176"/>
+            <img alt="" class="hover" src="/redacted/assets/-4192179785488073680"/>
+          </a>
+          <a class="unlocked-exercise" data-status="Completed" data-title="Anagram" href="/redacted/sol/-1453751864985998786">
+            <img alt="" class="normal" src="/redacted/assets/-6680316696952626723"/>
+            <img alt="" class="hover" src="/redacted/assets/-301716255591719251"/>
+          </a>
+          <a class="unlocked-exercise" data-status="Completed" data-title="Clock" href="/redacted/sol/512024000484480463">
+            <img alt="" class="normal" src="/redacted/assets/-6697712131556648916"/>
+            <img alt="" class="hover" src="/redacted/assets/-6320497745483556372"/>
+          </a>
+          <a class="unlocked-exercise" data-status="Completed" data-title="Crypto Square" href="/redacted/sol/5413013464081364250">
+            <img alt="" class="normal" src="/redacted/assets/-6634561498013304295"/>
+            <img alt="" class="hover" src="/redacted/assets/4224956921726724729"/>
+          </a>
+          <a class="unlocked-exercise" data-status="Completed" data-title="Nth Prime" href="/redacted/sol/3760735026971897477">
+            <img alt="" class="normal" src="/redacted/assets/-6282567236558472966"/>
+            <img alt="" class="hover" src="/redacted/assets/1200180873720258098"/>
+          </a>
+          <a class="unlocked-exercise" data-status="In progress" data-title="Luhn" href="/redacted/sol/8723284113684777142">
+            <img alt="" class="normal" src="/redacted/assets/-7240108501469828266"/>
+            <img alt="" class="hover" src="/redacted/assets/7659985620587963230"/>
+          </a>
+          <a class="unlocked-exercise" data-status="Completed" data-title="Minesweeper" href="/redacted/sol/3176100835521392369">
+            <img alt="" class="normal" src="/redacted/assets/-8191068493052791422"/>
+            <img alt="" class="hover" src="/redacted/assets/-5309407595778352678"/>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="exercise-wrapper completed">
+      <div class="circle">
+        <img alt="Green checkmark" src="/redacted/assets/-4057277579389119113"/>
+      </div>
+      <a class="exercise" id="exercise-leap" href="/redacted/sol/2648210998441805780">
+        <div class="status">Completed</div>
+        <div class="position">Exercise 2 of 10 in Haskell Track</div>
+        <div class="title">
+Leap
+<div class="topics">
+            <div class="topic">booleans</div>
+            <div class="topic">expressions</div>
+          </div>
+        </div>
+        <div class="blurb">Given a year, report if it is a leap year.</div>
+      </a>
+      <div class="unlocked-exercises-section">
+        <h3>You've unlocked extra exercises!</h3>
+        <div class="unlocked-exercises">
+          <a class="unlocked-exercise" data-status="In progress" data-title="Perfect Numbers" href="/redacted/sol/2009978264577568495">
+            <img alt="" class="normal" src="/redacted/assets/6033303345651283166"/>
+            <img alt="" class="hover" src="/redacted/assets/-8564352460379000834"/>
+          </a>
+          <a class="unlocked-exercise" data-status="Completed" data-title="Phone Number" href="/redacted/sol/2335368238076138347">
+            <img alt="" class="normal" src="/redacted/assets/-8894495968188927867"/>
+            <img alt="" class="hover" src="/redacted/assets/8581817417525704549"/>
+          </a>
+          <a class="unlocked-exercise" data-status="Completed" data-title="Secret Handshake" href="/redacted/sol/4005394849303070526">
+            <img alt="" class="normal" src="/redacted/assets/9142775204584235983"/>
+            <img alt="" class="hover" src="/redacted/assets/1773785623560837327"/>
+          </a>
+          <a class="unlocked-exercise" data-status="Completed" data-title="Pascal&apos;s Triangle" href="/redacted/sol/-4047340787420038198">
+            <img alt="" class="normal" src="/redacted/assets/3831769641437951847"/>
+            <img alt="" class="hover" src="/redacted/assets/6950599824041062103"/>
+          </a>
+          <a class="unlocked-exercise" data-status="Completed" data-title="Word Count" href="/redacted/sol/-2036886186925742915">
+            <img alt="" class="normal" src="/redacted/assets/-9042431109180622317"/>
+            <img alt="" class="hover" src="/redacted/assets/4597794615104689515"/>
+          </a>
+          <a class="unlocked-exercise" data-status="Completed" data-title="Binary Search Tree" href="/redacted/sol/229154021146447946">
+            <img alt="" class="normal" src="/redacted/assets/2660878707494062434"/>
+            <img alt="" class="hover" src="/redacted/assets/-833096360839289702"/>
+          </a>
+          <a class="unlocked-exercise" data-status="Completed" data-title="Queen Attack" href="/redacted/sol/4582485197286908312">
+            <img alt="" class="normal" src="/redacted/assets/3107172609688838398"/>
+            <img alt="" class="hover" src="/redacted/assets/-3816140502920332426"/>
+          </a>
+          <a class="unlocked-exercise" data-status="Completed" data-title="Wordy" href="/redacted/sol/612191393889594095">
+            <img alt="" class="normal" src="/redacted/assets/-2298590503393248523"/>
+            <img alt="" class="hover" src="/redacted/assets/3093343922854049885"/>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="exercise-wrapper completed">
+      <div class="circle">
+        <img alt="Green checkmark" src="/redacted/assets/-4057277579389119113"/>
+      </div>
+      <a class="exercise" id="exercise-space-age" href="/redacted/sol/-4345397871384988401">
+        <div class="status">Completed</div>
+        <div class="position">Exercise 3 of 10 in Haskell Track</div>
+        <div class="title">
+Space Age
+<div class="topics">
+            <div class="topic">sum types</div>
+          </div>
+        </div>
+        <div class="blurb">Given an age in seconds, calculate how old someone is in terms of a given planet's solar years.</div>
+      </a>
+      <div class="unlocked-exercises-section">
+        <h3>You've unlocked extra exercises!</h3>
+        <div class="unlocked-exercises">
+          <a class="unlocked-exercise" data-status="Completed" data-title="Hamming" href="/redacted/sol/-1216710694932995989">
+            <img alt="" class="normal" src="/redacted/assets/-1527646786829836181"/>
+            <img alt="" class="hover" src="/redacted/assets/-8235092505807119701"/>
+          </a>
+          <a class="unlocked-exercise" data-status="In progress" data-title="Twelve Days" href="/redacted/sol/-2230623317294493843">
+            <img alt="" class="normal" src="/redacted/assets/-8743963323592274333"/>
+            <img alt="" class="hover" src="/redacted/assets/-3701617272164210173"/>
+          </a>
+          <a class="unlocked-exercise" data-status="Completed" data-title="Robot Simulator" href="/redacted/sol/5828847729565703434">
+            <img alt="" class="normal" src="/redacted/assets/2101468496210779947"/>
+            <img alt="" class="hover" src="/redacted/assets/-2221412165262974741"/>
+          </a>
+          <a class="unlocked-exercise" data-status="Completed" data-title="Saddle Points" href="/redacted/sol/-1769296413543147810">
+            <img alt="" class="normal" src="/redacted/assets/-9185015455132291549"/>
+            <img alt="" class="hover" src="/redacted/assets/5920767198295867163"/>
+          </a>
+          <a class="unlocked-exercise" data-status="Completed" data-title="OCR Numbers" href="/redacted/sol/-7586858077177359431">
+            <img alt="" class="normal" src="/redacted/assets/3757603043176646167"/>
+            <img alt="" class="hover" src="/redacted/assets/1198638341199642543"/>
+          </a>
+          <a class="unlocked-exercise" data-status="Completed" data-title="Food Chain" href="/redacted/sol/-1720577586480640108">
+            <img alt="" class="normal" src="/redacted/assets/-5266408082619068799"/>
+            <img alt="" class="hover" src="/redacted/assets/-8816149898633141543"/>
+          </a>
+          <a class="unlocked-exercise" data-status="In progress" data-title="Change" href="/redacted/sol/-8653555858387055754">
+            <img alt="" class="normal" src="/redacted/assets/598076330974231757"/>
+            <img alt="" class="hover" src="/redacted/assets/8985857861141962381"/>
+          </a>
+          <a class="unlocked-exercise" data-status="Completed" data-title="Go Counting" href="/redacted/sol/3453351140408096097">
+            <img alt="" class="normal" src="/redacted/assets/-1486890410095786504"/>
+            <img alt="" class="hover" src="/redacted/assets/-7689356348177048784"/>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="exercise-wrapper completed">
+      <div class="circle">
+        <img alt="Green checkmark" src="/redacted/assets/-4057277579389119113"/>
+      </div>
+      <a class="exercise" id="exercise-pangram" href="/redacted/sol/4699084046187134809">
+        <div class="status">Completed</div>
+        <div class="position">Exercise 4 of 10 in Haskell Track</div>
+        <div class="title">
+Pangram
+<div class="topics">
+            <div class="topic">strings</div>
+            <div class="topic">higher order functions</div>
+          </div>
+        </div>
+        <div class="blurb">Determine if a sentence is a pangram.</div>
+      </a>
+      <div class="unlocked-exercises-section">
+        <h3>You've unlocked extra exercises!</h3>
+        <div class="unlocked-exercises">
+          <a class="unlocked-exercise" data-status="In progress" data-title="Run Length Encoding" href="/redacted/sol/-8572060299380008389">
+            <img alt="" class="normal" src="/redacted/assets/-1730892015586399734"/>
+            <img alt="" class="hover" src="/redacted/assets/-7621858812867794702"/>
+          </a>
+          <a class="unlocked-exercise" data-status="Completed" data-title="Simple Linked List" href="/redacted/sol/-9123173195797440500">
+            <img alt="" class="normal" src="/redacted/assets/-297713673529814154"/>
+            <img alt="" class="hover" src="/redacted/assets/9031547173021518390"/>
+          </a>
+          <a class="unlocked-exercise" data-status="Completed" data-title="House" href="/redacted/sol/7636178840057228640">
+            <img alt="" class="normal" src="/redacted/assets/2634282626839140042"/>
+            <img alt="" class="hover" src="/redacted/assets/3917432161636019202"/>
+          </a>
+          <a class="unlocked-exercise" data-status="In progress" data-title="Custom Set" href="/redacted/sol/5523968588895277895">
+            <img alt="" class="normal" src="/redacted/assets/1582018250086564899"/>
+            <img alt="" class="hover" src="/redacted/assets/2133188491599194299"/>
+          </a>
+          <a class="unlocked-exercise" data-status="In progress" data-title="Bowling" href="/redacted/sol/-1420259843996556004">
+            <img alt="" class="normal" src="/redacted/assets/3706409696008548968"/>
+            <img alt="" class="hover" src="/redacted/assets/74759120793519648"/>
+          </a>
+          <a class="unlocked-exercise" data-status="In progress" data-title="Proverb" href="/redacted/sol/8008891732263790329">
+            <img alt="" class="normal" src="/redacted/assets/-2814420542288939682"/>
+            <img alt="" class="hover" src="/redacted/assets/-4289193339694447586"/>
+          </a>
+          <a class="unlocked-exercise" data-status="In progress" data-title="D&amp;D Character" href="/redacted/sol/1261204889443596558">
+            <img alt="" class="normal" src="/redacted/assets/-4091463757193026838"/>
+            <img alt="" class="hover" src="/redacted/assets/-8057715643168034318"/>
+          </a>
+          <a class="unlocked-exercise" data-status="Completed" data-title="Resistor Color Duo" href="/redacted/sol/2590744378508780690">
+            <img alt="" class="normal" src="/redacted/assets/-1135407431512534111"/>
+            <img alt="" class="hover" src="/redacted/assets/5837218580418706153"/>
+          </a>
+          <a class="unlocked-exercise" data-status="In progress" data-title="Resistor Color Trio" href="/redacted/sol/-7420542083404027466">
+            <img alt="" class="normal" src="/redacted/assets/-4109943769713352890"/>
+            <img alt="" class="hover" src="/redacted/assets/6895414921942501334"/>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="exercise-wrapper completed">
+      <div class="circle">
+        <img alt="Green checkmark" src="/redacted/assets/-4057277579389119113"/>
+      </div>
+      <a class="exercise" id="exercise-bob" href="/redacted/sol/3402161023057102761">
+        <div class="status">Completed</div>
+        <div class="position">Exercise 5 of 10 in Haskell Track</div>
+        <div class="title">
+Bob
+<div class="topics">
+            <div class="topic">strings</div>
+            <div class="topic">guards</div>
+          </div>
+        </div>
+        <div class="blurb">Bob is a lackadaisical teenager. In conversation, his responses are very limited.</div>
+      </a>
+      <div class="unlocked-exercises-section">
+        <h3>You've unlocked extra exercises!</h3>
+        <div class="unlocked-exercises">
+          <a class="unlocked-exercise" data-status="In progress" data-title="ISBN Verifier" href="/redacted/sol/6067603152769899437">
+            <img alt="" class="normal" src="/redacted/assets/-4704907882638676989"/>
+            <img alt="" class="hover" src="/redacted/assets/-4563006934842919749"/>
+          </a>
+          <a class="unlocked-exercise" data-status="In progress" data-title="Protein Translation" href="/redacted/sol/-8793675168876292309">
+            <img alt="" class="normal" src="/redacted/assets/-6659261581187853903"/>
+            <img alt="" class="hover" src="/redacted/assets/-6966989883774526615"/>
+          </a>
+          <a class="unlocked-exercise" data-status="Completed" data-title="Pythagorean Triplet" href="/redacted/sol/-6406318684697672441">
+            <img alt="" class="normal" src="/redacted/assets/-5780193278449693837"/>
+            <img alt="" class="hover" src="/redacted/assets/8075824756936755187"/>
+          </a>
+          <a class="unlocked-exercise" data-status="In progress" data-title="Rotational Cipher" href="/redacted/sol/-405100630914644643">
+            <img alt="" class="normal" src="/redacted/assets/2513349254257615943"/>
+            <img alt="" class="hover" src="/redacted/assets/-3132385660117031929"/>
+          </a>
+          <a class="unlocked-exercise" data-status="In progress" data-title="Spiral Matrix" href="/redacted/sol/2008359211124655828">
+            <img alt="" class="normal" src="/redacted/assets/2739122948548920179"/>
+            <img alt="" class="hover" src="/redacted/assets/4838302271445989963"/>
+          </a>
+          <a class="unlocked-exercise" data-status="In progress" data-title="Alphametics" href="/redacted/sol/8009184261217029553">
+            <img alt="" class="normal" src="/redacted/assets/-5154587627259721645"/>
+            <img alt="" class="hover" src="/redacted/assets/-7038040259090726221"/>
+          </a>
+          <a class="unlocked-exercise" data-status="In progress" data-title="Yacht" href="/redacted/sol/6215313755396345844">
+            <img alt="" class="normal" src="/redacted/assets/2738308125299968961"/>
+            <img alt="" class="hover" src="/redacted/assets/5696756844669213777"/>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="exercise-wrapper completed">
+      <div class="circle">
+        <img alt="Green checkmark" src="/redacted/assets/-4057277579389119113"/>
+      </div>
+      <a class="exercise" id="exercise-collatz-conjecture" href="/redacted/sol/-1534857797431010817">
+        <div class="status">Completed</div>
+        <div class="position">Exercise 6 of 10 in Haskell Track</div>
+        <div class="title">
+Collatz Conjecture
+<div class="topics">
+            <div class="topic">maybe</div>
+            <div class="topic">number theory</div>
+            <div class="topic">guards</div>
+            <div class="topic">recursion</div>
+          </div>
+        </div>
+        <div class="blurb">Calculate the number of steps to reach 1 using the Collatz conjecture</div>
+      </a>
+      <div class="unlocked-exercises-section">
+        <h3>You've unlocked extra exercises!</h3>
+        <div class="unlocked-exercises">
+          <a class="unlocked-exercise" data-status="Completed" data-title="Beer Song" href="/redacted/sol/-4084484103374646453">
+            <img alt="" class="normal" src="/redacted/assets/-5972429246375446990"/>
+            <img alt="" class="hover" src="/redacted/assets/1521192458589552906"/>
+          </a>
+          <a class="unlocked-exercise" data-status="Completed" data-title="List Ops" href="/redacted/sol/2218670437345542599">
+            <img alt="" class="normal" src="/redacted/assets/7307763770259677202"/>
+            <img alt="" class="hover" src="/redacted/assets/5856673132014483874"/>
+          </a>
+          <a class="unlocked-exercise" data-status="Completed" data-title="Matrix" href="/redacted/sol/-377861673157125283">
+            <img alt="" class="normal" src="/redacted/assets/2419183307958436564"/>
+            <img alt="" class="hover" src="/redacted/assets/8417934826962965820"/>
+          </a>
+          <a class="unlocked-exercise" data-status="Completed" data-title="Parallel Letter Frequency" href="/redacted/sol/105275055104261455">
+            <img alt="" class="normal" src="/redacted/assets/1819825177808891715"/>
+            <img alt="" class="hover" src="/redacted/assets/-8038688099723905941"/>
+          </a>
+          <a class="unlocked-exercise" data-status="In progress" data-title="Transpose" href="/redacted/sol/1941621908025822832">
+            <img alt="" class="normal" src="/redacted/assets/7930902736640838581"/>
+            <img alt="" class="hover" src="/redacted/assets/-1986182858063896243"/>
+          </a>
+          <a class="unlocked-exercise" data-status="In progress" data-title="Poker" href="/redacted/sol/-983019647338522701">
+            <img alt="" class="normal" src="/redacted/assets/-8238124829504934557"/>
+            <img alt="" class="hover" src="/redacted/assets/3679244815529848203"/>
+          </a>
+          <a class="unlocked-exercise" data-status="Completed" data-title="Lens Person" href="/redacted/sol/-8760837033663791832">
+            <img alt="" class="normal" src="/redacted/assets/6739522625264597810"/>
+            <img alt="" class="hover" src="/redacted/assets/-3011793748351518646"/>
+          </a>
+          <a class="unlocked-exercise" data-status="In progress" data-title="Binary Search" href="/redacted/sol/-318670367366800305">
+            <img alt="" class="normal" src="/redacted/assets/-2225174528503866734"/>
+            <img alt="" class="hover" src="/redacted/assets/-5539508741397731670"/>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="exercise-wrapper completed">
+      <div class="circle">
+        <img alt="Green checkmark" src="/redacted/assets/-4057277579389119113"/>
+      </div>
+      <a class="exercise" id="exercise-rna-transcription" href="/redacted/sol/-8665286136941615867">
+        <div class="status">Completed</div>
+        <div class="position">Exercise 7 of 10 in Haskell Track</div>
+        <div class="title">
+RNA Transcription
+<div class="topics">
+            <div class="topic">either</div>
+            <div class="topic">traversable</div>
+          </div>
+        </div>
+        <div class="blurb">Given a DNA strand, return its RNA Complement Transcription.</div>
+      </a>
+      <div class="unlocked-exercises-section">
+        <h3>You've unlocked extra exercises!</h3>
+        <div class="unlocked-exercises">
+          <a class="unlocked-exercise" data-status="In progress" data-title="Triangle" href="/redacted/sol/-8350871771509760317">
+            <img alt="" class="normal" src="/redacted/assets/1146654343989078199"/>
+            <img alt="" class="hover" src="/redacted/assets/-1079344497825018425"/>
+          </a>
+          <a class="unlocked-exercise" data-status="Completed" data-title="Meetup" href="/redacted/sol/-6285357609920813383">
+            <img alt="" class="normal" src="/redacted/assets/-5243056832026559365"/>
+            <img alt="" class="hover" src="/redacted/assets/6386715622148514163"/>
+          </a>
+          <a class="unlocked-exercise" data-status="Completed" data-title="Sieve" href="/redacted/sol/-4354715819542425380">
+            <img alt="" class="normal" src="/redacted/assets/513806869335982760"/>
+            <img alt="" class="hover" src="/redacted/assets/-2584576017622183920"/>
+          </a>
+          <a class="unlocked-exercise" data-status="Completed" data-title="Simple Cipher" href="/redacted/sol/-4029870328283352504">
+            <img alt="" class="normal" src="/redacted/assets/6452910952936841300"/>
+            <img alt="" class="hover" src="/redacted/assets/6208777915280155108"/>
+          </a>
+          <a class="unlocked-exercise" data-status="Completed" data-title="Palindrome Products" href="/redacted/sol/4105300697483896652">
+            <img alt="" class="normal" src="/redacted/assets/-9101838977351243910"/>
+            <img alt="" class="hover" src="/redacted/assets/2430216140927382306"/>
+          </a>
+          <a class="unlocked-exercise" data-status="Completed" data-title="Connect" href="/redacted/sol/-2966937724392563421">
+            <img alt="" class="normal" src="/redacted/assets/-2047113344203845886"/>
+            <img alt="" class="hover" src="/redacted/assets/-3478444996988060582"/>
+          </a>
+          <a class="unlocked-exercise" data-status="Completed" data-title="POV" href="/redacted/sol/6686095634785989011">
+            <img alt="" class="normal" src="/redacted/assets/-8845980319436533259"/>
+            <img alt="" class="hover" src="/redacted/assets/7517328547722330677"/>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="exercise-wrapper completed">
+      <div class="circle">
+        <img alt="Green checkmark" src="/redacted/assets/-4057277579389119113"/>
+      </div>
+      <a class="exercise" id="exercise-nucleotide-count" href="/redacted/sol/-411312144392414616">
+        <div class="status">Completed</div>
+        <div class="position">Exercise 8 of 10 in Haskell Track</div>
+        <div class="title">
+Nucleotide Count
+<div class="topics">
+            <div class="topic">either</div>
+            <div class="topic">data structures</div>
+            <div class="topic">higher order functions</div>
+          </div>
+        </div>
+        <div class="blurb">Given a DNA string, compute how many times each nucleotide occurs in the string.</div>
+      </a>
+      <div class="unlocked-exercises-section">
+        <h3>You've unlocked extra exercises!</h3>
+        <div class="unlocked-exercises">
+          <a class="unlocked-exercise" data-status="Completed" data-title="Difference Of Squares" href="/redacted/sol/-1790839201836005736">
+            <img alt="" class="normal" src="/redacted/assets/-1043238537632193296"/>
+            <img alt="" class="hover" src="/redacted/assets/6666514306341484968"/>
+          </a>
+          <a class="unlocked-exercise" data-status="Completed" data-title="Raindrops" href="/redacted/sol/7287334565074954978">
+            <img alt="" class="normal" src="/redacted/assets/5933003360655198254"/>
+            <img alt="" class="hover" src="/redacted/assets/7265082962757275630"/>
+          </a>
+          <a class="unlocked-exercise" data-status="Completed" data-title="Kindergarten Garden" href="/redacted/sol/6101757119021475767">
+            <img alt="" class="normal" src="/redacted/assets/-4193945503635044390"/>
+            <img alt="" class="hover" src="/redacted/assets/-3259229500063952254"/>
+          </a>
+          <a class="unlocked-exercise" data-status="Completed" data-title="Allergies" href="/redacted/sol/3087873928133328831">
+            <img alt="" class="normal" src="/redacted/assets/-2721522436930829270"/>
+            <img alt="" class="hover" src="/redacted/assets/-5215565131944622238"/>
+          </a>
+          <a class="unlocked-exercise" data-status="In progress" data-title="All Your Base" href="/redacted/sol/6230065276837539003">
+            <img alt="" class="normal" src="/redacted/assets/2616225199708412163"/>
+            <img alt="" class="hover" src="/redacted/assets/104258257108013499"/>
+          </a>
+          <a class="unlocked-exercise" data-status="Completed" data-title="Series" href="/redacted/sol/3762247350092586205">
+            <img alt="" class="normal" src="/redacted/assets/8736990509398800736"/>
+            <img alt="" class="hover" src="/redacted/assets/-3092059877889459856"/>
+          </a>
+          <a class="unlocked-exercise" data-status="Completed" data-title="Bank Account" href="/redacted/sol/7407560017885461255">
+            <img alt="" class="normal" src="/redacted/assets/7021294660770500671"/>
+            <img alt="" class="hover" src="/redacted/assets/4981071695696701615"/>
+          </a>
+          <a class="unlocked-exercise" data-status="Completed" data-title="Sublist" href="/redacted/sol/8398401559852446798">
+            <img alt="" class="normal" src="/redacted/assets/1670302526734288570"/>
+            <img alt="" class="hover" src="/redacted/assets/8827074202934146850"/>
+          </a>
+          <a class="unlocked-exercise" data-status="In progress" data-title="Rail Fence Cipher" href="/redacted/sol/-5322110454074709222">
+            <img alt="" class="normal" src="/redacted/assets/7902953345044676330"/>
+            <img alt="" class="hover" src="/redacted/assets/-6534720071909764718"/>
+          </a>
+          <a class="unlocked-exercise" data-status="Completed" data-title="SGF Parsing" href="/redacted/sol/-2004849086470196407">
+            <img alt="" class="normal" src="/redacted/assets/463432214979305433"/>
+            <img alt="" class="hover" src="/redacted/assets/-1121307248794010463"/>
+          </a>
+          <a class="unlocked-exercise" data-status="Completed" data-title="Zipper" href="/redacted/sol/8392523268933129536">
+            <img alt="" class="normal" src="/redacted/assets/-1025613762293633045"/>
+            <img alt="" class="hover" src="/redacted/assets/8396314539233291171"/>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="exercise-wrapper completed">
+      <div class="circle">
+        <img alt="Green checkmark" src="/redacted/assets/-4057277579389119113"/>
+      </div>
+      <a class="exercise" id="exercise-sum-of-multiples" href="/redacted/sol/3950940403450907117">
+        <div class="status">Completed</div>
+        <div class="position">Exercise 9 of 10 in Haskell Track</div>
+        <div class="title">
+Sum Of Multiples
+<div class="topics">
+            <div class="topic">number theory</div>
+            <div class="topic">math</div>
+          </div>
+        </div>
+        <div class="blurb">Given a number, find the sum of all the multiples of particular numbers up to but not including that number.</div>
+      </a>
+      <div class="unlocked-exercises-section">
+        <h3>You've unlocked extra exercises!</h3>
+        <div class="unlocked-exercises">
+          <a class="unlocked-exercise" data-status="Completed" data-title="ETL" href="/redacted/sol/395428705007782131">
+            <img alt="" class="normal" src="/redacted/assets/2559504886807163503"/>
+            <img alt="" class="hover" src="/redacted/assets/2740108798030471799"/>
+          </a>
+          <a class="unlocked-exercise" data-status="Completed" data-title="Scrabble Score" href="/redacted/sol/198716684216481734">
+            <img alt="" class="normal" src="/redacted/assets/8843564321506884666"/>
+            <img alt="" class="hover" src="/redacted/assets/-2337325987965283230"/>
+          </a>
+          <a class="unlocked-exercise" data-status="Completed" data-title="Roman Numerals" href="/redacted/sol/641846907561452648">
+            <img alt="" class="normal" src="/redacted/assets/2710923353920083618"/>
+            <img alt="" class="hover" src="/redacted/assets/-4807363510943228006"/>
+          </a>
+          <a class="unlocked-exercise" data-status="Completed" data-title="Atbash Cipher" href="/redacted/sol/6452615333500957122">
+            <img alt="" class="normal" src="/redacted/assets/6614101018399566375"/>
+            <img alt="" class="hover" src="/redacted/assets/4499952699897110311"/>
+          </a>
+          <a class="unlocked-exercise" data-status="In progress" data-title="Robot Name" href="/redacted/sol/5796693713590071322">
+            <img alt="" class="normal" src="/redacted/assets/4222861932582684673"/>
+            <img alt="" class="hover" src="/redacted/assets/6120513858943403097"/>
+          </a>
+          <a class="unlocked-exercise" data-status="Completed" data-title="Pig Latin" href="/redacted/sol/-4559638416724588216">
+            <img alt="" class="normal" src="/redacted/assets/-3614567045922054499"/>
+            <img alt="" class="hover" src="/redacted/assets/-13035497029785451"/>
+          </a>
+          <a class="unlocked-exercise" data-status="Completed" data-title="Say" href="/redacted/sol/4597942478015381915">
+            <img alt="" class="normal" src="/redacted/assets/-3279460020588771041"/>
+            <img alt="" class="hover" src="/redacted/assets/-7320210850542153049"/>
+          </a>
+          <a class="unlocked-exercise" data-status="In progress" data-title="Dominoes" href="/redacted/sol/-5122910190816021719">
+            <img alt="" class="normal" src="/redacted/assets/-2016159101371444685"/>
+            <img alt="" class="hover" src="/redacted/assets/2858502358756822667"/>
+          </a>
+          <a class="unlocked-exercise" data-status="In progress" data-title="Armstrong Numbers" href="/redacted/sol/-6886470579847689967">
+            <img alt="" class="normal" src="/redacted/assets/-3805406743365761236"/>
+            <img alt="" class="hover" src="/redacted/assets/6415932548615466332"/>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="exercise-wrapper completed">
+      <div class="circle">
+        <img alt="Green checkmark" src="/redacted/assets/-4057277579389119113"/>
+      </div>
+      <a class="exercise" id="exercise-grains" href="/redacted/sol/7872373017824946572">
+        <div class="status">Completed</div>
+        <div class="position">Exercise 10 of 10 in Haskell Track</div>
+        <div class="title">
+Grains
+<div class="topics">
+            <div class="topic">maybe</div>
+          </div>
+        </div>
+        <div class="blurb">Calculate the number of grains of wheat on a chessboard given that the number on each square doubles.</div>
+      </a>
+      <div class="unlocked-exercises-section">
+        <h3>You've unlocked extra exercises!</h3>
+        <div class="unlocked-exercises">
+          <a class="unlocked-exercise" data-status="Completed" data-title="Accumulate" href="/redacted/sol/237705870131230276">
+            <img alt="" class="normal" src="/redacted/assets/7228275745565440775"/>
+            <img alt="" class="hover" src="/redacted/assets/8227394067025172967"/>
+          </a>
+          <a class="unlocked-exercise" data-status="In progress" data-title="Complex Numbers" href="/redacted/sol/-7393811418637475481">
+            <img alt="" class="normal" src="/redacted/assets/3916843551275842835"/>
+            <img alt="" class="hover" src="/redacted/assets/4609047888845383587"/>
+          </a>
+          <a class="unlocked-exercise" data-status="Completed" data-title="Prime Factors" href="/redacted/sol/2555304747134649265">
+            <img alt="" class="normal" src="/redacted/assets/4391124078926482336"/>
+            <img alt="" class="hover" src="/redacted/assets/-1510427861097258168"/>
+          </a>
+          <a class="unlocked-exercise" data-status="Completed" data-title="Largest Series Product" href="/redacted/sol/1128520267835572603">
+            <img alt="" class="normal" src="/redacted/assets/-7040965378127097775"/>
+            <img alt="" class="hover" src="/redacted/assets/7415726971619778825"/>
+          </a>
+          <a class="unlocked-exercise" data-status="In progress" data-title="Matching Brackets" href="/redacted/sol/-699236584232897516">
+            <img alt="" class="normal" src="/redacted/assets/-1727497047205658563"/>
+            <img alt="" class="hover" src="/redacted/assets/7669644249074862245"/>
+          </a>
+          <a class="unlocked-exercise" data-status="Completed" data-title="Linked List" href="/redacted/sol/-7530260707224185818">
+            <img alt="" class="normal" src="/redacted/assets/6741060899279928208"/>
+            <img alt="" class="hover" src="/redacted/assets/1429705720634392296"/>
+          </a>
+          <a class="unlocked-exercise" data-status="In progress" data-title="Zebra Puzzle" href="/redacted/sol/-4784511197465328440">
+            <img alt="" class="normal" src="/redacted/assets/-2642569069986808636"/>
+            <img alt="" class="hover" src="/redacted/assets/6753994473171537124"/>
+          </a>
+          <a class="unlocked-exercise" data-status="Completed" data-title="Forth" href="/redacted/sol/-7245660827819971384">
+            <img alt="" class="normal" src="/redacted/assets/-4196484348640989963"/>
+            <img alt="" class="hover" src="/redacted/assets/-6171310327406736803"/>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="side-exercises" id="side-exercises">
+    <div class="lo-container">
+      <h2>Extra exercises</h2>
+      <div class="h2-subtitle">These exercises are unlocked by completing the core track. They're great for practicing and full of fun.</div>
+      <div class="num-extra-exercises">86 Exercises</div>
+      <div class="filters">
+        <form class="side_exercises_form" action="/my/tracks/haskell/side_exercises" accept-charset="UTF-8" data-remote="true" method="get">
+          <div class="widget-filter difficulty">
+            <div class="title">Difficulty:</div>
+            <select name="difficulty">
+              <option value=" ">All</option>
+              <option value="easy">Easy</option>
+              <option value="medium">Medium</option>
+              <option value="hard">Hard</option>
+            </select>
+          </div>
+          <div class="widget-filter topic">
+            <div class="title">Topic:</div>
+            <select name="topic_id">
+              <option value="0">Any</option>
+              <option value="155">Accumulator Strictness</option>
+              <option value="19">Algorithms</option>
+              <option value="36">Bitwise Operations</option>
+              <option value="41">Booleans</option>
+              <option value="74">Data Structures</option>
+              <option value="376">Data Types</option>
+              <option value="152">Define Type</option>
+              <option value="151">Either</option>
+              <option value="394">Expressions</option>
+              <option value="29">Filtering</option>
+              <option value="361">Guards</option>
+              <option value="103">Higher Order Functions</option>
+              <option value="156">Instance Num</option>
+              <option value="158">Io Monad</option>
+              <option value="153">Lazy Evaluation</option>
+              <option value="323">Lens</option>
+              <option value="154">Library Reimplementation</option>
+              <option value="65">Lists</option>
+              <option value="22">Logic</option>
+              <option value="192">Math</option>
+              <option value="150">Maybe</option>
+              <option value="159">Mutable State</option>
+              <option value="72">Number Theory</option>
+              <option value="160">Random</option>
+              <option value="43">Recursion</option>
+              <option value="81">Refactoring</option>
+              <option value="157">Stack</option>
+              <option value="1">Strings</option>
+              <option value="362">Sum Types</option>
+              <option value="363">Traversable</option>
+            </select>
+          </div>
+          <div class="widget-filter status">
+            <div class="title">Status:</div>
+            <select name="status">
+              <option value="0">All</option>
+              <option value="in_progress">In progress</option>
+              <option value="unlocked">Unlocked</option>
+              <option value="completed">Completed</option>
+              <option value="locked">Locked</option>
+            </select>
+          </div>
+        </form>
+      </div>
+      <div class="pure-g exercises">
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise completed" href="/redacted/sol/-1310660358822944614">
+            <div id="exercise-grade-school">
+              <div class="icon">
+                <div class="img" style="-redacted-style: -8573939720540465713"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Grade School</div>
+              <div class="stats">
+                <div class="difficulty easy">easy</div>
+              </div>
+              <div class="topics">
+                <div class="topic">define type</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise completed" href="/redacted/sol/-1790839201836005736">
+            <div id="exercise-difference-of-squares">
+              <div class="icon">
+                <div class="img" style="-redacted-style: -850894771038177774"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Difference Of Squares</div>
+              <div class="stats">
+                <div class="difficulty easy">easy</div>
+              </div>
+              <div class="topics">
+                <div class="topic">number theory</div>
+                <div class="topic">math</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise completed" href="/redacted/sol/-1216710694932995989">
+            <div id="exercise-hamming">
+              <div class="icon">
+                <div class="img" style="-redacted-style: -8233784861111194259"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Hamming</div>
+              <div class="stats">
+                <div class="difficulty easy">easy</div>
+              </div>
+              <div class="topics">
+                <div class="topic">maybe</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise completed" href="/redacted/sol/395428705007782131">
+            <div id="exercise-etl">
+              <div class="icon">
+                <div class="img" style="-redacted-style: 2772317147398210241"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">ETL</div>
+              <div class="stats">
+                <div class="difficulty easy">easy</div>
+              </div>
+              <div class="topics">
+                <div class="topic">algorithms</div>
+                <div class="topic">strings</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise completed" href="/redacted/sol/7287334565074954978">
+            <div id="exercise-raindrops">
+              <div class="icon">
+                <div class="img" style="-redacted-style: 6300220760765727632"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Raindrops</div>
+              <div class="stats">
+                <div class="difficulty easy">easy</div>
+              </div>
+              <div class="topics">
+                <div class="topic">strings</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise completed" href="/redacted/sol/2590744378508780690">
+            <div id="exercise-resistor-color-duo">
+              <div class="icon">
+                <div class="img" style="-redacted-style: -1218600777015702233"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Resistor Color Duo</div>
+              <div class="stats">
+                <div class="difficulty easy">easy</div>
+              </div>
+              <div class="topics">
+                <div class="topic">strings</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise completed" href="/redacted/sol/237705870131230276">
+            <div id="exercise-accumulate">
+              <div class="icon">
+                <div class="img" style="-redacted-style: 291545613536943793"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Accumulate</div>
+              <div class="stats">
+                <div class="difficulty easy">easy</div>
+              </div>
+              <div class="topics">
+                <div class="topic">lazy evaluation</div>
+                <div class="topic">library reimplementation</div>
+                <div class="topic">filtering</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise completed" href="/redacted/sol/-3178977481031174225">
+            <div id="exercise-strain">
+              <div class="icon">
+                <div class="img" style="-redacted-style: -871583737699225346"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Strain</div>
+              <div class="stats">
+                <div class="difficulty easy">easy</div>
+              </div>
+              <div class="topics">
+                <div class="topic">lazy evaluation</div>
+                <div class="topic">library reimplementation</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise completed" href="/redacted/sol/2335368238076138347">
+            <div id="exercise-phone-number">
+              <div class="icon">
+                <div class="img" style="-redacted-style: 139675585265378159"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Phone Number</div>
+              <div class="stats">
+                <div class="difficulty easy">easy</div>
+              </div>
+              <div class="topics">
+                <div class="topic">maybe</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise completed" href="/redacted/sol/-4084484103374646453">
+            <div id="exercise-beer-song">
+              <div class="icon">
+                <div class="img" style="-redacted-style: -8213390607498946632"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Beer Song</div>
+              <div class="stats">
+                <div class="difficulty easy">easy</div>
+              </div>
+              <div class="topics">
+                <div class="topic">refactoring</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise completed" href="/redacted/sol/198716684216481734">
+            <div id="exercise-scrabble-score">
+              <div class="icon">
+                <div class="img" style="-redacted-style: -93310711928672324"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Scrabble Score</div>
+              <div class="stats">
+                <div class="difficulty easy">easy</div>
+              </div>
+              <div class="topics">
+                <div class="topic">misc</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise completed" href="/redacted/sol/6101757119021475767">
+            <div id="exercise-kindergarten-garden">
+              <div class="icon">
+                <div class="img" style="-redacted-style: 4313840273041838996"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Kindergarten Garden</div>
+              <div class="stats">
+                <div class="difficulty easy">easy</div>
+              </div>
+              <div class="topics">
+                <div class="topic">define type</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise completed" href="/redacted/sol/5828847729565703434">
+            <div id="exercise-robot-simulator">
+              <div class="icon">
+                <div class="img" style="-redacted-style: 6977003536123914193"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Robot Simulator</div>
+              <div class="stats">
+                <div class="difficulty easy">easy</div>
+              </div>
+              <div class="topics">
+                <div class="topic">define type</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise completed" href="/redacted/sol/4005394849303070526">
+            <div id="exercise-secret-handshake">
+              <div class="icon">
+                <div class="img" style="-redacted-style: 4199017425677450993"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Secret Handshake</div>
+              <div class="stats">
+                <div class="difficulty easy">easy</div>
+              </div>
+              <div class="topics">
+                <div class="topic">bitwise operations</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise completed" href="/redacted/sol/-1453751864985998786">
+            <div id="exercise-anagram">
+              <div class="icon">
+                <div class="img" style="-redacted-style: -3614634516378594881"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Anagram</div>
+              <div class="stats">
+                <div class="difficulty medium">medium</div>
+              </div>
+              <div class="topics">
+                <div class="topic">filtering</div>
+                <div class="topic">lists</div>
+                <div class="topic">strings</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise completed" href="/redacted/sol/-9123173195797440500">
+            <div id="exercise-simple-linked-list">
+              <div class="icon">
+                <div class="img" style="-redacted-style: -4987341698821794932"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Simple Linked List</div>
+              <div class="stats">
+                <div class="difficulty medium">medium</div>
+              </div>
+              <div class="topics">
+                <div class="topic">define type</div>
+                <div class="topic">library reimplementation</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise completed" href="/redacted/sol/2218670437345542599">
+            <div id="exercise-list-ops">
+              <div class="icon">
+                <div class="img" style="-redacted-style: -4076924357925203220"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">List Ops</div>
+              <div class="stats">
+                <div class="difficulty medium">medium</div>
+              </div>
+              <div class="topics">
+                <div class="topic">accumulator strictness</div>
+                <div class="topic">library reimplementation</div>
+                <div class="topic">filtering</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise completed" href="/redacted/sol/-6285357609920813383">
+            <div id="exercise-meetup">
+              <div class="icon">
+                <div class="img" style="-redacted-style: 5217420943655227981"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Meetup</div>
+              <div class="stats">
+                <div class="difficulty medium">medium</div>
+              </div>
+              <div class="topics">
+                <div class="topic">misc</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise completed" href="/redacted/sol/641846907561452648">
+            <div id="exercise-roman-numerals">
+              <div class="icon">
+                <div class="img" style="-redacted-style: -8408737365258670856"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Roman Numerals</div>
+              <div class="stats">
+                <div class="difficulty medium">medium</div>
+              </div>
+              <div class="topics">
+                <div class="topic">maybe</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise completed" href="/redacted/sol/2555304747134649265">
+            <div id="exercise-prime-factors">
+              <div class="icon">
+                <div class="img" style="-redacted-style: 577271145670297722"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Prime Factors</div>
+              <div class="stats">
+                <div class="difficulty medium">medium</div>
+              </div>
+              <div class="topics">
+                <div class="topic">number theory</div>
+                <div class="topic">math</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise completed" href="/redacted/sol/3087873928133328831">
+            <div id="exercise-allergies">
+              <div class="icon">
+                <div class="img" style="-redacted-style: 6449160082740025748"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Allergies</div>
+              <div class="stats">
+                <div class="difficulty medium">medium</div>
+              </div>
+              <div class="topics">
+                <div class="topic">algorithms</div>
+                <div class="topic">bitwise operations</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise completed" href="/redacted/sol/1128520267835572603">
+            <div id="exercise-largest-series-product">
+              <div class="icon">
+                <div class="img" style="-redacted-style: 4098775786637840579"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Largest Series Product</div>
+              <div class="stats">
+                <div class="difficulty medium">medium</div>
+              </div>
+              <div class="topics">
+                <div class="topic">either</div>
+                <div class="topic">math</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise completed" href="/redacted/sol/512024000484480463">
+            <div id="exercise-clock">
+              <div class="icon">
+                <div class="img" style="-redacted-style: 2064478206385179214"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Clock</div>
+              <div class="stats">
+                <div class="difficulty medium">medium</div>
+              </div>
+              <div class="topics">
+                <div class="topic">define type</div>
+                <div class="topic">instance num</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise completed" href="/redacted/sol/-377861673157125283">
+            <div id="exercise-matrix">
+              <div class="icon">
+                <div class="img" style="-redacted-style: 6187540348942687690"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Matrix</div>
+              <div class="stats">
+                <div class="difficulty medium">medium</div>
+              </div>
+              <div class="topics">
+                <div class="topic">define type</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise completed" href="/redacted/sol/7636178840057228640">
+            <div id="exercise-house">
+              <div class="icon">
+                <div class="img" style="-redacted-style: -191931342131111480"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">House</div>
+              <div class="stats">
+                <div class="difficulty medium">medium</div>
+              </div>
+              <div class="topics">
+                <div class="topic">refactoring</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise completed" href="/redacted/sol/-4047340787420038198">
+            <div id="exercise-pascals-triangle">
+              <div class="icon">
+                <div class="img" style="-redacted-style: -1709490984898906183"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Pascal's Triangle</div>
+              <div class="stats">
+                <div class="difficulty medium">medium</div>
+              </div>
+              <div class="topics">
+                <div class="topic">number theory</div>
+                <div class="topic">math</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise completed" href="/redacted/sol/-6406318684697672441">
+            <div id="exercise-pythagorean-triplet">
+              <div class="icon">
+                <div class="img" style="-redacted-style: -6555985291066699367"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Pythagorean Triplet</div>
+              <div class="stats">
+                <div class="difficulty medium">medium</div>
+              </div>
+              <div class="topics">
+                <div class="topic">number theory</div>
+                <div class="topic">math</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise completed" href="/redacted/sol/-1769296413543147810">
+            <div id="exercise-saddle-points">
+              <div class="icon">
+                <div class="img" style="-redacted-style: -1719300928768811963"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Saddle Points</div>
+              <div class="stats">
+                <div class="difficulty medium">medium</div>
+              </div>
+              <div class="topics">
+                <div class="topic">misc</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise completed" href="/redacted/sol/3762247350092586205">
+            <div id="exercise-series">
+              <div class="icon">
+                <div class="img" style="-redacted-style: -6290752203882352250"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Series</div>
+              <div class="stats">
+                <div class="difficulty medium">medium</div>
+              </div>
+              <div class="topics">
+                <div class="topic">lists</div>
+                <div class="topic">strings</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise completed" href="/redacted/sol/-4354715819542425380">
+            <div id="exercise-sieve">
+              <div class="icon">
+                <div class="img" style="-redacted-style: -2817675659827243470"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Sieve</div>
+              <div class="stats">
+                <div class="difficulty medium">medium</div>
+              </div>
+              <div class="topics">
+                <div class="topic">number theory</div>
+                <div class="topic">math</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise completed" href="/redacted/sol/6452615333500957122">
+            <div id="exercise-atbash-cipher">
+              <div class="icon">
+                <div class="img" style="-redacted-style: -1674076275170019367"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Atbash Cipher</div>
+              <div class="stats">
+                <div class="difficulty medium">medium</div>
+              </div>
+              <div class="topics">
+                <div class="topic">algorithms</div>
+                <div class="topic">strings</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise completed" href="/redacted/sol/5413013464081364250">
+            <div id="exercise-crypto-square">
+              <div class="icon">
+                <div class="img" style="-redacted-style: 6009977738691465275"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Crypto Square</div>
+              <div class="stats">
+                <div class="difficulty medium">medium</div>
+              </div>
+              <div class="topics">
+                <div class="topic">misc</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise completed" href="/redacted/sol/3760735026971897477">
+            <div id="exercise-nth-prime">
+              <div class="icon">
+                <div class="img" style="-redacted-style: 8769448662412776360"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Nth Prime</div>
+              <div class="stats">
+                <div class="difficulty medium">medium</div>
+              </div>
+              <div class="topics">
+                <div class="topic">maybe</div>
+                <div class="topic">number theory</div>
+                <div class="topic">math</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise completed" href="/redacted/sol/-2036886186925742915">
+            <div id="exercise-word-count">
+              <div class="icon">
+                <div class="img" style="-redacted-style: -349167599900638195"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Word Count</div>
+              <div class="stats">
+                <div class="difficulty medium">medium</div>
+              </div>
+              <div class="topics">
+                <div class="topic">strings</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise completed" href="/redacted/sol/229154021146447946">
+            <div id="exercise-binary-search-tree">
+              <div class="icon">
+                <div class="img" style="-redacted-style: 8708672160350619516"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Binary Search Tree</div>
+              <div class="stats">
+                <div class="difficulty medium">medium</div>
+              </div>
+              <div class="topics">
+                <div class="topic">define type</div>
+                <div class="topic">maybe</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise completed" href="/redacted/sol/4582485197286908312">
+            <div id="exercise-queen-attack">
+              <div class="icon">
+                <div class="img" style="-redacted-style: 3403297852656389688"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Queen Attack</div>
+              <div class="stats">
+                <div class="difficulty medium">medium</div>
+              </div>
+              <div class="topics">
+                <div class="topic">maybe</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise completed" href="/redacted/sol/-7586858077177359431">
+            <div id="exercise-ocr-numbers">
+              <div class="icon">
+                <div class="img" style="-redacted-style: -6395157541447796627"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">OCR Numbers</div>
+              <div class="stats">
+                <div class="difficulty medium">medium</div>
+              </div>
+              <div class="topics">
+                <div class="topic">strings</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise completed" href="/redacted/sol/-1720577586480640108">
+            <div id="exercise-food-chain">
+              <div class="icon">
+                <div class="img" style="-redacted-style: 5933231388049302107"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Food Chain</div>
+              <div class="stats">
+                <div class="difficulty medium">medium</div>
+              </div>
+              <div class="topics">
+                <div class="topic">refactoring</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise completed" href="/redacted/sol/105275055104261455">
+            <div id="exercise-parallel-letter-frequency">
+              <div class="icon">
+                <div class="img" style="-redacted-style: -4138503990749401947"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Parallel Letter Frequency</div>
+              <div class="stats">
+                <div class="difficulty medium">medium</div>
+              </div>
+              <div class="topics">
+                <div class="topic">strings</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise completed" href="/redacted/sol/-4029870328283352504">
+            <div id="exercise-simple-cipher">
+              <div class="icon">
+                <div class="img" style="-redacted-style: 6302789442024386146"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Simple Cipher</div>
+              <div class="stats">
+                <div class="difficulty medium">medium</div>
+              </div>
+              <div class="topics">
+                <div class="topic">io monad</div>
+                <div class="topic">mutable state</div>
+                <div class="topic">random</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise completed" href="/redacted/sol/4105300697483896652">
+            <div id="exercise-palindrome-products">
+              <div class="icon">
+                <div class="img" style="-redacted-style: -7544354641253079244"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Palindrome Products</div>
+              <div class="stats">
+                <div class="difficulty medium">medium</div>
+              </div>
+              <div class="topics">
+                <div class="topic">math</div>
+                <div class="topic">lists</div>
+                <div class="topic">maybe</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise completed" href="/redacted/sol/-4559638416724588216">
+            <div id="exercise-pig-latin">
+              <div class="icon">
+                <div class="img" style="-redacted-style: -9117190349307646549"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Pig Latin</div>
+              <div class="stats">
+                <div class="difficulty medium">medium</div>
+              </div>
+              <div class="topics">
+                <div class="topic">strings</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise completed" href="/redacted/sol/4597942478015381915">
+            <div id="exercise-say">
+              <div class="icon">
+                <div class="img" style="-redacted-style: 4671272836458026837"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Say</div>
+              <div class="stats">
+                <div class="difficulty medium">medium</div>
+              </div>
+              <div class="topics">
+                <div class="topic">maybe</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise completed" href="/redacted/sol/7407560017885461255">
+            <div id="exercise-bank-account">
+              <div class="icon">
+                <div class="img" style="-redacted-style: -1196383948967456995"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Bank Account</div>
+              <div class="stats">
+                <div class="difficulty medium">medium</div>
+              </div>
+              <div class="topics">
+                <div class="topic">define type</div>
+                <div class="topic">io monad</div>
+                <div class="topic">maybe</div>
+                <div class="topic">mutable state</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise completed" href="/redacted/sol/8398401559852446798">
+            <div id="exercise-sublist">
+              <div class="icon">
+                <div class="img" style="-redacted-style: 6989168623505105908"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Sublist</div>
+              <div class="stats">
+                <div class="difficulty medium">medium</div>
+              </div>
+              <div class="topics">
+                <div class="topic">misc</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise completed" href="/redacted/sol/-7530260707224185818">
+            <div id="exercise-linked-list">
+              <div class="icon">
+                <div class="img" style="-redacted-style: -1083251297495516826"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Linked List</div>
+              <div class="stats">
+                <div class="difficulty medium">medium</div>
+              </div>
+              <div class="topics">
+                <div class="topic">define type</div>
+                <div class="topic">io monad</div>
+                <div class="topic">library reimplementation</div>
+                <div class="topic">maybe</div>
+                <div class="topic">mutable state</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise completed" href="/redacted/sol/3176100835521392369">
+            <div id="exercise-minesweeper">
+              <div class="icon">
+                <div class="img" style="-redacted-style: -2253779013732531480"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Minesweeper</div>
+              <div class="stats">
+                <div class="difficulty medium">medium</div>
+              </div>
+              <div class="topics">
+                <div class="topic">misc</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise completed" href="/redacted/sol/612191393889594095">
+            <div id="exercise-wordy">
+              <div class="icon">
+                <div class="img" style="-redacted-style: -1956473700975291617"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Wordy</div>
+              <div class="stats">
+                <div class="difficulty medium">medium</div>
+              </div>
+              <div class="topics">
+                <div class="topic">maybe</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise completed" href="/redacted/sol/-2966937724392563421">
+            <div id="exercise-connect">
+              <div class="icon">
+                <div class="img" style="-redacted-style: 3486132508145438844"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Connect</div>
+              <div class="stats">
+                <div class="difficulty hard">hard</div>
+              </div>
+              <div class="topics">
+                <div class="topic">maybe</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise completed" href="/redacted/sol/-2004849086470196407">
+            <div id="exercise-sgf-parsing">
+              <div class="icon">
+                <div class="img" style="-redacted-style: -285987948763558301"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">SGF Parsing</div>
+              <div class="stats">
+                <div class="difficulty hard">hard</div>
+              </div>
+              <div class="topics">
+                <div class="topic">maybe</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise completed" href="/redacted/sol/3453351140408096097">
+            <div id="exercise-go-counting">
+              <div class="icon">
+                <div class="img" style="-redacted-style: -7482936410562160114"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Go Counting</div>
+              <div class="stats">
+                <div class="difficulty hard">hard</div>
+              </div>
+              <div class="topics">
+                <div class="topic">maybe</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise completed" href="/redacted/sol/-8760837033663791832">
+            <div id="exercise-lens-person">
+              <div class="icon">
+                <div class="img" style="-redacted-style: -3990597558152725648"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Lens Person</div>
+              <div class="stats">
+                <div class="difficulty hard">hard</div>
+              </div>
+              <div class="topics">
+                <div class="topic">lens</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise completed" href="/redacted/sol/8392523268933129536">
+            <div id="exercise-zipper">
+              <div class="icon">
+                <div class="img" style="-redacted-style: -1478598995179209179"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Zipper</div>
+              <div class="stats">
+                <div class="difficulty hard">hard</div>
+              </div>
+              <div class="topics">
+                <div class="topic">define type</div>
+                <div class="topic">maybe</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise completed" href="/redacted/sol/-7245660827819971384">
+            <div id="exercise-forth">
+              <div class="icon">
+                <div class="img" style="-redacted-style: 5003737321626167031"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Forth</div>
+              <div class="stats">
+                <div class="difficulty hard">hard</div>
+              </div>
+              <div class="topics">
+                <div class="topic">define type</div>
+                <div class="topic">either</div>
+                <div class="topic">stack</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise completed" href="/redacted/sol/6686095634785989011">
+            <div id="exercise-pov">
+              <div class="icon">
+                <div class="img" style="-redacted-style: -7953209078767313365"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">POV</div>
+              <div class="stats">
+                <div class="difficulty hard">hard</div>
+              </div>
+              <div class="topics">
+                <div class="topic">maybe</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise in-progress" href="/redacted/sol/1568686814978288820">
+            <div id="exercise-isogram">
+              <div class="icon">
+                <div class="img" style="-redacted-style: 821113289825734216"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Isogram</div>
+              <div class="stats">
+                <div class="difficulty easy">easy</div>
+              </div>
+              <div class="topics">
+                <div class="topic">strings</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise in-progress" href="/redacted/sol/-2980008867537417967">
+            <div id="exercise-diamond">
+              <div class="icon">
+                <div class="img" style="-redacted-style: 654948026282845006"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Diamond</div>
+              <div class="stats">
+                <div class="difficulty easy">easy</div>
+              </div>
+              <div class="topics">
+                <div class="topic">strings</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise in-progress" href="/redacted/sol/-6886470579847689967">
+            <div id="exercise-armstrong-numbers">
+              <div class="icon">
+                <div class="img" style="-redacted-style: -2172651461518974130"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Armstrong Numbers</div>
+              <div class="stats">
+                <div class="difficulty easy">easy</div>
+              </div>
+              <div class="topics">
+                <div class="topic">math</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise in-progress" href="/redacted/sol/7718761653409993256">
+            <div id="exercise-acronym">
+              <div class="icon">
+                <div class="img" style="-redacted-style: 4997040059813444423"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Acronym</div>
+              <div class="stats">
+                <div class="difficulty easy">easy</div>
+              </div>
+              <div class="topics">
+                <div class="topic">strings</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise in-progress" href="/redacted/sol/2009978264577568495">
+            <div id="exercise-perfect-numbers">
+              <div class="icon">
+                <div class="img" style="-redacted-style: -2817368128310957120"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Perfect Numbers</div>
+              <div class="stats">
+                <div class="difficulty easy">easy</div>
+              </div>
+              <div class="topics">
+                <div class="topic">maybe</div>
+                <div class="topic">number theory</div>
+                <div class="topic">math</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise in-progress" href="/redacted/sol/-7420542083404027466">
+            <div id="exercise-resistor-color-trio">
+              <div class="icon">
+                <div class="img" style="-redacted-style: -5367048245656039808"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Resistor Color Trio</div>
+              <div class="stats">
+                <div class="difficulty easy">easy</div>
+              </div>
+              <div class="topics">
+                <div class="topic">data types</div>
+                <div class="topic">strings</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise in-progress" href="/redacted/sol/-2230623317294493843">
+            <div id="exercise-twelve-days">
+              <div class="icon">
+                <div class="img" style="-redacted-style: 5722863405412042409"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Twelve Days</div>
+              <div class="stats">
+                <div class="difficulty easy">easy</div>
+              </div>
+              <div class="topics">
+                <div class="topic">strings</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise in-progress" href="/redacted/sol/6067603152769899437">
+            <div id="exercise-isbn-verifier">
+              <div class="icon">
+                <div class="img" style="-redacted-style: -8996154935790340583"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">ISBN Verifier</div>
+              <div class="stats">
+                <div class="difficulty easy">easy</div>
+              </div>
+              <div class="topics">
+                <div class="topic">algorithms</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise in-progress" href="/redacted/sol/6215313755396345844">
+            <div id="exercise-yacht">
+              <div class="icon">
+                <div class="img" style="-redacted-style: -6606288742288511237"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Yacht</div>
+              <div class="stats">
+                <div class="difficulty easy">easy</div>
+              </div>
+              <div class="topics">
+                <div class="topic">lists</div>
+                <div class="topic">sum types</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise in-progress" href="/redacted/sol/-8572060299380008389">
+            <div id="exercise-run-length-encoding">
+              <div class="icon">
+                <div class="img" style="-redacted-style: -1919516389580000748"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Run Length Encoding</div>
+              <div class="stats">
+                <div class="difficulty easy">easy</div>
+              </div>
+              <div class="topics">
+                <div class="topic">algorithms</div>
+                <div class="topic">strings</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise mentoring-requested" href="/redacted/sol/-8350871771509760317">
+            <div id="exercise-triangle">
+              <div class="icon">
+                <div class="img" style="-redacted-style: -3398720579576497971"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Triangle</div>
+              <div class="stats">
+                <div class="difficulty easy">easy</div>
+              </div>
+              <div class="topics">
+                <div class="topic">number theory</div>
+                <div class="topic">math</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise in-progress" href="/redacted/sol/-7393811418637475481">
+            <div id="exercise-complex-numbers">
+              <div class="icon">
+                <div class="img" style="-redacted-style: 7024222782232695741"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Complex Numbers</div>
+              <div class="stats">
+                <div class="difficulty easy">easy</div>
+              </div>
+              <div class="topics">
+                <div class="topic">define type</div>
+                <div class="topic">number theory</div>
+                <div class="topic">math</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise in-progress" href="/redacted/sol/-8793675168876292309">
+            <div id="exercise-protein-translation">
+              <div class="icon">
+                <div class="img" style="-redacted-style: -2988756849507504657"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Protein Translation</div>
+              <div class="stats">
+                <div class="difficulty easy">easy</div>
+              </div>
+              <div class="topics">
+                <div class="topic">maybe</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise in-progress" href="/redacted/sol/1261204889443596558">
+            <div id="exercise-dnd-character">
+              <div class="icon">
+                <div class="img" style="-redacted-style: 6870320513226421236"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">D&amp;D Character</div>
+              <div class="stats">
+                <div class="difficulty easy">easy</div>
+              </div>
+              <div class="topics">
+                <div class="topic">random</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise in-progress" href="/redacted/sol/6230065276837539003">
+            <div id="exercise-all-your-base">
+              <div class="icon">
+                <div class="img" style="-redacted-style: -4353931680908789243"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">All Your Base</div>
+              <div class="stats">
+                <div class="difficulty medium">medium</div>
+              </div>
+              <div class="topics">
+                <div class="topic">either</div>
+                <div class="topic">math</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise in-progress" href="/redacted/sol/8008891732263790329">
+            <div id="exercise-proverb">
+              <div class="icon">
+                <div class="img" style="-redacted-style: -4875115449817137472"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Proverb</div>
+              <div class="stats">
+                <div class="difficulty medium">medium</div>
+              </div>
+              <div class="topics">
+                <div class="topic">lists</div>
+                <div class="topic">recursion</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise in-progress" href="/redacted/sol/-318670367366800305">
+            <div id="exercise-binary-search">
+              <div class="icon">
+                <div class="img" style="-redacted-style: -1883354117617489000"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Binary Search</div>
+              <div class="stats">
+                <div class="difficulty medium">medium</div>
+              </div>
+              <div class="topics">
+                <div class="topic">maybe</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise in-progress" href="/redacted/sol/-699236584232897516">
+            <div id="exercise-matching-brackets">
+              <div class="icon">
+                <div class="img" style="-redacted-style: 9171461627231014715"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Matching Brackets</div>
+              <div class="stats">
+                <div class="difficulty medium">medium</div>
+              </div>
+              <div class="topics">
+                <div class="topic">stack</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise mentoring-requested" href="/redacted/sol/8723284113684777142">
+            <div id="exercise-luhn">
+              <div class="icon">
+                <div class="img" style="-redacted-style: 7215857049967461760"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Luhn</div>
+              <div class="stats">
+                <div class="difficulty medium">medium</div>
+              </div>
+              <div class="topics">
+                <div class="topic">algorithms</div>
+                <div class="topic">strings</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise in-progress" href="/redacted/sol/-405100630914644643">
+            <div id="exercise-rotational-cipher">
+              <div class="icon">
+                <div class="img" style="-redacted-style: -7035729338345319711"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Rotational Cipher</div>
+              <div class="stats">
+                <div class="difficulty medium">medium</div>
+              </div>
+              <div class="topics">
+                <div class="topic">strings</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise in-progress" href="/redacted/sol/2008359211124655828">
+            <div id="exercise-spiral-matrix">
+              <div class="icon">
+                <div class="img" style="-redacted-style: 5898433623777355041"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Spiral Matrix</div>
+              <div class="stats">
+                <div class="difficulty medium">medium</div>
+              </div>
+              <div class="topics">
+                <div class="topic">lists</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise in-progress" href="/redacted/sol/5523968588895277895">
+            <div id="exercise-custom-set">
+              <div class="icon">
+                <div class="img" style="-redacted-style: 6622186971736118509"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Custom Set</div>
+              <div class="stats">
+                <div class="difficulty medium">medium</div>
+              </div>
+              <div class="topics">
+                <div class="topic">define type</div>
+                <div class="topic">library reimplementation</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise in-progress" href="/redacted/sol/1941621908025822832">
+            <div id="exercise-transpose">
+              <div class="icon">
+                <div class="img" style="-redacted-style: -5187035981151767753"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Transpose</div>
+              <div class="stats">
+                <div class="difficulty medium">medium</div>
+              </div>
+              <div class="topics">
+                <div class="topic">lists</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise mentoring-requested" href="/redacted/sol/5796693713590071322">
+            <div id="exercise-robot-name">
+              <div class="icon">
+                <div class="img" style="-redacted-style: 8462303319071399091"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Robot Name</div>
+              <div class="stats">
+                <div class="difficulty medium">medium</div>
+              </div>
+              <div class="topics">
+                <div class="topic">define type</div>
+                <div class="topic">io monad</div>
+                <div class="topic">random</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise in-progress" href="/redacted/sol/-5322110454074709222">
+            <div id="exercise-rail-fence-cipher">
+              <div class="icon">
+                <div class="img" style="-redacted-style: -6402351669497302256"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Rail Fence Cipher</div>
+              <div class="stats">
+                <div class="difficulty medium">medium</div>
+              </div>
+              <div class="topics">
+                <div class="topic">algorithms</div>
+                <div class="topic">strings</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise in-progress" href="/redacted/sol/-4784511197465328440">
+            <div id="exercise-zebra-puzzle">
+              <div class="icon">
+                <div class="img" style="-redacted-style: -4449375349827630718"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Zebra Puzzle</div>
+              <div class="stats">
+                <div class="difficulty medium">medium</div>
+              </div>
+              <div class="topics">
+                <div class="topic">algorithms</div>
+                <div class="topic">logic</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise in-progress" href="/redacted/sol/-8653555858387055754">
+            <div id="exercise-change">
+              <div class="icon">
+                <div class="img" style="-redacted-style: -3554316291775164665"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Change</div>
+              <div class="stats">
+                <div class="difficulty medium">medium</div>
+              </div>
+              <div class="topics">
+                <div class="topic">maybe</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise in-progress" href="/redacted/sol/8009184261217029553">
+            <div id="exercise-alphametics">
+              <div class="icon">
+                <div class="img" style="-redacted-style: -580356723352589611"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Alphametics</div>
+              <div class="stats">
+                <div class="difficulty medium">medium</div>
+              </div>
+              <div class="topics">
+                <div class="topic">maybe</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise in-progress" href="/redacted/sol/-1420259843996556004">
+            <div id="exercise-bowling">
+              <div class="icon">
+                <div class="img" style="-redacted-style: 9220080304634774470"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Bowling</div>
+              <div class="stats">
+                <div class="difficulty medium">medium</div>
+              </div>
+              <div class="topics">
+                <div class="topic">either</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise in-progress" href="/redacted/sol/-983019647338522701">
+            <div id="exercise-poker">
+              <div class="icon">
+                <div class="img" style="-redacted-style: -3976229278934755239"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Poker</div>
+              <div class="stats">
+                <div class="difficulty medium">medium</div>
+              </div>
+              <div class="topics">
+                <div class="topic">maybe</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+          <a class="widget-side-exercise in-progress" href="/redacted/sol/-5122910190816021719">
+            <div id="exercise-dominoes">
+              <div class="icon">
+                <div class="img" style="-redacted-style: -3803303169574009419"/>
+              </div>
+              <i aria-label="lock status locked" class="fas fa-lock status locked"/>
+              <i aria-label="unlock status unlocked" class="fas fa-unlock status unlocked"/>
+              <i aria-label="comment status mentoring-requested" class="fas fa-comment status mentoring-requested"/>
+              <i aria-label="adjust status in-progress" class="fas fa-adjust status in-progress"/>
+              <i aria-label="thumbs-up status approved" class="fas fa-thumbs-up status approved"/>
+              <div class="status completed">
+                <i aria-label="check" class="fas fa-check"/>
+              </div>
+              <div class="title">Dominoes</div>
+              <div class="stats">
+                <div class="difficulty hard">hard</div>
+              </div>
+              <div class="topics">
+                <div class="topic">maybe</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-3">
+          <div class="widget-side-exercise completed">
+            <div class="icon">
+              <div class="img" style="-redacted-style: -2228935194461460494"/>
+            </div>
+            <div class="status deprecated">Deprecated</div>
+            <div class="title">Binary</div>
+            <div class="topics">
+              <div class="topic">Deprecated</div>
+            </div>
+          </div>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-3">
+          <div class="widget-side-exercise completed">
+            <div class="icon">
+              <div class="img" style="-redacted-style: -479231599116667457"/>
+            </div>
+            <div class="status deprecated">Deprecated</div>
+            <div class="title">Gigasecond</div>
+            <div class="topics">
+              <div class="topic">Deprecated</div>
+            </div>
+          </div>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-3">
+          <div class="widget-side-exercise completed">
+            <div class="icon">
+              <div class="img" style="-redacted-style: -3807087386059988619"/>
+            </div>
+            <div class="status deprecated">Deprecated</div>
+            <div class="title">Hexadecimal</div>
+            <div class="topics">
+              <div class="topic">Deprecated</div>
+            </div>
+          </div>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-3">
+          <div class="widget-side-exercise completed">
+            <div class="icon">
+              <div class="img" style="-redacted-style: -4135588514534273613"/>
+            </div>
+            <div class="status deprecated">Deprecated</div>
+            <div class="title">Octal</div>
+            <div class="topics">
+              <div class="topic">Deprecated</div>
+            </div>
+          </div>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-3">
+          <div class="widget-side-exercise completed">
+            <div class="icon">
+              <div class="img" style="-redacted-style: -1401291994901607329"/>
+            </div>
+            <div class="status deprecated">Deprecated</div>
+            <div class="title">Trinary</div>
+            <div class="topics">
+              <div class="topic">Deprecated</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
