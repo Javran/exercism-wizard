@@ -35,6 +35,8 @@ dependencies:
 - cookie
 - time
 - async
+- hashable
+- random
 
 library:
   source-dirs: src

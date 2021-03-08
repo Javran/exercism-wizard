@@ -12,10 +12,11 @@ where
 
 import Control.Arrow
 import Control.Concurrent.Async
-import Control.Monad
+import Control.Monad hiding (when)
 import qualified Data.Aeson as Aeson
 import qualified Data.ByteString.Lazy as BSL
 import Data.Char
+import qualified Data.Hashable
 import Data.List
 import qualified Data.Map.Strict as M
 import Data.Maybe
@@ -27,6 +28,7 @@ import qualified ExercismWizard.Execute.Overview.RawExercise as RE
 import Network.HTTP.Client
 import Network.HTTP.Client.TLS
 import System.FilePath.Posix
+import System.Random
 import Text.XML.HXT.Core
 import Web.Cookie
 
@@ -169,18 +171,44 @@ getOverview = do
 
 -- getOverview = _extractTestDataTo "testdata/overview-extract"
 
+redactLinks :: ArrowXml a => Int -> a XmlTree XmlTree
+redactLinks salt =
+  processTopDown $
+    processAttrl
+      (changeAttrValue redact `when` hasName "href")
+      `when` (isElem >>> hasName "a")
+      >>> processAttrl
+        (changeAttrValue redact `when` (hasName "src" <+> hasName "onerror"))
+        `when` (isElem >>> hasName "img")
+      >>> processAttrl
+        (changeAttrValue redact `when` hasName "style")
+        `when` (isElem >>> divClassIs "img")
+  where
+    redact :: String -> String
+    redact xs
+      | "/my/solutions/" `isPrefixOf` xs =
+        "/redacted/sol/" <> replaced
+      | "https://assets" `isPrefixOf` xs =
+        "/redacted/assets/" <> replaced
+      | "background-image:" `isPrefixOf` xs = "-redacted-style: " <> replaced
+      | "this.onerror=" `isPrefixOf` xs = "redacted=" <> replaced
+      | otherwise = xs
+      where
+        replaced = show (Data.Hashable.hashWithSalt salt xs)
+
 {-
   This function extract parts of interest of Exercism webpage and write them to files.
   Used for generating testdata.
  -}
 _extractTestDataTo :: FilePath -> IO ()
 _extractTestDataTo fpBase = do
+  salt <- randomIO
   EWConf.Config {EWConf.userCookies} <- EWConf.readConfig
   mgr <- newManager tlsManagerSettings
   let writeDoc = writeDocument [withIndent yes]
       processBody p =
         processChildren
-          (deep (hasName "body") >>> processChildren p)
+          (deep (hasName "body") >>> processChildren (redactLinks salt >>> p))
 
   lPairs <- do
     let xmlProc =
@@ -192,7 +220,8 @@ _extractTestDataTo fpBase = do
         tr c = c
         fp = fpBase </> fmap tr (tail path) <.> "raw"
         xmlProc =
-          processBody (deep (divClassIs "core-exercises" <+> divClassIs "side-exercises"))
+          processBody
+            (deep (divClassIs "core-exercises" <+> divClassIs "side-exercises"))
             >>> writeDoc fp
     processWebPage mgr userCookies path xmlProc
 
