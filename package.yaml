@@ -38,6 +38,9 @@ dependencies:
 - hashable
 - random
 
+extra-source-files:
+  - testdata/overview-extract/*
+
 library:
   source-dirs: src
   ghc-options:
