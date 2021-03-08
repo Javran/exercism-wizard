@@ -149,6 +149,8 @@ processMyTracksLang
 processMyTracksLang mgr userCookies (_langName, langPath) =
   processWebPage mgr userCookies langPath allExercises
 
+
+-- TODO: use prettyprinter.
 getOverview :: IO ()
 getOverview = do
   EWConf.Config {EWConf.userCookies} <- EWConf.readConfig
@@ -160,7 +162,7 @@ getOverview = do
     putStrLn $ "Overview on " <> lName <> " track: "
     let groupped = M.fromListWith (<>) $ fmap (\e@RE.RawExercise {RE.status} -> (status, [e])) es
     forM_ (M.toList groupped) $ \(k, vs) -> do
-      putStrLn $ "  " <> k <> ":"
+      putStrLn $ "  " <> k <> "(" <> show (length vs) <> "):"
       putStrLn $
         "    "
           <> case splitAt 5 (fmap RE.eId vs) of
