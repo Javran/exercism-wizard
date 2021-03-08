@@ -37,6 +37,7 @@ dependencies:
 - async
 - hashable
 - random
+- random-shuffle
 
 extra-source-files:
   - testdata/overview-extract/*

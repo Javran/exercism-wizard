@@ -30,7 +30,7 @@ data Command
   | CmdPeekSolution RawExercise
   | CmdDebug [String]
   | CmdSaveCookie
-  | CmdOverview
+  | CmdOverview Bool
   deriving (Show, Eq)
 
 newtype RawExercise
@@ -72,7 +72,7 @@ rawExercise = do
 opts :: ParserInfo Command
 opts =
   info
-    (subparser
+    (hsubparser
        (proxyCommand
           <> langActionCommand Format "fmt" "Format source code."
           <> langActionCommand Test "test" "Run test suite."
@@ -92,7 +92,7 @@ opts =
           <> command
             "overview"
             (info
-               (pure CmdOverview)
+               (CmdOverview <$> switch (long "shuffle" <> help "listing exercises in random order"))
                (progDesc "Print an overview from website.")))
        <**> helper)
     (fullDesc

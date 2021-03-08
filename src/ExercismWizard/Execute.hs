@@ -298,7 +298,7 @@ execute cli@ExercismCli {binPath} cmd = case cmd of
         Right cs = ETC.toUserCookies pre
     print pre
     EWConf.writeConfig (EWConf.Config cs)
-  CmdOverview -> getOverview
+  CmdOverview shuffle -> getOverview shuffle
   where
     binPathT = toText binPath
     handleGetThen quiet raw action = do

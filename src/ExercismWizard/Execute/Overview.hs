@@ -31,6 +31,7 @@ import System.FilePath.Posix
 import System.Random
 import Text.XML.HXT.Core
 import Web.Cookie
+import System.Random.Shuffle
 
 urlBase :: String
 urlBase = "https://exercism.io"
@@ -151,8 +152,8 @@ processMyTracksLang mgr userCookies (_langName, langPath) =
 
 
 -- TODO: use prettyprinter.
-getOverview :: IO ()
-getOverview = do
+getOverview :: Bool -> IO ()
+getOverview needShuffle = do
   EWConf.Config {EWConf.userCookies} <- EWConf.readConfig
   mgr <- newManager tlsManagerSettings
   ls <- processMyTracks mgr userCookies
@@ -161,7 +162,8 @@ getOverview = do
   forM_ results $ \((lName, _), es) -> do
     putStrLn $ "Overview on " <> lName <> " track: "
     let groupped = M.fromListWith (<>) $ fmap (\e@RE.RawExercise {RE.status} -> (status, [e])) es
-    forM_ (M.toList groupped) $ \(k, vs) -> do
+    forM_ (M.toList groupped) $ \(k, vsPre) -> do
+      vs <- if needShuffle then shuffleM vsPre else pure vsPre
       putStrLn $ "  " <> k <> "(" <> show (length vs) <> "):"
       putStrLn $
         "    "
