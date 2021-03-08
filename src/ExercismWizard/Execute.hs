@@ -228,7 +228,7 @@ execute cli@ExercismCli {binPath} cmd = case cmd of
           let sFp = encodeString fp
           origContent <- T.readFile sFp
           let xs = T.lines origContent
-              (remove, newXs) = partition ((== ignoreLineMarker) . T.strip) xs
+              (remove, newXs) = partition ((ignoreLineMarker `T.isPrefixOf`) . T.strip) xs
           T.writeFile sFp (T.unlines newXs)
           T.putStrLn $
             "Removed " <> T.pack (show (length remove)) <> " lines from " <> T.pack sFp
