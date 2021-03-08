@@ -23,6 +23,8 @@ Put built binary (which should be called `ew`) somewhere in `$PATH`, then:
 - `ew peekrepo`: Open a URL to Exercism's language repo
    (for taking a look at problems locked away)
 - `ew peeksol`: Open a URL to community solutions
+- `ew savecookie`: Save cookie exported from EditThisCookie to a local place.
+- `ew overview`: Parse an overview of current progress parsed from the website, cookie required.
 
 ## Planned features
 
