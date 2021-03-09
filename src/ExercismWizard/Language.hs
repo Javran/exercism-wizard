@@ -48,8 +48,7 @@ data Language = Language
     solutionFiles :: Exercise -> IO [FilePath]
   , editMethod :: Maybe EditMethod
   , -- | When set: (testpath, pattern, <line>), meaning scan all files under testpath
-    --   and remove lines that contains only <line> and surrounding whitespaces.
-    --   TODO: to be implemented.
+    --   and remove lines that begins with <line> ignoring whitespaces
     removeIgnore :: Maybe (FilePath, Pattern (), T.Text)
   }
 
@@ -172,5 +171,5 @@ scheme =
     , actions = M.singleton Test $ RunIO LangScheme.runTests
     , solutionFiles = const $ findThenIgnoreTests ".scm" "test.scm"
     , editMethod = Just OpenWithEditor
-    , removeIgnore = Nothing
+    , removeIgnore = Just (".", void (suffix "test.scm"), "(test-skip ")
     }
