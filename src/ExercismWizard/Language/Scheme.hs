@@ -12,7 +12,6 @@ import qualified Data.Text as T
 import ExercismWizard.FSPath
 import ExercismWizard.Types
 import Turtle.Prelude
-import Turtle.Shell
 
 {-
   Scheme track attempts to be RnRS-compliant but for now there are still
@@ -35,10 +34,10 @@ import Turtle.Shell
   The following is a workaround based on this to make `ew test` work regardless of the situation.
 
  -}
-runTests :: ExercismCli -> Exercise -> [T.Text] -> IO ()
-runTests _cli Exercise {name} _extraArgs = sh $ do
+runTests :: ExercismCli -> Exercise -> [T.Text] -> IO CmdSpec
+runTests _cli Exercise {name} _extraArgs = do
   testScm <- do
     let validFile fp = testfile fp >>= \exist -> guard exist >> pure fp
     validFile "test.scm"
       <|> validFile (fromText (name <> toText "-test.scm"))
-  procs "guile" [toText testScm] ""
+  pure $ CmdSpec "guile" [toText testScm] False

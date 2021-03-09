@@ -51,16 +51,20 @@ data CmdSpec = CmdSpec
     detach :: Bool
   }
 
--- TODO: we could support an IO action that gives (prog, args) pair so we can output exactly what we are running.
+-- Action to be taken for a exercise project.
 data Action
-  = RunProgram CmdSpec
-  | RunIO
+  = -- | Run a program with arguments
+    RunProgram CmdSpec
+  | -- | Compute the program and arguments to run and then run it
+    ComputeAndRun (ExercismCli -> Exercise -> [T.Text] -> IO CmdSpec)
+  | -- | A general IO action, note that user can't have a verbose output
+    --   on the program and arguments if this one is used.
+    RunIO
       ( ExercismCli
         -> Exercise
         -> {- this one is the extra args passed from command line -} [T.Text]
         -> IO ()
       )
-  | ComputeAndRun (ExercismCli -> Exercise -> [T.Text] -> IO CmdSpec)
 
 -- While we can support a general IO action, I want to see if there's some pattern that
 -- allows us to put things into ADTs.

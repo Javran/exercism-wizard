@@ -155,7 +155,7 @@ haskell =
     , altNames = ["hs"]
     , actions =
         M.fromList
-          [ (Format, RunIO LangHaskell.runOrmolu)
+          [ (Format, ComputeAndRun LangHaskell.runOrmolu)
           , (Test, rp "stack test")
           , (Lint, rp "hlint .")
           ]
@@ -169,7 +169,7 @@ scheme =
   Language
     { track = Scheme
     , altNames = ["scm"]
-    , actions = M.singleton Test $ RunIO LangScheme.runTests
+    , actions = M.singleton Test $ ComputeAndRun LangScheme.runTests
     , solutionFiles = const $ findThenIgnoreTests ".scm" "test.scm"
     , editMethod = Just OpenWithEditor
     , removeIgnore = Just (".", void (suffix "test.scm"), "(test-skip ")
