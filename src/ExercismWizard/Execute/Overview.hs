@@ -24,7 +24,7 @@ import qualified Data.Text as T
 import Data.Text.Encoding (decodeUtf8, encodeUtf8)
 import Data.Time.Clock
 import qualified ExercismWizard.Config as EWConf
-import qualified ExercismWizard.Execute.Overview.RawExercise as RE
+import ExercismWizard.Execute.Overview.RawExercise
 import Network.HTTP.Client
 import Network.HTTP.Client.TLS
 import System.FilePath.Posix
@@ -94,7 +94,7 @@ consumePrefix prefix input = ys <$ guard (prefix == xs)
 mayProduce :: ArrowList cat => (a -> Maybe c) -> cat a c
 mayProduce m = arrL (maybeToList . m)
 
-coreExercises, sideExercises, allExercises :: ArrowXml cat => cat XmlTree RE.RawExercise
+coreExercises, sideExercises, allExercises :: ArrowXml cat => cat XmlTree RawExercise
 coreExercises =
   deep (divClassIs "core-exercises")
     /> divTag >>> mkExercise
@@ -103,7 +103,7 @@ coreExercises =
       status <- getStatus -< node
       name <- getTitle -< node
       (eId, uri) <- idAndHref -< node
-      returnA -< RE.RawExercise {RE.status, RE.name, RE.eId, RE.uri, RE.core = True}
+      returnA -< RawExercise {status, name, eId, uri, core = True}
     getStatus =
       getAttrValue "class" >>> mayProduce (consumePrefix "exercise-wrapper ")
     idAndHref =
@@ -121,7 +121,7 @@ sideExercises =
       name <- getTitle -< node
       status <- getStatus -< node
       uri <- mayGetUri -< node
-      returnA -< RE.RawExercise {RE.status, RE.name, RE.eId, RE.uri, RE.core = False}
+      returnA -< RawExercise {status, name, eId, uri, core = False}
     getStatus =
       getAttrValue "class" >>> mayProduce (consumePrefix "widget-side-exercise ")
     getId =
@@ -146,7 +146,7 @@ processMyTracksLang
   :: Manager
   -> M.Map T.Text T.Text
   -> (String, String)
-  -> IO [RE.RawExercise]
+  -> IO [RawExercise]
 processMyTracksLang mgr userCookies (_langName, langPath) =
   processWebPage mgr userCookies langPath allExercises
 
@@ -161,13 +161,13 @@ getOverview needShuffle = do
   results <- mapM wait tasks
   forM_ results $ \((lName, _), es) -> do
     putStrLn $ "Overview on " <> lName <> " track: "
-    let groupped = M.fromListWith (<>) $ fmap (\e@RE.RawExercise {RE.status} -> (status, [e])) es
+    let groupped = M.fromListWith (<>) $ fmap (\e@RawExercise {status} -> (status, [e])) es
     forM_ (M.toList groupped) $ \(k, vsPre) -> do
       vs <- if needShuffle then shuffleM vsPre else pure vsPre
       putStrLn $ "  " <> k <> "(" <> show (length vs) <> "):"
       putStrLn $
         "    "
-          <> case splitAt 5 (fmap RE.eId vs) of
+          <> case splitAt 5 (fmap eId vs) of
             (xs, []) ->
               intercalate ", " xs
             (xs, ys) ->
