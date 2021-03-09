@@ -25,6 +25,9 @@ import ExercismWizard.Language.Haskell as LangHaskell
 import ExercismWizard.Language.Scheme as LangScheme
   ( runTests
   )
+import ExercismWizard.Language.Racket as LangRacket
+  ( runTests
+  )
 import ExercismWizard.Types
   ( Action (..)
   , ActionType (..)
@@ -180,7 +183,7 @@ racket =
   Language
     { track = Racket
     , altNames = ["rkt"]
-    , actions = mempty -- TODO: test could be supported
+    , actions = M.singleton Test $ ComputeAndRun LangRacket.runTests
     , solutionFiles = const $ findThenIgnoreTests ".rkt" "-test.rkt"
     , editMethod = Just $ OpenAllFilesWithProgram "drracket"
     , removeIgnore = Nothing

@@ -8,7 +8,6 @@ module ExercismWizard.Language.Haskell
 where
 
 import qualified Control.Foldl as Fold
-import qualified Control.Foldl as Foldl
 import Control.Monad
 import qualified Data.HashMap.Strict as HM
 import Data.Monoid
@@ -26,7 +25,7 @@ runOrmolu _ _ _ = do
   cwd <- pwd
   srcFiles <-
     reduce
-      Foldl.mconcat
+      Fold.mconcat
       (forM
          ["src", "test"]
          (\s ->
