@@ -60,6 +60,7 @@ data Action
         -> {- this one is the extra args passed from command line -} [T.Text]
         -> IO ()
       )
+  | ComputeAndRun (ExercismCli -> Exercise -> [T.Text] -> IO CmdSpec)
 
 -- While we can support a general IO action, I want to see if there's some pattern that
 -- allows us to put things into ADTs.

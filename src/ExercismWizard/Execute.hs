@@ -123,6 +123,23 @@ openUrlDetached url =
   where
     runProg = proc "xdg-open" [url] ""
 
+performAction :: ExercismCli -> Exercise -> [T.Text] -> Action -> Shell ()
+performAction cli e extraArgs action = do
+  pushd (exerciseProjectHome cli e)
+  let runCmdSpec (CmdSpec pg as detach) = do
+        let runProg = proc pg (as <> extraArgs) ""
+         in liftIO $
+              if detach
+                then runDetached Nothing DevNull (void runProg)
+                else runProg >>= exitWith
+
+  case action of
+    RunProgram cs -> runCmdSpec cs
+    RunIO act -> liftIO $ act cli e extraArgs
+    ComputeAndRun compute ->
+      liftIO $
+        runCmdSpec =<< compute cli e extraArgs
+
 execute :: ExercismCli -> Command -> IO ()
 execute cli@ExercismCli {binPath} cmd = case cmd of
   CmdProxy args -> proc binPathT args "" >>= exitWith
@@ -130,15 +147,7 @@ execute cli@ExercismCli {binPath} cmd = case cmd of
     e@Exercise {langTrack} <- fillExercise True cli rawExer
     pprExercise e
     case actions (getLanguage langTrack) M.!? actionTy of
-      Just action -> do
-        cd (exerciseProjectHome cli e)
-        case action of
-          RunProgram (CmdSpec pg as detach) ->
-            let runProg = proc pg (as <> extraArgs) ""
-             in if detach
-                  then runDetached Nothing DevNull (void runProg)
-                  else runProg >>= exitWith
-          RunIO act -> act cli e extraArgs
+      Just action -> sh $ performAction cli e extraArgs action
       Nothing -> do
         putStrLn $ show actionTy <> " action not supported for this language."
         exitFailure
