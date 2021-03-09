@@ -3,6 +3,7 @@ module ExercismWizard.Types
   , LangTrack (..)
   , ActionType (..)
   , Action (..)
+  , CmdSpec (..)
   , ExercismCli (..)
   , EditMethod (..)
   )
@@ -43,13 +44,16 @@ data ActionType
   | Lint
   deriving (Eq, Ord, Show)
 
+data CmdSpec = CmdSpec
+  { progName :: T.Text
+  , progArgs :: [T.Text]
+  , -- | whether to detach the process from current one
+    detach :: Bool
+  }
+
+-- TODO: we could support an IO action that gives (prog, args) pair so we can output exactly what we are running.
 data Action
-  = RunProgram
-      { progName :: T.Text
-      , progArgs :: [T.Text]
-      , -- | whether to detach the process from current one
-        detach :: Bool
-      }
+  = RunProgram CmdSpec
   | RunIO
       ( ExercismCli
         -> Exercise

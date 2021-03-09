@@ -28,6 +28,7 @@ import ExercismWizard.Language.Scheme as LangScheme
 import ExercismWizard.Types
   ( Action (..)
   , ActionType (..)
+  , CmdSpec (..)
   , EditMethod (..)
   , Exercise (..)
   , LangTrack (..)
@@ -86,7 +87,7 @@ getLanguage :: LangTrack -> Language
 getLanguage lt = head $ filter ((== lt) . track) languages
 
 rp :: T.Text -> Action
-rp xs = RunProgram y ys False
+rp xs = RunProgram (CmdSpec y ys False)
   where
     y : ys = T.words xs
 

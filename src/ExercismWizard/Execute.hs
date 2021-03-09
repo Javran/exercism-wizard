@@ -133,7 +133,7 @@ execute cli@ExercismCli {binPath} cmd = case cmd of
       Just action -> do
         cd (exerciseProjectHome cli e)
         case action of
-          RunProgram pg as detach ->
+          RunProgram (CmdSpec pg as detach) ->
             let runProg = proc pg (as <> extraArgs) ""
              in if detach
                   then runDetached Nothing DevNull (void runProg)
