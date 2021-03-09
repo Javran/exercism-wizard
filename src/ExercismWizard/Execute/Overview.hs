@@ -12,7 +12,7 @@ where
 
 import Control.Arrow
 import Control.Concurrent.Async
-import Control.Monad hiding (when)
+import Control.Monad
 import qualified Data.Aeson as Aeson
 import qualified Data.ByteString.Lazy as BSL
 import Data.Char
@@ -179,15 +179,16 @@ redactLinks :: ArrowXml a => Int -> a XmlTree XmlTree
 redactLinks salt =
   processTopDown $
     processAttrl
-      (changeAttrValue redact `when` hasName "href")
-      `when` (isElem >>> hasName "a")
+      (changeAttrValue redact `when'` hasName "href")
+      `when'` (isElem >>> hasName "a")
       >>> processAttrl
-        (changeAttrValue redact `when` (hasName "src" <+> hasName "onerror"))
-        `when` (isElem >>> hasName "img")
+        (changeAttrValue redact `when'` (hasName "src" <+> hasName "onerror"))
+        `when'` (isElem >>> hasName "img")
       >>> processAttrl
-        (changeAttrValue redact `when` hasName "style")
-        `when` (isElem >>> divClassIs "img")
+        (changeAttrValue redact `when'` hasName "style")
+        `when'` (isElem >>> divClassIs "img")
   where
+    when' = Text.XML.HXT.Core.when
     redact :: String -> String
     redact xs
       | "/my/solutions/" `isPrefixOf` xs =
