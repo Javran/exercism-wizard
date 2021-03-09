@@ -179,8 +179,8 @@ racket =
   Language
     { track = Racket
     , altNames = ["rkt"]
-    , actions = mempty
+    , actions = mempty -- TODO: test could be supported
     , solutionFiles = const $ findThenIgnoreTests ".rkt" "-test.rkt"
-    , editMethod = Nothing
+    , editMethod = Just $ OpenAllFilesWithProgram "drracket"
     , removeIgnore = Nothing
     }

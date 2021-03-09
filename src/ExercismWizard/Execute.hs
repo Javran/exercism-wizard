@@ -12,10 +12,12 @@ module ExercismWizard.Execute
   )
 where
 
+import Control.Arrow ((&&&))
+import qualified Control.Foldl as Fold
 import Control.Monad
 import qualified Data.ByteString as BS
 import Data.Char
-import Data.List (partition)
+import Data.List (partition, sortOn)
 import qualified Data.Map.Strict as M
 import Data.Maybe
 import qualified Data.Text as T
@@ -23,6 +25,7 @@ import qualified Data.Text.IO as T
 import ExercismWizard.CommandParse
 import qualified ExercismWizard.Config as EWConf
 import qualified ExercismWizard.Config.EditThisCookie as ETC
+import ExercismWizard.Execute.Overview
 import ExercismWizard.FSPath hiding (null)
 import ExercismWizard.Language
   ( Language (..)
@@ -38,10 +41,10 @@ import System.FilePath.Posix (pathSeparator)
 import qualified System.IO
 import System.Posix.Daemon (Redirection (..), runDetached)
 import qualified System.Process as SP
-import Turtle.Prelude
+import Turtle.Pattern
+import Turtle.Prelude hiding (sort, sortOn)
 import Turtle.Shell
 import Prelude hiding (FilePath)
-import ExercismWizard.Execute.Overview
 
 {-
   Find infomation on existing exercism cli setup.
@@ -214,6 +217,14 @@ execute cli@ExercismCli {binPath} cmd = case cmd of
         Just (OpenProjectWithProgram prog) ->
           liftIO $
             runDetached Nothing DevNull $ void (proc prog ["."] "")
+        Just (OpenAllFilesWithProgram prog) -> do
+          xsPre <- reduce Fold.list $ find (suffix ".rkt") "."
+          let xs :: [T.Text]
+              xs = sortOn criteria . fmap toText $ xsPre
+              -- this criteria ensures that we always put non-test files in front.
+              criteria = ("-test.rkt" `T.isSuffixOf`) &&& id
+          liftIO $
+            runDetached Nothing DevNull $ void (proc prog xs "")
   CmdRemoveIgnore raw -> do
     e@Exercise {langTrack} <- fillExercise True cli raw
     let Language {removeIgnore} = getLanguage langTrack
@@ -294,7 +305,7 @@ execute cli@ExercismCli {binPath} cmd = case cmd of
   CmdSaveCookie -> do
     putStrLn "Reading for stdin for EditThisCookie JSON export ..."
     raw <- BS.getContents
-    let Right pre =  ETC.decodeCookies @T.Text raw
+    let Right pre = ETC.decodeCookies @T.Text raw
         Right cs = ETC.toUserCookies pre
     print pre
     EWConf.writeConfig (EWConf.Config cs)

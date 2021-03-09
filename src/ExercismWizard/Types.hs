@@ -57,6 +57,12 @@ data Action
         -> IO ()
       )
 
+-- While we can support a general IO action, I want to see if there's some pattern that
+-- allows us to put things into ADTs.
 data EditMethod
-  = OpenWithEditor
-  | OpenProjectWithProgram T.Text
+  = -- | Open just the first of the solution file with EDITOR
+    OpenWithEditor
+  | -- | Open with an external program with solution's directory passed (IntelliJ IDEA special)
+    OpenProjectWithProgram T.Text
+  | -- | Collect all source files and open them with an external program (DrRacket)
+    OpenAllFilesWithProgram T.Text
