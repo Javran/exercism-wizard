@@ -34,6 +34,7 @@ data LangTrack
   | Rust
   | Go
   | Scheme
+  | Racket
   deriving (Show, Eq, Ord)
 
 data ActionType

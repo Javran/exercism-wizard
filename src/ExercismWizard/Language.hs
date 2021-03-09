@@ -70,7 +70,7 @@ peekSolutionUrl Exercise {langTrack, name} =
 
 -- TODO: do we have a better way of collecting all defined languages?
 languages :: [Language]
-languages = [haskell, kotlin, rust, go, scheme]
+languages = [haskell, kotlin, rust, go, scheme, racket]
 
 langTracks :: M.Map T.Text LangTrack
 langTracks = M.fromListWith err $ do
@@ -172,4 +172,15 @@ scheme =
     , solutionFiles = const $ findThenIgnoreTests ".scm" "test.scm"
     , editMethod = Just OpenWithEditor
     , removeIgnore = Just (".", void (suffix "test.scm"), "(test-skip ")
+    }
+
+racket :: Language
+racket =
+  Language
+    { track = Racket
+    , altNames = ["rkt"]
+    , actions = mempty
+    , solutionFiles = const $ findThenIgnoreTests ".rkt" "-test.rkt"
+    , editMethod = Nothing
+    , removeIgnore = Nothing
     }
