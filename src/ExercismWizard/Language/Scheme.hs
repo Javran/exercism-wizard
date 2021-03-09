@@ -40,4 +40,5 @@ runTests _cli Exercise {name} _extraArgs = do
     let validFile fp = testfile fp >>= \exist -> guard exist >> pure fp
     validFile "test.scm"
       <|> validFile (fromText (name <> toText "-test.scm"))
+      <|> fail "Cannot find any test file."
   pure $ CmdSpec "guile" [toText testScm] False
